@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21伪元素制土豆网遮罩案例.html</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .tudou{
+            position: relative;
+            width: 444px;
+            height: 320px;
+            margin: 100px auto;
+        }
+        .tudou img{
+            width: 100%;
+            height: 100%;
+        }
+        
+        .tudou::before{
+            display: none;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4) url(../images/arr.png) no-repeat center center;
+        }
+        .tudou:hover::before{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tudou">
+        <a href="#"><img src="../images/tudou.jpg" alt=""></a>
+    </div>
+</body>
+</html>

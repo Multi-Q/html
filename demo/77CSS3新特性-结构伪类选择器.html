@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>77CSS3新特性-结构伪类选择器</title>
+    <style>
+        /* 
+            E:first-child 匹配父元素中的第一个子元素E
+            E:last-child 匹配父元素中最后一个E元素
+            E:nth-child(n) 匹配父元素中的第n个子元素E
+            E:first-of-type 指定类型E的第一个
+            E:last-of-type  指定类型E的最后一个
+            E:nth-of-type(n) 指定类型E的第n个
+
+        */
+        ul li:first-child{
+            color: red;
+        }
+        ul li:last-child{
+            color: brown;
+        }
+        ul li:nth-child(4){
+            background-color: pink;
+        }
+
+        /* even偶数 odd奇数 */
+        ul li:nth-child(even){
+            font-size: 20px;
+        }
+        ul li:nth-child(odd){
+            font-family: "楷体";
+        }
+
+        /* n 2n 2n+1 3n 3n+1 -n+5 */
+        ol li:nth-child(2n+1){
+            background-color: azure;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+    </ul>
+<hr>
+    <ol>
+        <li>我是第1个孩子</li>
+        <li>我是第2个孩子</li>
+        <li>我是第3个孩子</li>
+        <li>我是第4个孩子</li>
+        <li>我是第5个孩子</li>
+        <li>我是第6个孩子</li>
+        <li>我是第7个孩子</li>
+        <li>我是第8个孩子</li>
+    </ol>
+</body>
+</html>

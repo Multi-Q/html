@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14小米布局案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        .father {
+            width: 1220px;
+            height: 610px;
+            background-color: rgb(177, 174, 174);
+            margin: 100px auto;
+        }
+
+        .left {
+            float: left;
+            width: 230px;
+            height: 610px;
+            background-color: skyblue;
+            margin-right: 5px;
+        }
+
+        .up {
+            float: left;
+            width: 985px;
+            height: 300px;
+            margin-bottom: 5px;
+        }
+
+        .up ul li {
+            float: left;
+            width: 241px;
+            height: 300px;
+            background-color: pink;
+            margin-right: 7px;
+        }
+        .up .last,.down .last{
+            margin-right: 0;
+        }
+        .down {
+            float: left;
+            width: 985px;
+            height: 300px;
+            margin-top: 5px;
+        }
+        .down ul li {
+            float: left;
+            width: 241px;
+            height: 300px;
+            background-color: pink;
+            margin-right: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="left"></div>
+        <div class="up">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li class="last"></li>
+            </ul>
+        </div>
+        <div class="down">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li class="last"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

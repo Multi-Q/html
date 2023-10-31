@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60定位的叠放次序</title>
+    <style>
+        /* 
+            z-index
+
+            数值越大，盒子越靠上
+        */
+        .w {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+
+        .xiongda {
+            background-color: green;
+        }
+
+        .xionger {
+            z-index: 1;
+            background-color: red;
+        }
+
+        .gtq {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="xiongda w">熊大</div>
+    <div class="xionger w">熊二</div>
+    <div class="gtq w">光头强</div>
+</body>
+
+</html>
