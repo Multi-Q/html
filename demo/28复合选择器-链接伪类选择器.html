@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28复合选择器-链接伪类选择器</title>
+    <style>
+        /* 
+            伪类选择器用于向某些选择器添加特殊效果，比如给连接添加特殊效果或则选择第一个，第n个元素
+            伪类选择器书写最大的特点就是用(:)表示，如:hover,:first-child
+
+            伪类选择器有链接选择器和结构选择器
+        
+            链接伪类选择器：
+                a:link
+                a:hover
+                a:visited
+                a:avtive
+            注：链接伪类有顺序声明（LVHA)：link visited hover active
+            */
+
+            /* 把没有访问过的链接选出来 */
+            a:link{
+                color: #333;
+                text-decoration: none;
+            }
+            /* 选择访问过的连接 */
+            a:visited{
+                color: red;
+            }
+            /* 当鼠标经过连接时效果会触发 */
+            a:hover{
+                color: skyblue;
+            }
+            /* 当鼠标按下但并未松手时触发效果 */
+            a:active{
+                color: green;
+            }
+    </style>
+</head>
+<body>
+    <a href="#">小猪佩奇</a>
+    <a href="http:www.baidu.com">未知的网站</a>
+</body>
+</html>

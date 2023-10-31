@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26复合选择器-子选择器</title>
+    <style>
+        /* 
+            子选择器只能选择座位某元素的最近一级子元素，简单理解就是选亲儿子元素
+
+            格式：
+                fatherTag > sonTag{样式声明}
+        */
+        .nav>a{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <a href="#">我是儿子</a>
+        <p><a href="#">我是孙子</a></p>
+    </div>
+</body>
+
+</html>

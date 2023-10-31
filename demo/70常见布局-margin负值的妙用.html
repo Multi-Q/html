@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>70常见布局-margin负值的妙用</title>
+    <style>
+        ul li {
+            list-style: none;
+            border: 1px solid red;
+            width: 100px;
+            height: 150px;
+            float: left;
+            margin-left: -1px;
+        }
+        ul li:hover{
+            border: 1px solid orange;
+            /* 
+                1、如果盒子没有定位，当鼠标经过添加相对定位即可
+                2、如果父盒子有定位，可以添加z-index提高层叠等级
+            */
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+
+</html>

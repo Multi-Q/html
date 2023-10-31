@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>32css背景-背景图片</title>
+    <style>
+
+
+        /* 
+            背景图片background-image,常见的logo或则一些装饰性的小图片或则是超大的背景图片，优点是非常便于控制位置
+                默认情况下，图片都是平铺的
+            格式：
+                background-image:none | url(路径)
+            
+            
+            背景平铺background-repeat，对页面上背景图片进行平铺
+            格式：
+                background-repeat:repeat | no-repeat | repeat-x | repeat-y
+        */
+        .div2{
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            background-image: url(../images/oldman.jpg);
+            background-repeat: no-repeat;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="div2"></div>
+</body>
+</html>

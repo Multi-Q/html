@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23css字体属性-文本属性</title>
+    <style>
+        .text-color {
+            /* 文字颜色 */
+            color: deeppink;
+
+            /* 对齐文本 center,left,right
+                text-align只能设置水平对齐
+                本质上是让盒子里面的文字对齐
+            */
+            text-align: center;
+
+            /* 装饰文本 none,下划线underline，删除线line-through，上划线overline */
+            text-decoration: underline;
+
+            /* 行间距
+                行高=上间距+文本间距+下边距
+            */
+            line-height: 56px;
+
+        }
+
+        .txt-indent {
+            /* 文本缩进 
+                用来指定首行文本缩进
+                em更具当前文字的大小进行缩进，如2em就是缩进2个文字大小
+            */
+            text-indent: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>pink的秘密</h2>
+    <p>那一抹宗人中最漂亮的颜色</p>
+    <p class="text-color">优雅，淡然，有那么心中清澈</p>
+    <p>前端总是伴随着滚那你和犯错</p>
+    <p>静心，坦然，攻克一个又一个</p>
+    <p>拼死也要克服它</p>
+    <p>这是pink的秘密也是老师最终的嘱托</p>
+
+    <p class="txt-indent">
+        这一天又是罗马历书的冬至节，意味着万物复苏的开始。可能由于这个原因，罗马教会才选择这一天作为圣诞节。后来，因为各地教会使用的历书不同，具体日期不能统一，于是就把12月24日到第二年的1月6日定为圣诞节节期（Christmas
+    </p>
+</body>
+
+</html>
