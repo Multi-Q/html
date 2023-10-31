@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25复合选择器-后代选择器</title>
+    <style>
+        /* 
+           后代选择器又称包含选择器，可以选择父元素里面的元素，
+           其写法就是把外层标签写在前面，内层标签写在后面，中间用空格分割。
+           当标签发生嵌套时，内层标签就成外层标签的后代 
+        
+           格式：
+            fatherTag sonTag {样式声明} 
+
+        */
+        ol li{
+            color: pink;
+        }
+        ol li a{
+            color: red;
+        }
+        ul li{
+            color: green;
+        }
+
+        .nav li a{
+            color: rgb(199, 14, 147);
+        }
+
+    </style>
+</head>
+<body>
+    <ol>
+        <li>我是ol的孩子</li>
+        <li>我是ol的孩子</li>
+        <li>我是ol的孩子</li>
+        <li><a href="#">我是孙子</a></li>
+    </ol>
+
+    <ul>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+    </ul>
+
+    <ul class="nav">
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li>我是ul的孩子</li>
+        <li><a href="#">我是孙子</a></li>
+    </ul>
+
+</body>
+</html>

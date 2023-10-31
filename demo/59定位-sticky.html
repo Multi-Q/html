@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>59定位-sticky</title>
+    <style>
+        /* 
+        粘性定位是固定定位和相对定位的混合
+
+        以浏览器的可视窗口为参照点移动元素
+        粘性定位占有原先的位置
+        必须加left、right、top、bottom其中一个才能生效
+        这种效果不常用，实现这种效果一般用js来做
+        */
+        .w {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <div class="w"></div>
+
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p>hello world</p>
+    </div>
+</body>
+
+</html>

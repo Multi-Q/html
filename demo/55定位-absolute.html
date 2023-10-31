@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>55定位-absolute</title>
+    <style>
+       
+
+        /* 
+        绝对定位是元素在移动位置的时候，是相对于它的祖先元素来说的（拼爹型）
+        特点：
+            如果没有祖先元素或则祖先元素没有定位，则以浏览器为准定位
+            如果父元素有定位,则以最近一级的有定位祖先元素为参照点移动位置
+            绝对定位不再占有原先的位置
+        */
+        .div1 {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+            position: relative;
+        }
+
+        .div2 {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <div class="div2"></div>
+    </div>
+</body>
+
+</html>

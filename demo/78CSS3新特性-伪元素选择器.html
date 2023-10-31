@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>78CSS3新特性-伪元素选择器</title>
+    <style>
+        /* 
+            伪元素选择器可以帮助我们利用css创建新标签元素（行内元素），而不需要html标签，从而简化html结构
+            权重：与标签选择器权重一致，1
+
+            ::before 再元素内部前面插入内容
+            ::after 在元素内部后面插入内容
+
+            ::before和::after内必须写content:"";
+        */
+div{
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+}
+div::before{
+    content: "我";
+}
+div::after{
+    content: "你爹";
+}
+
+    </style>
+</head>
+<body>
+    <div>
+        是
+    </div>
+</body>
+</html>

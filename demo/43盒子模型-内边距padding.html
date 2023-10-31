@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>43盒子模型-内边距padding</title>
+    <style>
+        /* 
+            padding用于设置自内边距，即边框与内容之间的距离
+
+            padding:5px 代表上下左右都有5px的内边距
+            padding:5px 10px 代表上下内边距是5px，左右内边距是10px
+            padding:5px 10px 20px 代表上内边距5px，左右内边距10px，下内边距20px
+            padding:5px 10px 20px 30px 代表上边距5px，右边距10px，下边距20px，左边距30px
+        
+            padding会影响盒子实际大小
+        */
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+
+            /* padding-left: 2em;
+            padding-top: 30px; */
+
+            /* padding复合型写法 */
+            padding: 5px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div>
+        hello world,hello world,hello world,hello world,hello world,hello world,hello world,
+    </div>
+    
+</body>
+</html>

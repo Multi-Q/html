@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>52清除浮动</title>
+    <style>
+        /* 
+            清除浮动的本质就是就是清除浮动元素造成影响
+            语法：
+            选择器{clear:both | 左浮动 | 有浮动}
+
+            清除浮动的方法：
+                1、额外标签法也称为隔墙法，是w3c推荐的做法
+                2、父级添加overflow属性
+                3、父级添加after伪元素
+                4、父级添加双伪元素
+
+        */
+
+        /* .clearfix:after{
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .clearfix{
+            zoom: 1;
+        } */
+
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+
+
+        .box {
+            width: 960px;
+            margin: 0 auto;
+            border: 1px solid red;
+            /* overflow: hidden; */
+        }
+
+        .damao {
+            float: left;
+            width: 300px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .ermao {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        .footer {
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 额外标签法会在浮动元素末尾添加一个空标签，这个标签必须是块级元素
+        优点：通俗易懂，书写方便
+        缺点添加许多无意义的标签，结构化较差
+    -->
+    <!-- <div class="box">
+        <div class="damao">大毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+       <div class="clear"></div>
+    </div> -->
+
+
+    <!-- 清除浮动overflow 
+        给父元素添加overflow:hidden
+        优点：代码简洁
+        缺点：无法显示溢出的部分
+    -->
+    <!-- <div class="box">
+        <div class="damao">大毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+    </div> -->
+
+
+    <!-- 
+        清除浮动:after伪元素法
+        添加样式：
+            .clearfix:after{
+                content: "";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+            .clearfix{
+                *zoom: 1;
+            }
+
+     -->
+    <!-- <div class="box clearfix">
+        <div class="damao">大毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+    </div> -->
+
+
+    <!-- 
+        双伪元素清除浮动
+        添加样式：
+            .clearfix:before,.clearfix:after{
+                content: "";
+                display: table;
+              
+            }
+            .clearfix:after{
+                clear:both
+            }
+            .clearfix{
+                zoom: 1;
+            }
+
+     -->
+    <div class="box clearfix">
+        <div class="damao">大毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+        <div class="ermao">二毛</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="footer">footer</div>
+</body>
+
+</html>

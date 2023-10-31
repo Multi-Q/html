@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>80CSS3新特性-盒子模型</title>
+    <style>
+        /* 
+            box-sizeing: content-box(默认，宽度+盒子+padding) | border-box(盒子的大小事width)
+            内容不会撑开盒子
+            */
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border: 20px solid blue;
+            padding: 15px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        p {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 20px solid blue;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        小猪佩奇
+    </div>
+
+    <p>小猪佩奇</p>
+
+</body>
+
+</html>
