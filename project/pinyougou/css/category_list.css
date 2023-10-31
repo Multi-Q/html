@@ -1,0 +1,270 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('../fonts/iconfont.woff2??t=1698310635252') format('woff2'),
+        url('../fonts/iconfont.woff?t=1698310635252') format('woff'),
+        url('../fonts/iconfont.ttf?t=1698310635252') format('truetype');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    /* 照顾低版本浏览器 */
+    border: 0;
+    /* 取消图片地测有空白间隙的问题 */
+    vertical-align: middle;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #c81623;
+}
+
+button,
+input {
+    font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif
+}
+
+body {
+    -webkit-font-smooting: antialiased;
+    font: 12px Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    color: #666;
+    background-color: white;
+}
+
+/* 清除浮动 */
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+
+
+/* 头顶工具栏 */
+.w {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.mar {
+    margin-top: 25px;
+}
+
+.bar {
+    height: 30px;
+    background-color: #f1f1f1;
+}
+
+/* 登录 */
+.sign {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+}
+
+.sign p span:nth-child(2) a {
+    color: red;
+}
+
+/* 菜单栏 */
+.menubar {
+    float: right;
+    height: 30px;
+}
+
+.menubar ul {
+    position: relative;
+}
+
+.menubar ul li {
+    float: left;
+    padding: 0 15px;
+    line-height: 30px;
+    border-right: 1px solid #666;
+}
+
+.menubar ul li:last-child {
+    border: 0;
+}
+
+.menubar ul li a span {
+    line-height: 30px;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+/* header */
+header {
+    border-bottom: 2px solid red;
+}
+
+.top_box {
+    height: 105px;
+}
+
+/* logo */
+.logo {
+    width: 175px;
+    height: 56px;
+    margin-top: 25px;
+    float: left;
+}
+
+.logo img {
+    width: 100%;
+}
+
+/* 搜索框 */
+.search_box {
+    width: 535px;
+    float: left;
+    margin-left: 172px;
+    margin-top: 25px;
+}
+
+.search input {
+    width: 455px;
+    height: 32px;
+    border: 2px solid #b1191a;
+    border-right: 0;
+    float: left;
+    padding-left: 10px;
+    line-height: 32px;
+    outline: none;
+}
+
+/* 热词展示 */
+.search .search_btn {
+    width: 80px;
+    height: 32px;
+    background-color: #b1191a;
+    color: white;
+    font-size: 16px;
+    border: 0;
+}
+
+.hot_word ul li {
+    float: left;
+    padding: 7px 12px 0 12px;
+}
+
+.hot_word ul li:first-child a {
+    color: #c81623;
+}
+
+/* 我的购物车 */
+.shopcart {
+    float: left;
+    position: relative;
+    height: 32px;
+    width: 140px;
+    border: 1px solid #dfdfdf;
+    background-color: #f7f7f7;
+    margin-left: 111px;
+    margin-top: 25px;
+    text-align: center;
+    line-height: 32px;
+}
+
+.shopcart .message {
+    position: absolute;
+    top: -4px;
+    right: 18px;
+    width: 16px;
+    height: 16px;
+    background-color: #c81623;
+    color: white;
+    line-height: 16px;
+    border-radius: 8px 8px 8px 0;
+}
+
+.shopcart a {
+    display: block;
+    width: 140px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.shopcart a span:nth-child(n-1) {
+    display: block;
+    float: left;
+}
+
+.shopcart a span:first-child {
+    width: 20px;
+    height: 18px;
+    margin: 10px 6px 10px 18px;
+    background: url(../images/icons.png) no-repeat -414px -89px;
+}
+
+.shopcart a .iconfont {
+    font-size: 10px;
+    margin-left: 14px;
+}
+
+
+.bottom_box ul{
+    height: 45px;
+}
+.bottom_box ul li{
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+}
+.bottom_box ul li a{
+    display: block;
+    height: 45px;
+    padding: 0 23px;
+}
+.bottom_box ul li:nth-child(n-9) a{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+.bottom_box ul li:nth-child(n+4) a{
+    font-size: 12px;
+    color: #666;
+}
+.bottom_box ul li:nth-child(n-9) a:hover,
+.bottom_box ul li:nth-child(n+4) a:hover{
+    color: #c81623;
+}
