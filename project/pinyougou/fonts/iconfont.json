@@ -6,6 +6,27 @@
   "description": "品优购项目",
   "glyphs": [
     {
+      "icon_id": "61143",
+      "name": "share",
+      "font_class": "share",
+      "unicode": "e6f3",
+      "unicode_decimal": 59123
+    },
+    {
+      "icon_id": "1496051",
+      "name": "back_light",
+      "font_class": "back_light",
+      "unicode": "e7e0",
+      "unicode_decimal": 59360
+    },
+    {
+      "icon_id": "12865672",
+      "name": "like",
+      "font_class": "like",
+      "unicode": "e6eb",
+      "unicode_decimal": 59115
+    },
+    {
       "icon_id": "7095466",
       "name": "服饰-女鞋",
       "font_class": "fushi-nvxie",
