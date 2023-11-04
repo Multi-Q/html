@@ -6,11 +6,18 @@
   "description": "品优购项目",
   "glyphs": [
     {
-      "icon_id": "61143",
+      "icon_id": "27188622",
+      "name": "pwd",
+      "font_class": "pwd",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "37969354",
       "name": "share",
-      "font_class": "share",
-      "unicode": "e6f3",
-      "unicode_decimal": 59123
+      "font_class": "share-copy",
+      "unicode": "e7e1",
+      "unicode_decimal": 59361
     },
     {
       "icon_id": "1496051",

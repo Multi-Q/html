@@ -1,0 +1,151 @@
+.login_header {
+    height: 82px;
+}
+
+.login_logo {
+    width: 175px;
+    height: 100%;
+    line-height: 82px;
+}
+
+.login_logo a {
+    display: block;
+}
+
+.login_logo img {
+    width: 100%;
+}
+
+.login_content {
+    height: 486px;
+    background-color: #7e00ff;
+}
+
+.bg {
+    height: 486px;
+    background: url(../images/loginbg.png) no-repeat top center;
+}
+
+.login_form {
+    float: right;
+    width: 379px;
+    margin: 62px;
+    height: 362px;
+    background-color: white;
+    padding: 23px 38px 15px 37px;
+}
+
+.login_form ul {
+    width: 100%;
+    height: 20px;
+}
+
+.login_form ul li {
+    float: left;
+    height: 100%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 18px;
+}
+
+.login_form ul li:first-child {
+    padding-left: 9px;
+    padding-right: 69px;
+    border-right: 1px solid #ededed;
+
+}
+
+.login_form ul li:last-child {
+    padding-right: 9px;
+    padding-left: 70px;
+}
+
+.login_form_notice {
+    height: 26px;
+    width: 100%;
+    line-height: 26px;
+    padding-left: 10px;
+    margin-top: 23px;
+    border: 1px solid #f5eecf;
+    background-color: #fffdee;
+}
+
+.login_form form {
+    margin-top: 10px;
+    height: 184px;
+    width: 100%;
+}
+
+.username,
+.pwd {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #bbbaba;
+}
+
+.username:hover,
+.pwd:hover {
+    border: 1px solid #3aa2e4;
+}
+
+.username {
+    margin-bottom: 17px;
+}
+
+.username span,
+.pwd span {
+    display: block;
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    width: 37px;
+    text-align: center;
+    font-size: 21px;
+    background-color: #cfcdcd;
+}
+
+.username input,
+.pwd input {
+    float: left;
+    width: 265px;
+    height: 100%;
+    padding-left: 11px;
+    font-size: 14px;
+    outline: none;
+    border: 0;
+}
+
+.auto_sign {
+    width: 100%;
+    height: 14px;
+    line-height: 14px;
+    margin: 20px 0;
+    font-size: 12px;
+}
+
+.auto_sign p span input {
+    vertical-align: middle;
+}
+
+.auto_sign p span:nth-child(2) {
+    float: right;
+}
+
+.auto_sign p span:nth-child(2) a {
+    color: black;
+}
+
+.submit {
+    width: 100%;
+    height: 41px;
+    line-height: 41px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #c81623;
+    background-color: #c81623;
+}
+
+.submit a {
+    display: block;
+    color: white;
+}
