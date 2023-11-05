@@ -1,0 +1,325 @@
+.settlement_header .w {
+    margin-top: 20px;
+    height: 56px;
+}
+
+.logo {
+    margin-top: 0;
+}
+
+.search_bar {
+    width: 1002px;
+    height: 36px;
+    margin-left: 23px;
+    float: left;
+    margin-top: 10px;
+}
+
+.search_bar h2 {
+    float: left;
+    color: black;
+    line-height: 36px;
+    font-weight: normal;
+}
+
+.search {
+    float: right;
+}
+
+.counts {
+    color: #c81623;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.counts>span {
+    margin-left: 7px;
+}
+
+.settlement_bar {
+    height: 36px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+}
+
+.settlement_bar>ul {
+    height: 36px;
+    line-height: 36px;
+}
+
+.settlement_bar>ul li {
+    height: 36px;
+    float: left;
+}
+
+.settlement_bar>ul li:first-child {
+    width: 117px;
+}
+
+.settlement_bar>ul li:first-child input[type="checkbox"] {
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.settlement_bar>ul li:nth-child(2) {
+    width: 499px;
+    text-align: center;
+}
+
+.settlement_bar>ul li:nth-child(3) {
+    width: 131px;
+    text-align: center;
+}
+
+.settlement_bar>ul li:nth-child(4) {
+    width: 172px;
+    text-align: center;
+}
+
+.settlement_bar>ul li:nth-child(5) {
+    width: 150px;
+    text-align: center;
+}
+
+.settlement_bar>ul li:nth-child(6) {
+    width: 108px;
+    text-align: center;
+}
+
+
+.shop {
+    margin-top: 20px;
+}
+
+.shop_bar {
+    height: 24px;
+    line-height: 24px;
+    border-bottom: 2px solid #ddd;
+margin-bottom: 15px;}
+
+.shop_name {
+    float: left;
+}
+
+.shop_name input[type="checkbox"] {
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.fare {
+    float: right;
+}
+
+.fare>span:nth-child(2) {
+    margin-left: 9px;
+    color: #c81623;
+}
+
+.selected_goods {
+    border: 1px solid #ddd;
+}
+
+.selected_goods>ul li {
+    border-bottom: 1px solid #ddd;
+}
+
+.selected_goods>ul li:last-child {
+    border-bottom: 0;
+}
+
+.selected_goods_item {
+    width: 1190px;
+    margin: 12px 0 12px 4px;
+}
+
+.plus_pur {
+    height: 20px;
+    line-height: 20px;
+    margin-left: 4px;
+    margin-bottom: 23px;
+}
+
+.plus_pur_tag {
+    display: inline-block;
+    width: 46px;
+    height: 20px;
+    border: 1px solid #c81623;
+    background-color: white;
+    color: #c81623;
+    text-align: center;
+    margin-right: 17px;
+}
+
+.plus_pur>p>em {
+    color: #808080;
+}
+
+.plus_pur>p .iconfont {
+    font-size: 12px;
+    margin: 0 7px;
+}
+
+.plus_pur_check {
+    width: 70px;
+    height: 20px;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #c81623;
+    color: white;
+    background-color: #c81623;
+    margin-left: 11px;
+    margin-right: 6px;
+}
+
+.selected_btn {
+    position: relative;
+    float: left;
+    width: 117px;
+    height: 100%;
+}
+
+.selected_btn input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.selected_btn a {
+    display: block;
+    width: 82px;
+    height: 82px;
+    margin-left: 17px;
+    border: 1px solid #ddd;
+}
+
+.selected_btn a img {
+    width: 80px;
+    height: 80px;
+}
+
+.selected_name {
+    float: left;
+    width: 489px;
+    height: 100%;
+    margin-left: 10px;
+}
+
+.name_box {
+    float: left;
+    width: 233px;
+    height: 100%;
+}
+
+.name_box>p:first-child {
+    height: 30px;
+    width: 233px;
+    white-space: wrap;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.gift {
+    width: 233px;
+}
+
+.other_specify {
+    width: 233px;
+    margin-top: 10px;
+    color: #999;
+}
+
+.gift_icon {
+    display: block;
+    float: left;
+    height: 14px;
+    width: 14px;
+    margin-right: 7px;
+    background: url(../images/icons.png) no-repeat -526px -78px;
+}
+
+.gift_name {
+    float: left;
+    width: 206px;
+    height: 14px;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: wrap;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.other_specify>em {
+    display: block;
+    float: left;
+    width: 10px;
+    height: 14px;
+}
+
+.property_box {
+    float: left;
+    width: 256px;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.property_box p {
+    height: 14px;
+    line-height: 14px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.select_price {
+    float: left;
+    width: 131px;
+    height: 100%;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+}
+
+.select_count {
+    float: left;
+    width: 172px;
+    height: 100%;
+
+}
+
+.select_count>button {
+    width: 30px;
+    height: 30px;
+    float: left;
+    background-color: white;
+    border: 1px solid #ddd;
+    color: black;
+}
+
+.select_count>input {
+    float: left;
+    width: 41px;
+    height: 30px;
+    margin: 0 -1px;
+    outline: none;
+    color: black;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.selected_sum {
+    float: left;
+    width: 150px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.selected_oper {
+    width: 108px;
+    float: right;
+}
