@@ -95,7 +95,8 @@
     height: 24px;
     line-height: 24px;
     border-bottom: 2px solid #ddd;
-margin-bottom: 15px;}
+    margin-bottom: 15px;
+}
 
 .shop_name {
     float: left;
@@ -322,4 +323,255 @@ margin-bottom: 15px;}
 .selected_oper {
     width: 108px;
     float: right;
+}
+
+.cehcked_bar {
+    height: 52px;
+
+    border: 1px solid #ddd;
+    margin: 21px 0 20px 0;
+}
+
+.cehcked_bar>ul,
+.cehcked_bar>ul>li {
+    float: left;
+    line-height: 52px;
+    height: 50px;
+}
+
+.cehcked_bar>ul>li:first-child {
+    margin-left: 4px;
+    margin-right: 19px;
+}
+
+.cehcked_bar>ul>li:first-child input {
+    vertical-align: text-top;
+    margin-right: 4px;
+}
+
+.cehcked_bar>ul>li:nth-child(n+2) {
+    margin-right: 13px;
+}
+
+.checked_info {
+    height: 50px;
+    float: right;
+}
+
+.checked_info table {
+    height: 50px;
+    float: left;
+    border: 0;
+    margin-right: 10px;
+}
+
+.checked_info table tr {
+    height: 25px;
+    line-height: 25px;
+}
+
+.checked_info table tr td:first-child {
+    text-align: right;
+}
+
+.checked_info table tr:first-child td:nth-child(2) {
+    font-size: 16px;
+    font-weight: bold;
+    color: #c81623;
+}
+
+.sum_selected {
+    width: 109px;
+    height: 50px;
+    background-color: #c81623;
+    color: white;
+    font-size: 16px;
+    border: 0;
+    letter-spacing: 10px;
+}
+
+.deleted_bar {
+    height: 64px;
+}
+
+.deleted_bar>p {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.deleted_item {
+    height: 32px;
+    background-color: #fffdee;
+    color: #333;
+    line-height: 32px;
+    margin-bottom: 5px;
+}
+
+.deleted_item_name {
+    float: left;
+    width: 484px;
+}
+
+.deleted_item_name a {
+    display: -webkit-box;
+    width: 400px;
+    padding-left: 16px;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.deleted_item_price {
+    float: left;
+    height: 100%;
+    width: 230px;
+    text-align: center;
+}
+
+.deleted_item_count {
+    float: left;
+    width: 142px;
+    height: 100%;
+    text-align: center;
+}
+
+.deleted_item_oper {
+    height: 100%;
+    width: 336px;
+    float: left;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.deleted_item_oper>a:nth-child(2) {
+    padding-left: 19px;
+}
+
+.settlement_like_box {
+    height: 368px;
+}
+
+.settlement_like_bar {
+    height: 41px;
+    border: 1px solid #ddd;
+    background-color: #f1f1f1;
+}
+
+.settlement_like_bar>a {
+    display: block;
+    float: left;
+    width: 87px;
+    height: 39px;
+    color: #333;
+    text-align: center;
+    line-height: 39px;
+}
+
+.settlement_like_content {
+    margin-top: 20px;
+    height: 307px;
+}
+
+.settlement_like_content ul {
+    position: relative;
+    height: 307px;
+}
+
+.settlement_like_content ul li {
+    float: left;
+    height: 100%;
+}
+
+.settlement_like_content ul .prev,
+.settlement_like_content ul .next {
+    height: 307px;
+    width: 39px;
+}
+
+.settlement_like_content ul .prev>a,
+.settlement_like_content ul .next>a {
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    width: 19px;
+    height: 49px;
+    background-color: #ddd;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    line-height: 49px;
+}
+
+.settlement_like_content ul .prev>a {
+    left: 0;
+}
+
+.settlement_like_content ul .next>a {
+    right: 0;
+}
+
+.settlement_like_item {
+    width: 248px;
+    height: 207px;
+    border: 1px dotted #ddd;
+    margin-left: -1px;
+}
+
+.sli_wrapper {
+    width: 246px;
+    height: 305px;
+}
+
+.sli_img a {
+    display: block;
+    text-align: center;
+}
+
+.sli_img {
+    width: 246px;
+    height: 181px;
+}
+
+.sli_img img {
+    width: 244px;
+    height: 179px;
+}
+
+.sli_name {
+    height: 30px;
+    padding: 0 27px 0 20px;
+    margin: 7px 0 12px 0;
+    color: black;
+    white-space: wrap;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.sli_price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ed4b20;
+    text-align: center;
+}
+
+.sli_cart_btn {
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 14px;
+}
+
+.sli_cart_btn button {
+    width: 125px;
+    height: 30px;
+    border: 1px solid #999;
+}
+.sli_cart_btn button .iconfont{
+    margin-right: 7px;
 }

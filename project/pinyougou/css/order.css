@@ -1,0 +1,97 @@
+/* 头部 */
+.settlement_header .w {
+    margin-top: 20px;
+    height: 56px;
+}
+
+.logo {
+    margin-top: 0;
+}
+
+.search_bar {
+    width: 1002px;
+    height: 36px;
+    margin-left: 23px;
+    float: left;
+    margin-top: 10px;
+}
+
+.search_bar h2 {
+    float: left;
+    color: black;
+    line-height: 36px;
+    font-weight: normal;
+}
+
+.search {
+    float: right;
+}
+/* 主体内容 */
+.info_bar{
+    font-size: 16px;
+    font-weight: normal;
+}
+.order_content{
+    margin-top: 20px;
+}
+.order_content,.order_box_list{
+    width: 1200px;
+}
+.order_box_item{
+width: 1200px;
+height: 787px;
+border: 1px solid #ddd;
+padding: 40px 25px 20px 25px;
+}
+.user_msg{
+    height: 116px;
+    border-bottom: 1px solid #ddd;
+}
+.user_msg_bar{
+    height: 16px;
+    line-height: 16px;
+}
+.user_msg_title{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    float: left;
+    margin-left: 25px;
+}
+.add_addr{
+float: right;
+
+}
+.add_addr a{
+    color: #1474af;
+}
+.user_addr{
+    height: 100px;
+    line-height: 30px;
+    padding-left: 44px;
+}
+.brief_addr{
+    display: inline-block;
+    width: 144px;
+    height: 30px;
+    border: 1px solid #c81623;
+    text-align:center;
+    margin-top: 19px;
+}
+.detail_addr{
+    height: 30px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.uname,.uaddr,.uscope,.uhome,.uphone{
+    margin-right: 7px;
+}
+.more_addr{
+    height: 30px;
+    margin-top: 19px;
+}
+
+
+
+
+
