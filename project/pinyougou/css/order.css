@@ -26,72 +26,359 @@
 .search {
     float: right;
 }
+
 /* 主体内容 */
-.info_bar{
+.info_bar {
     font-size: 16px;
     font-weight: normal;
 }
-.order_content{
+
+.order_content {
     margin-top: 20px;
 }
-.order_content,.order_box_list{
+
+.order_content,
+.order_box_list {
     width: 1200px;
 }
-.order_box_item{
-width: 1200px;
-height: 787px;
-border: 1px solid #ddd;
-padding: 40px 25px 20px 25px;
+
+.order_box_item {
+    width: 1200px;
+    border: 1px solid #ddd;
+    padding: 40px 25px 20px 25px;
 }
-.user_msg{
+
+.user_msg {
     height: 116px;
     border-bottom: 1px solid #ddd;
 }
-.user_msg_bar{
+
+.user_msg_bar {
     height: 16px;
     line-height: 16px;
 }
-.user_msg_title{
+
+.user_msg_title {
     font-size: 16px;
     font-weight: bold;
     color: black;
     float: left;
     margin-left: 25px;
 }
-.add_addr{
-float: right;
+
+.add_addr {
+    float: right;
 
 }
-.add_addr a{
+
+.add_addr a {
     color: #1474af;
 }
-.user_addr{
+
+.user_addr {
     height: 100px;
     line-height: 30px;
     padding-left: 44px;
 }
-.brief_addr{
+
+.brief_addr {
     display: inline-block;
     width: 144px;
     height: 30px;
     border: 1px solid #c81623;
-    text-align:center;
+    text-align: center;
     margin-top: 19px;
 }
-.detail_addr{
+
+.detail_addr {
     height: 30px;
     display: inline-block;
     margin-left: 10px;
 }
-.uname,.uaddr,.uscope,.uhome,.uphone{
+
+.uname,
+.uaddr,
+.uscope,
+.uhome,
+.uphone {
     margin-right: 7px;
 }
-.more_addr{
+
+.more_addr {
     height: 30px;
     margin-top: 19px;
 }
 
+.pickup_point {
+    height: 71px;
+    line-height: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
 
+.auto_pickup_point {
+    width: 144px;
+    height: 30px;
+    margin-left: 44px;
+    margin-right: 11px;
+    color: #666;
+    background-color: white;
+    border: 1px solid #ddd;
+}
 
+.pickup_point p {
+    display: inline-block;
+}
 
+.pickup_point p span:first-child {
+    margin-right: 10px;
+}
 
+.pay_way {
+    height: 105px;
+    border-bottom: 1px solid #ddd;
+}
+
+.pay_way>p,
+.delivery_list>p,
+.invoice>p:first-child {
+    height: 20px;
+    margin-top: 20px;
+}
+
+.pay_way>ul {
+    height: 30px;
+    line-height: 30px;
+    margin: 20px 0 20px 44px;
+}
+
+.pay_way>ul>li {
+    float: left;
+    width: 98px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.pay_way>ul>li a {
+    display: block;
+}
+
+.pay_way>ul>li:last-child {
+    border: 0;
+}
+
+.pay_way>ul>li:last-child .iconfont {
+    font-size: 12px;
+}
+
+.delivery_list {
+    height: 333px;
+    border-bottom: 1px solid #ddd;
+}
+
+.delivery_list_item {
+    height: 255px;
+    margin: 20px 0;
+}
+
+.delivery_list_item_top {
+    height: 101px;
+    background-color: #f4f4f4;
+}
+
+.delivery_list_item_bottom {
+    height: 153px;
+    margin-top: 1px;
+    background-color: #feedef;
+}
+
+.delivery_list_item_title {
+    height: 14px;
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.express {
+    position: relative;
+    height: 30px;
+    margin: 18px 0 21px 44px;
+}
+
+.express p {
+    display: inline-block;
+}
+
+.express_name {
+    width: 142px;
+    height: 30px;
+    line-height: 30px;
+    border: 1PX solid #c81623;
+    text-align: center;
+    background-color: white;
+}
+
+.express_time {
+    margin-left: 50px;
+}
+
+.express_update {
+    position: absolute;
+    top: 0;
+    right: 35px;
+}
+
+.express_update a {
+    color: #1474af;
+}
+
+.express_goods {
+    height: 82px;
+    margin-top: 19px;
+    margin-bottom: 20px;
+}
+
+.express_goods_img {
+    float: left;
+    width: 82px;
+    height: 82px;
+    margin-left: 44px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.express_goods_img img {
+    width: 80px;
+    height: 80px;
+}
+
+.express_goods_title {
+    float: left;
+    height: 82px;
+    width: 329px;
+    margin-left: 110px;
+}
+
+.express_goods_main_title {
+    height: 33px;
+    width: 100%;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.express_goods_main_title_service {
+    height: 14px;
+    margin-top: 26px;
+    color: #c81623;
+}
+
+.express_goods_num {
+    height: 82px;
+    width: 226px;
+    float: right;
+    margin-right: 34px;
+}
+
+.express_goods_num p>span:first-child {
+    font-size: 16px;
+    font-weight: bold;
+    color: #c81623;
+    margin-right: 50px;
+}
+
+.express_goods_num p>span:nth-child(2) {
+    margin-right: 50px;
+}
+
+.invoice {
+    height: 120px;
+}
+
+.invoice_detail {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin: 20px 0 20px 44px;
+}
+
+.invoice_detail span {
+    margin-right: 10px;
+}
+
+.preferential {
+    font-size: 16px;
+    margin-left: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+.order_sum {
+    height: 211px;
+    margin-top: 19px;
+}
+
+.order_sum_property {
+    width: 100%;
+    height: 60px;
+}
+
+.order_sum_property table {
+    width: 250px;
+    height: 60px;
+    border: 0;
+    margin-right: 25px;
+    float: right;
+}
+
+.order_sum_property table tr {
+    width: 125px;
+    height: 18px;
+    line-height: 18px;
+    text-align: right;
+}
+
+.order_sum_property table tr:first-child td:first-child span {
+    color: #c81623;
+}
+
+.order_sum_property table tr:first-child td:last-child {
+    font-size: 16px;
+    font-weight: bold;
+    color: #c81623;
+}
+
+.order_msg {
+    height: 60px;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    color: #999;
+    text-align: right;
+    margin-top: 21px;
+    padding-right: 25px;
+    padding-top: 12px;
+}
+.order_msg p:first-child span{
+    font-size: 16px;
+    font-weight: bold;
+    color: #c81623;
+}
+.order_submit{
+    float: right;
+    width: 142px;
+    height: 46px;
+    line-height: 46px;
+    margin-top: 10px;
+    border: 1px solid #c81623;
+    background-color: #c81623;
+}
+.order_submit a{
+    display: block;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
