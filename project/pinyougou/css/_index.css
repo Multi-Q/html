@@ -1,0 +1,423 @@
+.main {
+    width: 980px;
+    height: 455px;
+    margin-left: 220px;
+    margin-top: 10px;
+}
+
+.focus {
+    float: left;
+    width: 721px;
+    height: 455px;
+}
+
+.newsflash {
+    float: right;
+    width: 250px;
+    height: 455px;
+}
+
+.focus ul li a {
+    display: block;
+    width: 721px;
+    height: 455px;
+}
+
+.news {
+    height: 165px;
+    border: 1px solid #e4e4e4;
+}
+
+.bargin {
+    margin-top: 5px;
+}
+
+.news_hd {
+    height: 33px;
+    line-height: 33px;
+    padding: 0 15px;
+    border-bottom: 1px dotted #e4e4e4;
+}
+
+.news_hd h5 {
+    float: left;
+    font-size: 14px;
+}
+
+.news_hd .more {
+    float: right;
+}
+
+.news_hd .more::after {
+    content: ">>";
+}
+
+.news_bd {
+    padding: 5px 15px 0;
+}
+
+.news_bd ul li {
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lifeservice {
+    height: 209px;
+    border: 1px solid #e4e4e4;
+    border-top: 0;
+    overflow: hidden;
+}
+
+.lifeservice ul {
+    width: 252px;
+}
+
+.lifeservice ul li {
+    position: relative;
+    float: left;
+    width: 63px;
+    height: 71px;
+    text-align: center;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.lifeservice ul li a {
+    display: block;
+    width: 62px;
+    height: 70px;
+}
+
+.tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 14px;
+    height: 21px;
+    line-height: 14px;
+    font-size: 12px;
+    color: white;
+    background-color: green;
+}
+
+.tag::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-bottom-color: white;
+}
+
+.lifeservice ul li i {
+    display: inline-block;
+    width: 24px;
+    height: 28px;
+    margin-top: 12px;
+    background: url(../images/icons.png) no-repeat;
+}
+
+.lifeservice ul li:nth-child(1) i {
+    background-position: -17px -14px
+}
+
+.lifeservice ul li:nth-child(2) i {
+    background-position: -80px -14px;
+}
+
+.lifeservice ul li:nth-child(3) i {
+    background-position: -142px -14px;
+}
+
+.lifeservice ul li:nth-child(4) i {
+    background-position: -206px -14px
+}
+
+.lifeservice ul li:nth-child(5) i {
+    background-position: -17px -85px;
+}
+
+.lifeservice ul li:nth-child(6) i {
+    background-position: -80px -85px;
+}
+
+.lifeservice ul li:nth-child(7) i {
+    background-position: -142px -85px;
+}
+
+.lifeservice ul li:nth-child(8) i {
+    background-position: -208px -85px;
+}
+
+.lifeservice ul li:nth-child(9) i {
+    background-position: -17px -159px;
+}
+
+.lifeservice ul li:nth-child(10) i {
+    background-position: -79px -159px;
+}
+
+.lifeservice ul li:nth-child(11) i {
+    background-position: -141px -154px;
+}
+
+.lifeservice ul li:nth-child(12) i {
+    background-position: -206px -158px;
+}
+
+.recom {
+    height: 163px;
+    margin-top: 12px;
+    background-color: #ededed;
+}
+
+.recom_hd {
+    float: left;
+    height: 163px;
+    width: 205px;
+    text-align: center;
+    padding-top: 30px;
+    background-color: #5c5251;
+}
+
+.recom_bd {
+    float: left;
+}
+
+.recom_bd ul li {
+    position: relative;
+    float: left;
+}
+
+.recom_bd ul li a {
+    width: 248px;
+    height: 163px;
+    display: block;
+}
+
+.recom_bd ul li a img {
+    width: 248px;
+    height: 163px;
+}
+
+.recom_bd ul li:nth-child(-n+3)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 1px;
+    height: 145px;
+    background-color: #ddd;
+}
+
+.like {
+    height: 261px;
+    margin-top: 31px;
+}
+
+.like_hd {
+    position: relative;
+    height: 20px;
+    line-height: 18px;
+    font-weight: normal;
+}
+
+.like_hd h5 {
+    float: left;
+    font-size: 18px;
+    color: #333;
+}
+
+.like_hd a {
+    float: right;
+    margin-right: 21px;
+}
+
+.like_hd a::after {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-left: 9px;
+    background: url(../images/icons.png) no-repeat -420px -110px;
+
+}
+
+.like_bd {
+    height: 233px;
+    margin-top: 8px;
+    border: 1px solid #ededed;
+}
+
+.like_bd ul {
+    width: 1202px;
+    overflow: hidden;
+}
+
+.like_bd ul li {
+    float: left;
+    width: 200px;
+    height: 231px;
+}
+
+.like_bd ul li:hover {
+    border: 1px solid orangered;
+}
+
+.like_lk {
+    display: block;
+    width: 200px;
+    height: 231px;
+}
+
+.like_lk_load_img {
+    width: 160px;
+    height: 161px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.like_lk_load_img img {
+    width: 160px;
+    height: 141px;
+}
+
+.like_lk_info {
+    width: 200px;
+    padding: 0 20px;
+    margin-top: 9px;
+    border-right: 1px solid #ededed;
+}
+
+.like_bd ul li:nth-child(6) .like_lk .like_lk_info {
+    border-right: 0;
+}
+
+.like_lk_info_name {
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.like_lk_info_price {
+    height: 18px;
+    line-height: 18px;
+    color: #df3033;
+    font-weight: bold;
+}
+
+.like_lk_info_price em {
+    float: left;
+    font-size: 12px;
+}
+
+.like_lk_info_price span {
+    float: left;
+    font-size: 16px;
+}
+
+/* 家用电器模块 */
+.floor .w {
+    margin-top: 30px;
+}
+
+.box_hd {
+    height: 30px;
+    border-bottom: 2px solid #c81623;
+}
+
+.box_hd h3 {
+    float: left;
+    font-size: 18px;
+    color: #c81623;
+    font-weight: normal;
+}
+
+.tab_list {
+    float: right;
+    line-height: 30px;
+}
+
+.tab_list ul li {
+    float: left;
+
+}
+
+.tab_list ul li a {
+    padding: 0 15px;
+}
+
+.tab_list ul li::after {
+    content: "|";
+    line-height: 30px;
+}
+
+.tab_list ul li:last-child::after {
+    content: "";
+}
+
+.box_bd {
+    height: 361px;
+}
+
+.tab_list_item>div {
+    float: left;
+    height: 361px;
+}
+
+.col_210 {
+    width: 210px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.col_210 ul {
+    padding-left: 12px;
+}
+
+.col_210 ul li {
+    float: left;
+    width: 85px;
+    height: 34px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    line-height: 33px;
+    margin-right: 10px;
+}
+.col_210>a{
+    float: left;
+    display: block;
+    width: 210px;
+    height: 259px;
+}
+.col_329 {
+    position: relative;
+    width: 329px;
+}
+.col_329 ul li{
+    float: left;
+}
+.col_221 {
+    width: 221px;
+    border-right: 1px solid #ccc;
+}
+
+.col_219 {
+    width: 219px;
+}
+.bb{
+    /* 如果a包含其他盒子，需要转换成块级元素就可显示了 */
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
