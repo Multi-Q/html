@@ -6,6 +6,13 @@
   "description": "品优购项目",
   "glyphs": [
     {
+      "icon_id": "76371",
+      "name": "mobile",
+      "font_class": "mobile",
+      "unicode": "e704",
+      "unicode_decimal": 59140
+    },
+    {
       "icon_id": "27188622",
       "name": "pwd",
       "font_class": "pwd",
