@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>862D转换-tansform-transform-origin</title>
+    <style>
+      
+        /* 
+             transform-origin转换点中心
+             默认是50% 等价于 center center
+             也可以是像素
+        */
+        .div2 {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            margin: 100px auto;
+            transition: all 1s ease 0s;
+            transform-origin: 40% 50%;
+        }
+        .div2:hover{
+            transform: rotate(360deg);
+            
+        }
+        /* 
+            transform综合写法：如果同时设置位移或缩放或旋转，一定要把位移放在前面
+            例：transform:translate(x,y) rotate(度数) scale(倍数);
+        */
+    </style>
+</head>
+<body>
+
+    <div class="div2">
+    </div>
+</body>
+</html>

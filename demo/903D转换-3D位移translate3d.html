@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>903D转换-3D位移translate3d</title>
+    <style>
+        /* 
+            translateZ 一般使用px做单位,搭配透视perspective属性使用
+            transform: translate3d(x,y,z);中x,y,z是不能省略的，没有就写0
+        */
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* transform: translateX(100px) translateY(100px) translateZ(100px); */
+            /* 3D移动简写 */
+            transform: translate3d(100px, 100px, 100px);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>

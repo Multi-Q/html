@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23input内三角旋转</title>
+    <style>
+        div {
+            position: relative;
+            width: 150px;
+            height: 18px;
+            border: 1px solid black;
+        }
+
+        div::after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            top: 0px;
+            right: 8px;
+            content: "";
+            width: 10px;
+            height: 10px;
+            border: 2px solid red;
+            border-left: 0;
+            border-top: 0;
+            transform: rotate(45deg);
+            transition: all 1s ease 0s;
+        }
+         div:hover::after{
+            transform: rotate(225deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>87CSS3动画</title>
+    <style>
+        /* 
+            动画可以实现更多变化，更多控制以及连续自动播放的效果
+
+            制作动画分两步：
+                1、先定义动画
+                    例： @keyframse 动画名称{
+                        0%{
+                            width:100%;
+                        }
+                        100%{
+                            width:200px;
+                        }
+                    }
+                2、调用动画
+            
+            用百分比来规定变化时间，或者用关键字from、to，等同于0%、100%；
+        */
+        /* 1、定义动画 */
+        @keyframes move {
+
+            /* 开始状态 */
+            0% {
+                transform: translateX(0px);
+            }
+
+            /* 结束状态 */
+            100% {
+                transform: translateX(500px) rotate(360deg) scale(.5);
+            }
+        }
+
+        /* 2、调用动画 */
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* 调用动画 */
+            animation-name: move;
+            /* 动画持续时间 */
+            animation-duration: 3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

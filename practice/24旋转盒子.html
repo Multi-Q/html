@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24旋转盒子</title>
+    <style>
+        div {
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            border: 1px solid black;
+            background-color: pink;
+        }
+
+        div::before {
+            content: "黑马";
+            text-align: center;
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(102, 102, 227);
+            transform: rotate(0deg);
+            transform-origin: left bottom;
+            transition: all 3s linear 0s;
+        }
+
+        div:hover::before {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

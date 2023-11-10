@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>913D转换-透视perspective</title>
+    <style>
+        body {
+            perspective: 400px;
+        }
+
+        /* 
+            透视也称之为视距：视距就是人的眼睛到屏幕的距离
+            透视的单位是像素
+
+            透视要写在被观察元素的父盒子上
+        */
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transform: translate3d(500px, 100px, 200px);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>

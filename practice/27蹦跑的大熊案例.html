@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27蹦跑的大熊案例</title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+
+        .bg {
+            position: relative;
+            overflow: hidden;
+            height: 336px;
+            margin: 100px auto;
+           background-color: rgba(126, 193, 247, 0.87);
+        }
+        .bg>img{
+            animation: bgmove 30s infinite;
+        }
+        .bear {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 100px;
+            background: url(../images/bear.png) no-repeat;
+            /* 添加多个动画用逗号分割 */
+            animation: bear .5s steps(8) infinite, move 3s forwards;
+
+        }
+
+        @keyframes bear {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: -1600px 0;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: 50%;
+                transform: translate(-50%);
+            }
+        }
+        @keyframes bgmove{
+            0%{
+                transform: translateX(0);
+            }
+            100%{
+                transform: translateX(-2000px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <img src="../images/bear_bg.png" alt="">
+        <div class="bear"></div>
+    </div>
+</body>
+
+</html>

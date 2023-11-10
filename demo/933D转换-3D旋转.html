@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>933D转换-3D旋转</title>
+    <style>
+        body {
+            perspective: 300px;
+        }
+
+        img {
+            display: block;
+            margin: 100px auto;
+            transition: all 1s;
+        }
+
+        img:hover {
+            /* transform: rotateX(45deg); */
+            /* transform: rotateY(45deg); */
+            /* transform:rotateZ(180deg) */
+
+            /* rotate3d综合写法 rotate3d(x,y,z,deg) */
+            transform: rotate3d(1,1,0,45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../images/oldman.jpg" alt="">
+</body>
+
+</html>

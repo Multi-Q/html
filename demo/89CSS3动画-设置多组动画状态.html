@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>89CSS3动画-设置多组动画状态</title>
+    <style>
+        /* 
+            设置多组动画在状态
+
+            animation综合写法
+             animation: name duration timing-function delay iteration-count direction fill-mode;
+        */
+        @keyframes move {
+            0% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translateX(1000px) rotate(360deg) scale(1.1);
+            }
+
+            50% {
+                transform: translate(1000px, 500px) rotate(0) scale(2);
+            }
+
+            75% {
+                transform: translate(0, 500px) rotate(360deg) scale(.5);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0);
+            }
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            animation-name: move;
+            animation-duration: 10s;
+            /* 动画播放次数 infinite无限次 | 具体次数 */
+            /* animation-iteration-count: infinite; */
+
+            /* 运动曲线 */
+            /* animation-timing-function: ease; */
+
+            /* 何时开始 默认为0 */
+            /* animation-delay: 2s; */
+
+            /* 规定动画在下一周期逆向播放 默认normal， reverse反向转动、alternate向normal一圈再reverse一圈*/
+            /* animation-direction: alternate; */
+
+            /* 规定动画是否在正在运行或暂停 搭配:hover使用 */
+            /* animation-play-state: paused; */
+
+            /* 结束动画后的状态，默认backwards回到起始状态 forward */
+            /* animation-fill-mode: backwards; */
+
+           
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>943D转换-transform-style</title>
+    <style>
+        /* 
+            transform-style：用来开启3d空间
+            transform-style：flat 子元素不开启3d立体空间 默认
+            transform-style：perwerve-3d子元素开启3d立体空间
+            代码写给父盒子，但影响的是子盒子
+
+        */
+        body {
+            perspective: 500px;
+        }
+
+        .box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: pink;
+            transition: all 1s;
+            transform-style: preserve-3d;
+
+            
+            animation: rotate 5s linear infinite;
+        }
+
+        /* .box:hover {
+            transform: rotateY(360deg);
+        } */
+
+        @keyframes rotate {
+            0% {}
+
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: purple;
+        }
+
+        div:last-child {
+            background-color: blue;
+            transform: rotateX(60deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

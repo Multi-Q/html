@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D转换-tansform-rotate</title>
+    <style>
+  /* 
+            tansform 转换
+                translate() 移动
+                translate(x,y) | translateX(n) | translateY(n)
+                translate最大的优点就是不会影响其他元素的位置
+                translate对行内元素没有效果
+                translate可是使用百分比,但是位移距离是基于自身的宽高来决定的
+                例：假如width=50px;height=50%;那么translate(50%,50%)->就是位移x=25px，y=25px；
+        
+        */
+        .div1{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+
+            /* transform: translate(100px,100px); */
+
+            /* 只移动x坐标 */
+            transform:translateX(100px) ;
+
+            /* 只移动y坐标 */
+            /* transform: translateY(100px); */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="div2"><img src="../images/oldman.jpg" alt=""></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>862D转换-tansform-缩放scale</title>
+    <style>
+        /* 
+            缩放scale()
+            里面写的是倍数，1就是1倍，2就是2倍
+            transform:scale(x轴的倍数,y轴的倍数)
+            优点：不影响其他盒子，而且是缩放至中心点
+        */
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: pink;
+        }
+
+        div:hover {
+            /* transform: scale(2, 3); */
+            transform: scale(.9);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+</body>
+
+</html>
