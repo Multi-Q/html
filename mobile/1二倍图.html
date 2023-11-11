@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1二倍图</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 2px solid red;
+            background: url(../images/dog.jpg) no-repeat;
+
+            /*
+                图片缩放使用background-size
+                背景缩放 background-size：背景宽度 背景高度；
+                单位：值 | 百分比 | cover | container
+                cover把背景图像扩展至足够大，以使背景图像完全覆盖背景区域
+                container把图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域
+
+                只写一个参数 肯定是宽度，高度省略了会等比例缩放
+            */
+            
+            /* background-size: 500px; */
+
+            /* 值可以写%，宽高相对于父盒子来说的 */
+            /* background-size: 50%; */
+
+            /* cover完全覆盖div盒子，可能有部分背景图片显示不完全 */
+            /* background-size: cover; */
+
+            /* 高度和宽度等比例拉伸 当宽度或者高度，铺满div的盒子不再进行拉伸 可能有部分空白区域 */
+            background-size: contain;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
