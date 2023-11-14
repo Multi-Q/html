@@ -1,0 +1,12 @@
+// @border:5px + 5;
+// @border:5px * 10;
+@border:(5px / 5);
+
+// 如果两个数参与运算，如果只有一个数有单位，则最后的结果就以这个单位为准
+// 如果两个数参与运算，如果两个数都有单位，而单位不一样时，最后的结果以第一个单位为准
+div{
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    border: @border solid red;
+}

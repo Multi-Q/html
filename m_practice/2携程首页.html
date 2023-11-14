@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2携程首页</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            color: #000;
+            min-width: 320px;
+            max-width: 540px;
+            margin: 0 auto;
+            font: normal 14px/1.5 "Microsoft YaHei";
+            background-color: #f2f2f2;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a {
+            text-decoration: none;
+            color: #222;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        /* 搜索模块 */
+        .search-index {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            /* 固定的盒子必须有宽度 */
+            width: 100%;
+            min-width: 320px;
+            max-width: 540px;
+            height: 44px;
+            background-color: white;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .user {
+            width: 44px;
+            height: 44px;
+            font-size: 12px;
+            text-align: center;
+            color: #2e8cea;
+        }
+
+        .user::before {
+            content: "";
+            display: block;
+            width: 23px;
+            height: 23px;
+            background: url(./img/sprite.png) no-repeat -59px -194px;
+            background-size: 104px auto;
+            margin: 5px auto -2px;
+        }
+
+        .search {
+            position: relative;
+            flex: 1;
+            height: 26px;
+            line-height: 24px;
+            font-size: 12px;
+            color: #666;
+            border: 1px solid #ccc;
+            margin: 7px 10px;
+            padding-left: 24px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .search::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 15px;
+            height: 15px;
+            background: url(./img/sprite.png) no-repeat -59px -279px;
+            background-size: 104px auto;
+        }
+
+        /* 焦点图 */
+        .focus {
+            margin-top: 50px;
+        }
+
+        .focus a img {
+            width: 100%;
+        }
+
+        .local-nav {
+            display: flex;
+            width: 98%;
+            height: 64px;
+            border-radius: 8px;
+            margin: 3px 4px;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .local-nav li {
+            flex: 1;
+        }
+
+        .local-nav a {
+            display: flex;
+            /* 垂直居中 */
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .local-nav-icon {
+            width: 32px;
+            height: 32px;
+            margin-top: 8px;
+            background: url(./img/localnav_bg.png) no-repeat;
+            background-size: 32px auto;
+        }
+
+        .local-nav li:nth-child(1) a .local-nav-icon {
+            background-position: 0 0;
+        }
+
+        .local-nav li:nth-child(2) a .local-nav-icon {
+            background-position: 0 -32px;
+        }
+
+        .local-nav li:nth-child(3) a .local-nav-icon {
+            background-position: 0 -64px;
+        }
+
+        .local-nav li:nth-child(4) a .local-nav-icon {
+            background-position: 0 -96px;
+        }
+
+        .local-nav li:nth-child(5) a .local-nav-icon {
+            background-position: 0 -128px;
+        }
+
+        /* nav */
+        nav {
+            border-radius: 8px;
+            margin: 0 4px 3px;
+            overflow: hidden;
+        }
+
+        .nav-common {
+            display: flex;
+            height: 88px;
+        }
+
+        .nav-common:nth-child(2) {
+            margin: 3px 0;
+        }
+
+        .nav-items {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-items a {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+            line-height: 44px;
+            color: white;
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-common:nth-child(1) {
+            background: linear-gradient(to right, rgb(246, 124, 124), rgb(244, 161, 7));
+        }
+
+        .nav-common:nth-child(2) {
+            background: linear-gradient(to right, rgb(107, 155, 233), rgb(51, 191, 247));
+        }
+
+        .nav-common:nth-child(3) {
+            background: linear-gradient(to right, rgb(4, 128, 4), yellowgreen);
+        }
+
+        .nav-items:nth-child(-n+2) {
+            border-right: 1px solid white;
+        }
+
+        .nav-items:nth-child(n+2) a:nth-child(1) {
+            border-bottom: 1px solid white;
+        }
+
+        .nav-common:nth-child(1) .nav-items:nth-child(1) a {
+            background: url(./img/hotel.png) no-repeat bottom center;
+            background-size: 121px auto;
+        }
+
+        .nav-common:nth-child(2) .nav-items:nth-child(1) a {
+            background: url(./img/hotel.png) no-repeat bottom center;
+            background-size: 121px auto;
+        }
+
+        .nav-common:nth-child(3) .nav-items:nth-child(1) a {
+            background: url(./img/hotel.png) no-repeat bottom center;
+            background-size: 121px auto;
+        }
+
+        .subnav-entry {
+            border-radius: 8px;
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 5px 0;
+            margin-top: 5px;
+        }
+
+        .subnav-entry li {
+            flex: 20%;
+        }
+
+        .subnav-entry a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .subnav-entry-icon {
+            width: 28px;
+            height: 28px;
+            background: url(./img/subnav-bg.png) no-repeat 0 0;
+            background-size: 28px auto;
+        }
+
+        .subnav-entry li:nth-child(1) a .subnav-entry-icon {
+            background-position: 0 0;
+        }
+
+        .subnav-entry li:nth-child(2) a .subnav-entry-icon {
+            background-position: 4px -28px;
+        }
+
+        .subnav-entry li:nth-child(3) a .subnav-entry-icon {
+            background-position: 3px -63px;
+        }
+
+        .subnav-entry li:nth-child(4) a .subnav-entry-icon {
+            background-position: 2px -97px;
+        }
+
+        .subnav-entry li:nth-child(5) a .subnav-entry-icon {
+            background-position: 2px -129px;
+        }
+
+        .subnav-entry li:nth-child(6) a .subnav-entry-icon {
+            background-position: 5px -162px;
+        }
+
+        .subnav-entry li:nth-child(7) a .subnav-entry-icon {
+            background-position: 1px -196px;
+        }
+
+        .subnav-entry li:nth-child(8) a .subnav-entry-icon {
+            background-position: 1px -229px
+        }
+
+        .subnav-entry li:nth-child(9) a .subnav-entry-icon {
+            background-position: 0px -257px;
+        }
+
+        .subnav-entry li:nth-child(10) a .subnav-entry-icon {
+            background-position: 4px -285px;
+        }
+
+        /* sales box */
+        .sales-box {
+            background-color: #fff;
+            margin: 4px;
+        }
+
+        .sales-hd {
+            position: relative;
+            height: 44px;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+        }
+
+        .sales-hd h2 {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+
+        .sales-hd h2::after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            width: 79px;
+            height: 15px;
+            background: url(./img/hot.png) no-repeat 0 -20px;
+            background-size: 79px auto;
+        }
+
+        .more {
+            position: absolute;
+            top: 9px;
+            right: 5px;
+            color: white;
+            background: -webkit-linear-gradient(left, #ff506c, #ff6bc6);
+            padding: 2px 20px 3px 10px;
+            border-radius: 15px;
+        }
+
+        .more::after {
+            content: "";
+            position: absolute;
+            top: 8px;
+            right: 9px;
+            width: 7px;
+            height: 7px;
+            border-top: 2px solid white;
+            border-right: 2px solid white;
+            transform: rotate(45deg);
+        }
+
+        .row {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .row a {
+            flex: 1;
+        }
+
+        .row a img {
+            width: 100%;
+        }
+
+        .row a:nth-child(1) {
+            border-right: 1px solid #ccc;
+        }
+
+        .footer-nav {
+            margin-top: 5px;
+        }
+
+        .footer-nav ul {
+            display: flex;
+            height: 44px;
+            background-color: white;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .footer-nav ul li {
+            flex: 1;
+        }
+
+        .footer-nav ul li a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5px;
+        }
+
+        .footer-nav ul li a .footer-nav-icon {
+            width: 20px;
+            height: 20px;
+            background: url(./img/sprite.png) no-repeat -57px -151px;
+            background-size: 104px auto;
+        }
+
+        .footer-nav ul li:nth-child(2) a .footer-nav-icon {
+            background-position: -58px -171px;
+        }
+
+        .footer-nav ul li:nth-child(3) a .footer-nav-icon {
+            background-position: -58px -308px;
+        }
+
+        .links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .links a {
+            padding: 0 9px;
+        }
+
+        .links a:nth-child(2) {
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+        .links a:nth-child(2)::before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border:1px solid black;
+            border-radius: 100%;
+            margin-right: 5px;
+        }
+        .links a:nth-child(2)::after {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border:1px solid black;
+            border-top: 0;
+            border-right: 0;
+            margin-left: 9px;
+            transform: rotate(-45deg) translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部搜索 -->
+    <div class="search-index">
+        <div class="search">
+            搜索：目的地/景点/酒店
+        </div>
+        <a class="user">我 的</a>
+    </div>
+    <!-- 焦点图 -->
+    <div class="focus">
+        <a href="#"><img src="./upload/focus.jpg" alt=""></a>
+    </div>
+    <!-- 本地导航 -->
+    <ul class="local-nav ">
+        <li><a href="#">
+                <span class="local-nav-icon" title="景点·玩乐"></span>
+                <span>景点·玩乐</span>
+            </a></li>
+        <li><a href="#">
+                <span class="local-nav-icon" title="周边游"></span>
+                <span>周边游</span>
+            </a></li>
+        <li><a href="#">
+                <span class="local-nav-icon" title="美食林"></span>
+                <span>美食林</span>
+            </a></li>
+        <li><a href="#">
+                <span class="local-nav-icon" title="一日游"></span>
+                <span>一日游</span>
+            </a></li>
+        <li><a href="#">
+                <span class="local-nav-icon" title="当地攻略"></span>
+                <span>当地攻略</span>
+            </a></li>
+    </ul>
+    <!-- 主导航栏 -->
+    <nav>
+        <div class="nav-common">
+            <div class="nav-items">
+                <a href="#" title="海外酒店">海外酒店</a>
+            </div>
+            <div class="nav-items">
+                <a href="#">海外酒店</a>
+                <a href="#">特价酒店</a>
+            </div>
+            <div class="nav-items">
+                <a href="#">团购</a>
+                <a href="#">民宿·客栈</a>
+            </div>
+        </div>
+        <div class="nav-common">
+            <div class="nav-items"> <a href="#" title="机票">机票</a></div>
+            <div class="nav-items">
+                <a href="#">火车票</a>
+                <a href="#">特价机票</a>
+            </div>
+            <div class="nav-items">
+                <a href="#">汽车票·船票</a>
+                <a href="#">专车·出租车</a>
+            </div>
+        </div>
+        <div class="nav-common">
+            <div class="nav-items"> <a href="#" title="旅游">旅游</a></div>
+            <div class="nav-items">
+                <a href="#">门票</a>
+                <a href="#">目的地·攻略</a>
+            </div>
+            <div class="nav-items">
+                <a href="#">游轮旅行</a>
+                <a href="#">定制旅行</a>
+            </div>
+        </div>
+    </nav>
+    <!-- 测导航栏 -->
+    <ul class="subnav-entry">
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>WiFi电话卡</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>保险·签证</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>外币兑换</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>购物</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>当地向导</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>自由行</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>境外玩乐</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>礼品卡</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>信用卡</span></a></li>
+        <li><a href="#"><span class="subnav-entry-icon"></span><span>更多</span></a></li>
+    </ul>
+    <!-- 销售模块 -->
+    <div class="sales-box">
+        <div class="sales-hd">
+            <h2>热门活动</h2>
+            <a href="#" class="more">获取更多福利</a>
+        </div>
+        <div class="sales-bd">
+            <div class="row">
+                <a href="#"><img src="./upload/pic1.jpg" alt=""></a>
+                <a href="#"><img src="./upload/pic2.jpg" alt=""></a>
+            </div>
+            <div class="row">
+                <a href="#"><img src="./upload/pic3.jpg" alt=""></a>
+                <a href="#"><img src="./upload/pic4.jpg" alt=""></a>
+            </div>
+            <div class="row">
+                <a href="#"><img src="./upload/pic5.jpg" alt=""></a>
+                <a href="#"><img src="./upload/pic6.jpg" alt=""></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-nav">
+            <ul>
+                <li><a href="#"><span class="footer-nav-icon"></span><span>电话预定</span></a></li>
+                <li><a href="#"><span class="footer-nav-icon"></span><span>下载客户端</span></a></li>
+                <li><a href="#"><span class="footer-nav-icon"></span><span>我的</span></a></li>
+            </ul>
+        </div>
+        <div class="links">
+            <a href="#">网站地图</a>
+            <a href="#">Language</a>
+            <a href="#">电脑版</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

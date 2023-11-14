@@ -1,0 +1,20 @@
+.header {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+}
+.header a {
+  color: red;
+}
+.header a:hover {
+  cursor: move;
+  color: aquamarine;
+}
+.nav {
+  width: 200px;
+  height: 200px;
+  background-color: skyblue;
+}
+.nav a {
+  color: #00ff1e;
+}
