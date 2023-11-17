@@ -1,0 +1,222 @@
+body {
+    min-width: 320px;
+    max-width: 750px;
+    height: 1200px;
+    margin: 0 auto;
+    background-color: #f2f4f7;
+}
+
+// 当屏幕大于750px的时候，html的字体大小就不变化
+@media screen and (min-width:750px) {
+    html {
+        font-size: 37.5px !important;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #707070;
+}
+
+li {
+    list-style: none;
+}
+
+.wrap {
+    background-color: white;
+    padding-bottom: 1.28rem;
+}
+
+// 头部
+.header {
+    height: 2.1333rem;
+    border-bottom: 1px solid #eaeaea;
+    text-align: center;
+    line-height: 2.1333rem;
+    font-size: .9333rem;
+    color: #1c1c1c;
+}
+
+// nav导航栏
+.nav {
+    display: flex;
+    // 强制换行
+    flex-wrap: wrap;
+    padding: 1.2rem 0 1.6rem 0;
+
+    .item {
+        display: flex;
+        width: 33.3%;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 3.7067rem;
+            height: 3.7067rem;
+        }
+
+        span {
+            font-size: .6667rem;
+            color: #707070;
+        }
+
+        &:nth-child(-n+3) {
+            margin-bottom: 1.6533rem;
+        }
+    }
+}
+
+// go模块
+.go {
+    margin: 0 .2667rem 0 .48rem;
+
+    a {
+        display: block;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+// 就业指导模块
+.content {
+    padding: 1.0667rem .64rem;
+    background-color: white;
+    margin-top: .2667rem;
+
+    .content-hd {
+        display: flex;
+        justify-content: space-between;
+        height: 1.013333rem;
+        line-height: 1.013333rem;
+        margin-bottom: 0.906667rem;
+
+        h4 {
+            margin: 0;
+            font-size: 0.746667rem;
+            color: #333333;
+            .icon {
+              display: inline-block;
+              width: 1.013333rem;
+              height: 1.013333rem;
+              // 添加这个代码，可以让后面的文字垂直居中
+              vertical-align: middle;
+            }
+          }
+          .more {
+            font-size: 0.586667rem;
+            color: #999999;
+          }
+    }
+
+}
+
+.get_job_focus {
+    position: relative;
+
+    .swiper-container {
+        // width: 100%;
+        height: 100%;
+        // 根据需求把宽度定位 540px
+        width: 14.4rem;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        // 竖向显示
+        flex-direction: column;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        transition: 300ms;
+        // 其余的兄弟是 0.8
+        transform: scale(0.8);
+        opacity: 0.4;
+
+        a {
+            width: 9.013333rem;
+            height: 10.026667rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        p {
+            width: 9.013333rem;
+            font-size: 0.666667rem;
+            margin-top: 0.64rem;
+            color: #333;
+        }
+    }
+
+    // 当前选中的 slide   中间那个
+    .swiper-slide-active,
+    .swiper-slide-duplicate-active {
+        transform: scale(1);
+        z-index: 999;
+        opacity: 1;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        outline: none;
+
+        &:after {
+            font-size: 1.066667rem;
+            color: #333;
+        }
+    }
+}
+.study_con {
+    padding-bottom: 3.733333rem;
+  }
+.study {
+    .study_fo {
+        padding: 0.266667rem;
+    }
+
+    .swiper-slide {
+        font-size: 18px;
+        background: #fff;
+        width: 7.733333rem;
+        height: 9.066667rem;
+        background-color: #fff;
+        border-radius: 0.266667rem;
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+
+        h5 {
+            font-size: 0.693333rem;
+            margin: 0.533333rem 0;
+            font-weight: 400;
+            padding: 0 0.266667rem;
+        }
+
+        p {
+            font-size: 0.693333rem;
+            color: #ff4400;
+            padding: 0 0.266667rem;
+        }
+    }
+}
