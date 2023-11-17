@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6栅格系统-列排序</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        .container {
+            background-color: pink;
+        }
+
+        .row [class^="col-"] {
+            background-color: skyblue;
+        }
+
+        .row>div {
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">左侧</div>
+            <div class="col-md-8">右侧</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 ">左侧</div>
+            <div class="col-md-8">右侧</div>
+        </div>
+    </div>
+</body>
+
+</html>

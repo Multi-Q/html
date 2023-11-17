@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5栅格系统-列偏移</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+     
+        .container{
+            background-color: pink;
+        }
+        .row [class^="col-"]{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 ">左侧</div>
+            <div class="col-md-3 offset-md-6" style="background-color: red;">右侧</div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-3 ">左侧</div>
+            <div class="col-md-3 offset-md-3" style="background-color: red;">右侧</div>
+        </div>
+    </div>
+</body>
+</html>

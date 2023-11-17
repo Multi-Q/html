@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3栅格系统</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+     
+        .container{
+            background-color: pink;
+            border: 1px solid black;
+        }
+        .row [class^="col-"]{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- 列嵌套最好加row，这样可以去掉父元素的padding值，畏怯高度和父元素一样 -->
+               <div class="row">
+                <div class="col-md-6" style="background-color: red;">a</div>
+                <div class="col-md-6" style="background-color: red;">b</div>
+               </div>
+            </div>
+            <div class="col-md-4">2</div>
+            <div class="col-md-4">3</div>
+        </div>
+    </div>
+</body>
+</html>
