@@ -1,0 +1,138 @@
+@media screen and (min-width:1280px) {
+    .container {
+        width: 1280px;
+    }
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    padding-left: 0 !important;
+}
+
+.logo {
+    background-color: #429ad9;
+}
+
+.logo a {
+    display: block;
+}
+
+.logo a img {
+    display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.nav {
+    background-color: #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.nav ul li {
+    height: 50px;
+}
+
+.nav ul li a {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.nav ul li a:hover {
+    background-color: white;
+    color: #333;
+}
+
+.nav a::before {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.news ul li {
+    float: left;
+    width: 25%;
+    height: 128px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.news ul li a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+.news ul li a img {
+    width: 100%;
+    height: 100%;
+}
+
+.news ul li a p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+    width: 100%;
+    padding: 0 10px;
+    height: 41px;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 8px;
+    color: white;
+    overflow: hidden;
+}
+
+.news ul li:nth-child(1) {
+    height: 266px;
+    width: 50%;
+}
+
+.news ul li:nth-child(1) a p {
+    line-height: 41px;
+    font-size: 20px;
+    padding: 0 10px;
+}
+.publish{
+    border-top: 1px solid #ccc;
+}.publish .row{
+    border-bottom: 1px solid #ccc;
+}
+.pic{
+    margin-top: 10px;
+}
+.pic img{
+    width: 100%;
+}
+.font12{
+    font-size: 12px;
+}
+.banner img{
+    width: 100%;
+}
+.hot{
+    display: block;
+    margin-top: 20px;
+    padding: 0 20px 0;
+    border: 1px solid   #ccc;
+}
+.hot span{
+    border-radius: 0;
+    margin-bottom: 20px;
+}
