@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10猜数字游戏</title>
+    <script>
+        // 随机生成 min-max之间的数
+        function getRandomNum(max, min) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // 猜数字 1-10
+        function geussNum() {
+            var min = 1, max = 10;
+
+            var randomNum = getRandomNum(max, min);
+
+            while (true) {
+                var yourNum = parseInt(prompt("请输入你猜测的数字："));
+                if (yourNum > randomNum) {
+                    console.log("猜大了");
+                } else if (yourNum < randomNum) {
+                    console.log("猜小了");
+                } else {
+                    console.log("恭喜你猜对了，正确答案是：" + randomNum);
+                    break;
+                }
+            }
+        }
+        // geussNum();
+
+        // 猜数字 1-50 10次机会
+        function geussNumAnd10Oppotunity() {
+            var randomNum = getRandomNum(1, 50);
+            var oppo = 10;
+
+            while (true) {
+                if (oppo > 0) {
+                    var yourNum = parseInt(prompt("请输入你猜测的数字(你有 " + oppo + " 次机会)："));
+                    if (yourNum > randomNum) {
+                        console.log("猜大了");
+                        oppo--;
+                    } else if (yourNum < randomNum) {
+                        console.log("猜小了"); 
+                        oppo--;
+                    } else {
+                        console.log("恭喜你，你仅用了 " + (10 - --oppo) + " 次机会猜对了正确答案，正确答案为：" + randomNum);
+                        break;
+                    }
+                } else {
+                    alert("很遗憾，10次机会都猜错了");
+                    break;
+                }
+            }
+        }
+        geussNumAnd10Oppotunity();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

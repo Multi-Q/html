@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10函数</title>
+    <script>
+        /* 
+                声明函数
+                function 函数名(){
+                    函数体
+                }
+        
+                调用函数
+                函数名();
+        */
+
+        function sayHi() {
+            alert("hi");
+        }
+
+        // sayHi();
+
+        function sum100() {
+            let sum = 0;
+            for (let i = 1; i <= 100; i++) {
+                sum += i;
+            }
+            console.log("100累加和:" + sum);
+        }
+        sum100();
+
+        function Hi() {
+            return "hi";
+        }
+        let hi = Hi();
+        console.log(hi);
+
+        /* 
+                arguments时所有函数都内置的一个函数对象
+
+                arguments返回值是一个伪数组，该伪数组并不是真正意义上的数组，
+                但是它具有数组的length属性，
+                能按照索引的方式进行存储，
+                没有数组的一些方法，如push(),pop()....
+        */
+        function fn() {
+            console.log(arguments);
+        }
+        fn(1, 2, 3);
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

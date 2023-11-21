@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16内置对象-Date</title>
+    <script>
+        /* 
+            Date是一个构造对象，需要用new来调用创建日期对象
+
+        */
+        var date = new Date(); //如果没有参数，返回当前系统的当前时间
+        console.log(date);
+
+        //    参数常用的写法 数字型 2019,10,01  或者是 字符串型 '2019-10-01 18:23:21'
+        var date1 = new Date(2019, 10, 1);
+        console.log(date1);
+        var date2 = new Date("2019-10-01 18:45:23");
+        console.log(date2);
+
+
+        // 日期格式化
+
+        // getFullYear() 获取当前系统时间的年份
+        console.log(date.getFullYear());
+
+        // getMonth() 获取月份
+        console.log(date.getMonth());
+
+        // getDate() 获取几号
+        console.log(date.getDate());
+
+        // getDay() 获取当前星期几 周日0~周六6
+        console.log(date.getDay());
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
