@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20操作元素修改元素属性</title>
+</head>
+
+<body>
+    <button class="ldh">刘德华</button>
+    <button class="man">球迷</button>
+    <br>
+    <br><br>
+    <img src="" alt="暂无可显示的图片" title="图片显示器">
+
+
+
+    <script>
+        var ldhimg = document.getElementsByClassName("ldh");
+        var manimg = document.getElementsByClassName("man");
+        var img = document.querySelector("img");
+
+        console.dir(img);
+        ldhimg[0].onclick = function () {
+            img.src = "../img/ldh.jpg";
+        }
+        manimg[0].onclick = function () {
+            img.src = "../img/man.png";
+        }
+
+    </script>
+</body>
+
+</html>

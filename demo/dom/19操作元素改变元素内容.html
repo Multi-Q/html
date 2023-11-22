@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19操作元素改变元素内容</title>
+</head>
+
+<body>
+    <button id="time-btn">显示当前时间</button>
+    <br>
+    <div class="show-time">某个 时间</div>
+
+
+    <script>
+        var timeBtn = document.getElementById("time-btn");
+        var showTime = document.querySelector(".show-time");
+
+        // element.innerText 从起始位置到终止位置的内容，但它去除html标签，同时空格和换行也会去掉
+        // element.innerHTML 从起始位置到终止位置的全部内容，包括html标签，同时保留空格和换行
+        timeBtn.onclick = function () {
+            showTime.innerText = new Date();
+        }
+        console.dir(showTime);
+
+
+
+        // innerText和innerHTML的区别
+        // 1、innerText 不识别html标签 非标准
+        // 2、innerHTML 识别html标签 W3C标准
+    </script>
+</body>
+
+</html>

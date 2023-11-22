@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12仿京东登录密码显隐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        a:hover {
+            color: rgb(70, 70, 240);
+        }
+
+        body {
+            font-size: 12px;
+            font-weight: 1.5;
+
+        }
+
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+
+        }
+
+        .clearfix::after {
+            clear: both
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        .login-form {
+            position: relative;
+            width: 800px;
+            margin: 100px auto;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .form-title {
+            font-weight: normal;
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .login-form>input {
+            display: block;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border: 0;
+            padding-left: 16px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #b8aeae;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .login-form .password {
+            width: 720px;
+        }
+
+        .eye-icon {
+            display: block;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 110px;
+            right: 90px;
+            cursor: pointer;
+        }
+
+        .eye-icon>img {
+            width: 100%;
+        }
+
+        .forget-password {
+            position: absolute;
+            top: 100px;
+            right: 0;
+            width: 80px;
+            line-height: 40px;
+            display: block;
+        }
+
+        .forget-password::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 10px;
+            left: 8px;
+            float: left;
+            width: 1px;
+            height: 20px;
+            background-color: #8c8888;
+        }
+
+        .login-form .submit {
+            border-radius: 40px;
+            color: white;
+            letter-spacing: 10px;
+            border: 0;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: rgb(245, 68, 4);
+        }
+
+        .msg-login {
+            float: left;
+        }
+
+        .fast-register {
+            float: right;
+        }
+
+        .other-login-way {
+            margin-top: 40px;
+
+        }
+
+        .other-login-way>p {
+            margin-bottom: 20px;
+        }
+
+        .way-list {
+            display: flex;
+            justify-content: center;
+        }
+
+        .way-item {
+            width: 48px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .way-item a {
+            display: block;
+        }
+
+        .way-item a img {
+            width: 48px;
+            height: 48px;
+            background-color: blue;
+            vertical-align: middle;
+        }
+
+        .way-item p {
+            height: 12px;
+            line-height: 12px;
+        }
+
+        .policy {
+            margin-top: 16px;
+        }
+
+        .policy>a {
+            color: rgb(37, 127, 237);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" class="login-form ">
+        <h2 class="form-title">京东登录</h2>
+        <input type="text" class="username" name="username" placeholder="账号/手机号/邮箱">
+        <input type="password" class="password" name="password" placeholder="请输入登录密码">
+        <em class="eye-icon" onMouseEnter="showPassword(true)" onMouseLeave="showPassword(false)"><img
+                src="../demo/img/close.png" alt=""></em>
+        <span class="forget-password "><a href="#">忘记密码</a></span>
+        <!-- <input class="submit" onclick="login()" type="submit" value="登录"> -->
+        <input type="button" class="submit" onclick="login()" value="登录">
+        <p class="clearfix">
+            <span class="msg-login"><a href="#">短信验证码登录</a></span>
+            <span class="fast-register"><a href="#">手机快速注册</a></span>
+        </p>
+        <div class="other-login-way ">
+            <p>--------------------------其他登录方式--------------------------</p>
+            <div class="way-list">
+                <div class="way-item">
+                    <a href="#"> <img src="../demo/img/close.png" alt=""></a>
+                    <p>QQ</p>
+                </div>
+                <div class="way-item">
+                    <a href="#"> <img src="../demo/img/close.png" alt=""></a>
+                    <p>QQ</p>
+                </div>
+            </div>
+        </div>
+        <p class="policy">
+            登录即代表已同意<a href="#">京东隐私政策</a>
+        </p>
+    </form>
+
+
+
+
+
+
+
+    <script>
+
+        function showPassword(flag) {
+            var eyeIcon = document.getElementsByClassName("eye-icon")[0];
+            var eyeImg = eyeIcon.querySelector("img");
+            var showPass = document.getElementsByClassName("password")[0];
+            if (flag === true) {
+                showPass.type = "text";
+                eyeImg.attributes.src.value = "../demo/img/open.png";
+            } else {
+                showPass.type = "password";
+                eyeImg.attributes.src.value = "../demo/img/close.png";
+
+            }
+        }
+
+        function login() {
+            var username = document.getElementsByClassName("username")[0].value;
+            var password = document.getElementsByClassName("password")[0].value;
+            console.log("username=" + username + "\tpassword=" + password);
+        }
+    </script>
+
+
+</body>
+
+</html>

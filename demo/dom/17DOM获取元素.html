@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17DOM获取元素</title>
+    
+    
+</head>
+<body>
+    <div id="time">2023-11-22 21:53:43</div>
+
+    <ul>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+        <li>知否知否</li>
+    </ul>
+
+    <div class="box">盒子</div>
+    <div class="box">盒子</div>
+    <div id="nav">
+       <ul>
+        <li>首页1</li>
+        <li>首页2</li>
+       </ul>
+    </div>
+    <script>
+        /* 
+           获取页面元素
+           方法：
+            1、根据ID获取
+            2、更具标签名获取
+            3、通过HTML5新增的方法获取
+            4、特殊元素获取 
+        */
+
+        // 1、更具ID获取 getElementById("id") 返回的是一个元素对象
+        var timer=document.getElementById("time");
+        console.log(timer,typeof timer);
+        // 打印timer变量的所有属性
+       console.dir(timer);
+
+
+
+    //2、根据标签名获取 getElementsByTagName("标签") 返回的是对象的集合，以伪数组的形式存储
+    var ulList=document.getElementsByTagName("li");
+    console.log(ulList);
+  
+
+
+
+    // 3、根据class获取元素 getElementsByClassName("类名") 返回某些元素的集合
+    // querySelector("选择器") 返回制定选择的第一个元素对象
+    var clazz=document.getElementsByClassName("box");
+    console.log(clazz);
+    var firstBox=document.querySelector(".box");
+    console.log(firstBox);
+    var idBox=document.querySelector("#nav");
+    console.log(idBox);
+    // querySelectorAll("选择器") 根据选择器返货所有对象 
+    var boxAll=document.querySelectorAll(".box");
+    console.log(boxAll);
+
+
+        // 获取特殊元素
+        // 获取body元素
+        var body=document.body;
+        console.log(body);
+        // 获取html元素
+        var htmls=document.documentElement;
+        console.log(htmls);
+
+        
+    </script>
+</body>
+</html>
