@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5jQuery排他思想</title>
+    <script src="./js/jquery.js"></script>
+</head>
+<body>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+
+
+    <script>
+        $(
+            function(){
+                $("button").click(function(){
+                    $(this).css("backgroundColor","pink");
+                    $(this).siblings("button").css("backgroundColor","");
+                });
+            }
+        );
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>49本地存储</title>
+</head>
+
+<body>
+    <input type="text">
+    <button class="setS">存储数据</button>
+    <button class="getS">获取数据</button>
+    <button class="removeS">删除数据</button>
+    <button class="delS">清空所有数据</button>
+
+    <br>
+    <input type="text" class="inpL">
+    <button class="setL">存储数据</button>
+    <button class="getL">获取数据</button>
+    <button class="removeL">删除数据</button>
+    <button class="delL">清空所有数据</button>
+
+
+
+
+
+
+    <script>
+        /* 
+            本地存储特性：
+                1、数据存储在用户浏览器中
+                2、设置、读取方便、甚至页面刷新不丢失数据
+                3、容量较大、sessionStorage约5M、localStorage约20M
+                4、只能存储字符串，可以将对象JSON.toStringify()编码后存储
+
+            window.sessionStrorage()
+                1、生命周期为关闭浏览器窗口
+                2、在同一个窗口（页面）下数据共享
+                3、以键值对形式存储
+
+
+            window.localStorage()
+                1、生命周期永久有效，除非手动删除，否则关闭页面也会存在
+                2、可以多窗口共享（同一个浏览器可以共享）
+                3、以键值对形式存储使用
+        */
+        var ipt = document.querySelector("input");
+        var setS = document.querySelector(".setS");
+        var getS = document.querySelector(".getS");
+        var removeS = document.querySelector(".removeS");
+        var delS = document.querySelector(".delS");
+        setS.addEventListener("click", function (e) {
+            var val = ipt.value;
+
+            window.sessionStorage.setItem("name", val);
+        });
+        getS.addEventListener("click", function () {
+            // 获取数据
+            var uname = window.sessionStorage.getItem("name");
+            console.log(uname);
+        });
+        removeS.addEventListener("click", function () {
+            // 删除数据
+            window.sessionStorage.removeItem("name");
+        });
+        delS.addEventListener("click", function () {
+            // 清空数据
+            window.sessionStorage.clear();
+        })
+
+
+        var inpL=document.querySelector(".inpL");
+        var setL = document.querySelector(".setL");
+        var getL = document.querySelector(".getL");
+        var removeL = document.querySelector(".removeL");
+        var delL = document.querySelector(".delL");
+        setL.addEventListener("click", function (e) {
+            var val = inpL.value;
+            window.localStorage.setItem("name", val);
+        });
+        getL.addEventListener("click", function () {
+            // 获取数据
+            var uname = window.localStorage.getItem("name");
+            console.log(uname);
+        });
+        removeL.addEventListener("click", function () {
+            // 删除数据
+            window.localStorage.removeItem("name");
+        });
+        delL.addEventListener("click", function () {
+            // 清空数据
+            window.localStorage.clear();
+        })
+
+    </script>
+</body>
+
+</html>

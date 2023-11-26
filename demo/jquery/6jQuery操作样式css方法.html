@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6jQuery操作样式css方法</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            font-size: 14px;
+        }
+
+        .current {
+            background-color: red;
+        }
+        .now{
+            background-color: aqua;
+            color: white !important;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>2133333</div>
+
+    <script>
+
+        /* 
+            1、只写参数名，则返回属性值
+            $("this").css("color");
+
+            2、参数是属性名，属性值，用逗号分隔，是设置一组样式，属性必须加引号，值如果是数字可以不用写单位和引号
+            $(this).css("lineHieght",20);
+        */
+        $(function () {
+            console.log($("div").css("width"));
+
+            $("div").css("fontSize", 30);
+            $("div").css({
+                width: 300,
+                hieght: 300,
+                fontSize: "24px",
+                color: "red",
+            });
+
+            $("div").addClass("current");
+
+            // 删除类
+            $("div").click(function () { $(this).removeClass("current") });
+
+            // 切换类
+            $("div").mouseenter(function(){$(this).toggleClass("now");});
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2tab栏切换</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}a{text-decoration: none; color: #666;}li{list-style: none;}
+        .box{
+            width: 920px;
+            margin: 100px auto;
+
+        }
+        .bar-list{
+            width: 100%;
+            height: 32px;
+            border-top: 1px solid #ccc;
+            border-bottom: 2px solid #c81623;
+            box-sizing: border-box;
+        }.bar-list ul{
+            width: 100%;
+            height: 100%;
+        }
+        .bar-list ul li{
+            float: left;
+            line-height: 29px;
+        }
+        .bar-list ul li a{
+            display: block;
+            padding: 0 14px;
+
+        }
+        .bar-list ul li a:hover{
+            color: white;
+            background-color: #c81623;
+        }
+        .content{
+            width: 100%;
+        }
+        .content >div{
+            display: none;
+        }
+        .current,.current a{
+            color: white;
+            background-color: #c81623;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="bar-list">
+            <ul>
+                <li class="current"><a href="#">商品介绍</a></li>
+                <li><a href="#">规格与包装</a></li>
+                <li><a href="#">售后保障</a></li>
+                <li><a href="#">商品评价(3万+)</a></li>
+                <li><a href="#">手机社区</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div style="display: block;">商品介绍</div>
+            <div>规格与包装</div>
+            <div>售后保障</div>
+            <div>商品评价(3万+)</div>
+            <div>手机社区</div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function(){
+             $(".bar-list ul>li").click(function(){
+                /* 
+                    原生js中className与jQuery中的类操作区别：
+                        原生中的className会覆盖掉原先里面的类名
+                        jQuery里面的类操作知识对指定类进行操作，不影响原先的类名 添加、删除、转换不会影响原先类名
+                */
+                $(this).addClass("current").siblings(this).removeClass("current");
+                var index=$(this).index();
+                $(".content >div").eq(index).show().siblings(this).hide();
+            });
+        });
+    </script>
+</body>
+</html>

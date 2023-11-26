@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3jQuery隐式迭代</title>
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div>惊喜不1</div>
+    <div>惊喜不2</div>
+    <div>惊喜不3</div>
+    <div>惊喜不4</div>
+    <ul>
+        <li>相同的操作1</li>
+        <li>相同的操作2</li>
+        <li>相同的操作3</li>
+        <li>相同的操作4</li>
+    </ul>
+
+
+    <script>
+        /* 
+            隐式迭代
+            遍历内部dom元素的过程就=就叫隐式迭代
+
+            给匹配到的所有元素循环遍历，执行相应的方法，不用我们在进行遍历，简化我们的操作
+        */
+        console.log($("div"));;
+
+        // 给div设置背景色
+        $("div").css("backgroundColor","pink"); //属性是驼峰命名
+
+        $("ul li").css("color","skyblue");
+    </script>
+
+</body>
+
+</html>

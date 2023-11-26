@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2常用api</title>
+    <script src="./js/jquery.js"></script>
+</head>
+<body>
+    
+<div >我是div</div>
+<div class="nav">我是nav</div>
+<p>我是p</p>
+<ul>
+    <li>我是li1</li>
+    <li>我是li2</li>
+    <li>我是li3</li>
+    <li>我是li4</li>
+</ul>
+<ol>
+    <li>我是ol1</li>
+    <li>我是ol2</li>
+    <li>我是ol3</li>
+    <li>我是ol4</li>
+    <li>我是ol5</li>
+</ol>
+
+
+    <script>
+        /* 
+            jQuery选择器 jQuery封装了原生js，使获得元素同意标准
+            $("选择器")；
+
+            ID选择器 $("#id");
+            全选选择器 $("*");
+            类选择器 $(".class");
+            标签选择器 $("div");
+            并集选择器 $("div,p,li"); //多个标签用逗号隔开
+            交集选择器 $("li.current");
+
+        */
+$(
+    function(){
+        console.log($("div"));
+        console.log($(".nav"));
+        console.log($("p"));
+        console.log($("ul li"));
+        console.log($("ol>li"));
+    }
+);
+
+
+
+    </script>
+</body>
+</html>

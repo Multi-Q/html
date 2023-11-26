@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1jquery基本使用</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+    <video src="#"></video>
+    <script>
+        // 第一种写法
+        // $("div").hide();
+
+        // 第二种写法 等待dom加载完成再去执行js
+        // $(document).ready(function(){
+        //     $("div").hide();
+        // })
+        // 2
+        // $(function () {
+        //     $("div").hide();
+        // });
+
+
+        /* 
+            $是jQuery的别称，顶级对象，可以使用$，也可以使用jQuery,相当于js中的document对象
+        */
+        //    jQuery("div").hide();
+
+        // jQuery(function () {
+        //     jQuery("div").hide();
+        // });
+
+        // var myspan=document.querySelector("span"); //myspan是DOM对象
+        // $("div"); //是一个jQuery对象
+
+        // jquery对象和dom对象是不同的，它们的方法不能混用
+
+        /*
+            把jQuery转换成dom对象
+            1、获取dom对象，得到的就是jQuery对象
+                $("video");
+            2、使用原生js将dom对象获取过来
+                var myv=document.querySelector("video");
+            3、将jQuery对象转换成dom对象
+            $("video")[index] 或$("video").get(index)
+
+            
+        */
+            $("video")[0].play();
+    </script>
+</body>
+
+</html>

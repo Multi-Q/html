@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>32记住用户名</title>
+</head>
+
+<body>
+    <input type="text" name="username">
+    <input type="checkbox" value="记住用户名" id="remeber">
+    <label for="remeber">记住用户名</label>
+
+
+    <script>
+        var ipt = document.querySelector("input[type='text']");
+        var ipc = document.querySelector("input[type='checkbox']");
+
+        ipc.addEventListener("click", function () {
+            if (ipt.value !== "") {
+                if (ipc.checked) {
+                    window.localStorage.setItem(ipt.name, ipt.value);
+                } else {
+                    localStorage.removeItem(ipt.name);
+                }
+            } 
+        });
+
+
+    </script>
+</body>
+
+</html>
