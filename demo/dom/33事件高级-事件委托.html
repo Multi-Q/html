@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>33事件高级-事件委托</title>
+</head>
+
+<body>
+    <ul>
+        <li>知否知否，应是绿肥红瘦1</li>
+        <li>知否知否，应是绿肥红瘦2</li>
+        <li>知否知否，应是绿肥红瘦3</li>
+        <li>知否知否，应是绿肥红瘦4</li>
+        <li>知否知否，应是绿肥红瘦5</li>
+        <li>知否知否，应是绿肥红瘦6</li>
+    </ul>
+
+    <script>
+        /* 
+            事件委托也称为事件代理
+            原理：
+                不是每个子节点都单独设置事件监听器，而是事件监听器设置在其父节点上，然后利用冒泡原理影响设置每个子节点
+            作用：
+                只操作了一次dom，提高了程序的性能s
+        */
+        var ul = document.querySelector("ul");
+        ul.addEventListener("click", function (e) {
+            alert(e.target.innerHTML);
+        })
+    </script>
+</body>
+
+</html>

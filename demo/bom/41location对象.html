@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>41location对象</title>
+</head>
+
+<body>
+
+    <button>点击</button>
+    <div>111</div>
+
+    <script>
+        /* 
+            location对象的属性：
+                location.href 获取或设置整个URL
+                location.host 返回主机（域名），如www.baidu.com
+                location.port 返回端口号 如果未写端口则返回空字符串
+                location.pathname 返回路径
+                location.search 返回参数 ?后面的参数
+                location.hash 返回片段 就是#后面的内容 常见于链接、锚点
+
+            方法：
+                location.assign("要跳转的连接") 和href一样，可以跳转页面（也成重定向页面）
+                location.replace("要跳转的连接") 替换当前页面，因为不记录历史，所以不能后退页面
+                location.reload() 重新加载页面，相当于刷新按钮或f5，如果参数为true强制刷新，等价于ctrl+f5
+        */
+
+        var btn = document.querySelector("button");
+        var div = document.querySelector("div");
+        btn.addEventListener("click", function () {
+            // console.log(location.href);  //直接打印显示路径
+            // location.href="https://www.baidu.com"; //修改跳转到修改后的路径的网站
+
+            var time = 5;
+            window.setInterval(function () {
+                if (time === 0) {
+                    location.href = "https://www.baidu.com";
+                } else {
+                    div.innerHTML = "你将在" + time-- + "秒内跳转网页";
+                }
+            }, 1000);
+        });
+
+    </script>
+</body>
+
+</html>

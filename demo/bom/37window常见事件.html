@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37window常见事件</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+            window.onload 是窗口（页面）加载事件，当文档内容完全加载完成会触发该事件（包括图像，脚本文件，css文件），就调用的处理函数
+                window.onload=function(){} 或
+                window.addEventListener("load",function(){})
+            window.onresize 调整窗口大小
+            
+
+            一般写在js文件最前面
+
+            
+            */
+
+        window.onload = function () {
+            console.log("w");
+        }
+        window.addEventListener("load", function () {
+            console.log(2);
+        })
+
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("DOMContentLoaded");
+        })
+        // load 等待页面内容全部加载完成，包好dom元素 图片 flash css等
+        // DOMContentLoaded 是dom加载完毕，不包含图片 flash css等就可以执行，加载速度比load更快
+
+
+
+        window.addEventListener("resize",function(){
+            console.log("窗口发生变化");
+        })
+    </script>
+</body>
+
+</html>

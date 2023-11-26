@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>35事件高级-常用的鼠标事件</title>
+</head>
+
+<body>
+    不愿让你看到的文字
+
+    <script>
+        /* 
+            onclick 鼠标点击左键触发
+            onmouseover 鼠标经过触发
+            onmouseout 鼠标离开触发
+            onfocus 鼠标获取焦点触发
+            onblur 鼠标失去焦点触发
+            onmousemove 鼠标移动触发
+            onmouseup 鼠标弹起触发
+            onmousedown 鼠标按下触发
+
+            1、contextmenu 鼠标右键菜单
+            2、selectstart 鼠标选中文字
+        */
+
+        // 1、禁止鼠标右键菜单
+        // contextmenu主要控制应该何时显示上下文菜单，主要用于程序员取消默认的上下文菜单
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        })
+
+        // 2、禁止鼠标选中文字
+        document.addEventListener("selectstart", function (e) {
+            e.preventDefault();
+        })
+    </script>
+</body>
+
+</html>

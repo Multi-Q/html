@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13二维码显示与隐藏</title>
+    <style>
+        .box {
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+            background-color: skyblue;
+        }
+
+        .qr-code {
+            width: 175px;
+            height: 160px;
+            background-color: pink;
+        }
+
+        .close {
+            float: left;
+            width: 15px;
+            height: 15px;
+            font-size: 15px;
+            line-height: 15px;
+            text-align: center;
+            box-sizing: border-box;
+            color: #666;
+            border: 1px solid #666;
+            cursor: pointer;
+        }
+
+        .img-box {
+            float: left;
+            width: 160px;
+            height: 160px;
+        }
+
+        .img-box img {
+            width: 100%;
+        }
+
+        .show-btn {
+            height: 30px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="qr-code">
+            <div class="close">X</div>
+            <div class="img-box">
+                <img src="../demo/img/tao.png" alt="">
+            </div>
+        </div>
+        <button class="show-btn">显示二维码</button>
+    </div>
+
+    <script>
+        var flag = 0;
+
+        var cls = document.getElementsByClassName("close")[0];
+        var qrCode = document.getElementsByClassName("qr-code")[0];
+        var showBtn = document.querySelector(".show-btn");
+
+        cls.onclick = function () {
+            qrCode.style.display = "none";
+            flag = 1;
+        }
+        showBtn.onclick = function () {
+            qrCode.style.display = "block";
+            flag = 0;
+        }
+        console.dir(showBtn);
+
+    </script>
+
+</body>
+
+</html>

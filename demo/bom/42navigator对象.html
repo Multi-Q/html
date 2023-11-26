@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42navigator对象</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        /* 
+                navigator对象包含很多属性，但最常用的是userAgent属性，该属性返回由客户机发送给服务器的user-agent头部的值
+
+        */
+
+        // 可以利用下面代码判断用户终端打开的页面，实现跳转
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            windon.location.href = ""; //手机
+        } else {
+            window.location.href = ""; //电脑
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18表单全选取消案例</title>
+    <style>
+        table {
+            width: 400px;
+            margin: 100px auto;
+            border: 1px solid #999;
+            text-align: center;
+            border-spacing: 0;
+        }
+
+        table thead tr {
+            width: 100%;
+            height: 40px;
+            color: white;
+            background-color: skyblue;
+        }
+
+        table tbody tr {
+            height: 40px;
+            width: 100%;
+        }
+
+        table tbody tr td {
+            border-bottom: 1px solid #999;
+            border-right: 1px solid #999;
+        }
+
+        table thead td {
+            border-right: 1px solid #999;
+        }
+
+        table thead tr:last-child td,
+        table tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        table thead tr td:last-child,
+        table tbody tr td:last-child {
+            border-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td><input type="checkbox"  ></td>
+                <td>商品</td>
+                <td>价钱</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone 8 PRO</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>HUAWEI Mate Pad 13.0</td>
+                <td>8888</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>HUAWEI Mate 60 PRO</td>
+                <td>9999</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>红米K70</td>
+                <td>2599</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>小米14 PRO</td>
+                <td>4599</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>HUAWEI NOVA 11 SE</td>
+                <td>2000</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+        var checkedAll=document.querySelector("thead").querySelector("input");
+        var checkedItems=document.querySelector("tbody").querySelectorAll("input");
+        checkedAll.onclick=function(){
+            for(var i=0;i<checkedItems.length;i++){
+                checkedItems[i].checked=this.checked;
+            }
+        }
+        for(var i=0;i<checkedItems.length;i++){
+            checkedItems[i].onclick=function(){
+                var flag=true;
+                for(var j=0;j<checkedItems.length;j++){
+                    if(!checkedItems[j].checked){
+                        flag=false;
+                        break;
+                    }
+                }
+                checkedAll.checked=flag;
+            }
+        
+        }
+    </script>
+</body>
+
+</html>

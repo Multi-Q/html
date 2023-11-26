@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>44网页特效-offset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+
+    </div>
+    <script>
+        /* 
+                offset 偏移量，使用offset相关属性可以动态的得到该元素的位置（偏移）、大小等
+                    1、获取元素距离带有定位父元素的位置
+                    2、获得元素自身的大小（宽高）
+                    注：返回的值是不带单位得到
+
+                offsetTop 当前元素相对于其父元素的顶部距离
+                offsetWidth 返回当前元素的宽度（包含padding+border+width）
+                offsetParent 返回当前元素带有定位的父亲
+                offsetHeight  返回当前元素的高度（包含padding+border+width）
+                offsetLeft 返回当前元素相对于其带有定位父元素的左边的距离
+
+                style与offset的区别
+                offset返回的值不带单位，style返回的值带单位
+                oddsetWidth返回的宽度包含padding+border+width，二style不包含padding+border
+                offset的值
+        
+        */
+        var father = document.querySelector(".father");
+        console.log("距离顶部的距离"+father.offsetTop);
+        console.log("距离顶部的距离"+father.offsetBottom);
+
+    </script>
+</body>
+
+</html>

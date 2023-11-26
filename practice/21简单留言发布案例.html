@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21简单留言发布案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 250px;
+            margin: 100px auto;
+            background-color: pink;
+        }
+
+        .remark-list {
+            margin-top: 15px;
+            width: 100%;
+            background-color: skyblue;
+            color: blueviolet;
+        }
+
+        .remark-list li {
+            height: 20px;
+            line-height: 20px;
+            margin-bottom: 8px;
+            background-color: bisque;
+        }
+        .del{
+            height: 20px;
+            border: 1px solid red;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="text-box">
+            <textarea name="remark" id="remark" cols="20" rows="5"></textarea>
+            <button class="add">发布</button>
+        </div>
+        <ul class="remark-list">
+            <li>默认li<button class='del'>删除</button></li>
+        </ul>
+    </div>
+
+
+
+    <script>
+        var text = document.getElementById("remark");
+        var remark = document.querySelector(".text-box").querySelector(".add");
+        var fatherNode = document.querySelector(".remark-list");
+        remark.onclick = function () {
+            var newNode = document.createElement("li");
+            if (text.value !== "") {
+                newNode.innerHTML = text.value+ "<button class='del'>删除</button>";
+                fatherNode.insertBefore(newNode, fatherNode.children[0]);
+                text.value = "";
+
+                var dels=document.querySelectorAll(".del");
+                for(var i=0;i<dels.length;i++){
+                    dels[i].onclick=function(){
+                        fatherNode.removeChild(this.parentNode);
+                    }
+                }
+            }else{
+                console.log("不能添加空字符串");
+                return;
+            }
+        }
+      
+
+    </script>
+
+</body>
+
+</html>

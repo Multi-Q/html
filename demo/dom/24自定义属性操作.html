@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24自定义属性操作</title>
+
+</head>
+
+<body>
+    <!-- index为程序员自定义的属性 -->
+    <div id="demo" index="1"></div>
+
+
+    <script>
+
+        /* 
+            获取属性值方法：
+                1、element.属性
+                2、element.getAttribute("属性")
+            区别：
+                1、element.属性 获取内置属性值（元素本身自带的属性）
+                2、element.getAttribute("属性") 主要获取自定义的属性，即程序员自定义的属性
+
+            设置自定义的属性值：
+                1、element.属性=“值
+                2、element.setAttribute("属性","值")
+            
+                移除自定义属性：
+                    element.removeAttribute("属性")
+        */
+
+        var div = document.querySelector("div");
+        var value=div.getAttribute("index");
+        console.log(value);
+
+        
+        div.setAttribute("index",222);
+        console.log(div.getAttribute("index"));
+    </script>
+</body>
+
+</html>

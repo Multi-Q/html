@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24鼠标跟随天使</title>
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+<img src="../demo/img/angel.gif" alt="">
+
+
+<script>
+    var img=document.querySelector("img");
+    document.addEventListener("mousemove",function(e){
+        let x=e.pageX;
+        let y=e.pageY;
+
+        img.style.left=x+"px";
+        img.style.top=y+"px";
+    })
+</script>
+</body>
+
+</html>

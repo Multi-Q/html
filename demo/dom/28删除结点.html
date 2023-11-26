@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28删除结点</title>
+</head>
+
+<body>
+    <button>删除</button>
+    <ul>
+        <li>熊大</li>
+        <li>熊二</li>
+        <li>光头强</li>
+    </ul>
+
+
+    <script>
+        /* 
+            fatherNode.removeChild(父节点中指定位置的子节点) 删除父节点中指定子节点
+        */
+        var ul = document.querySelector("ul");
+        var delBtn = document.querySelector("button");
+
+        // ul.removeChild(ul.children[0]);
+
+
+        delBtn.onclick = function () {
+            if (ul.children.length > 0)
+                ul.removeChild(ul.children[0]);
+        }
+    </script>
+</body>
+
+</html>

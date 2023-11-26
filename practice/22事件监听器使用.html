@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22事件监听器使用</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+
+    <script>
+        var divs = document.querySelectorAll("div");
+        for (let i = 0; i < divs.length; i++) {
+            
+            divs[i].addEventListener(
+                "click",
+                function () {
+                   console.log(divs[i].innerHTML);
+                },
+                { once: true }
+            )
+        }
+
+    </script>
+</body>
+
+</html>

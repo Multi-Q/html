@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27动态创建元素节点</title>
+</head>
+
+<body>
+    <ul>
+        <li>123</li>
+    </ul>
+
+    <script>
+
+/* 
+        node.appendChild(child) 将一个节点添加到指定父节点的子节点列表的末尾，类似于css中的::after
+        node.insertBefore(child,指定元素) 将结点添加到指定元素的前面
+*/
+
+        // 1、创建结点
+        var li = document.createElement("li");
+        // 2、添加节点 node.appendChild(child) node是父级，child是孩子
+        var ul = document.querySelector("ul");
+        ul.appendChild(li);
+
+        ul.insertBefore(li,ul.children[0]);
+    </script>
+</body>
+
+</html>

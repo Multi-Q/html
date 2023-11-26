@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22操作元素修改样式属性</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+       js修改样式属性
+    </div>
+
+
+
+
+    <script>
+        var div = document.querySelector("div");
+        div.onclick = function () {
+            // div.style内的属性采用的是驼峰命名法
+            div.style.width = "300px";
+            div.style.height = "300px";
+            div.style.color="white";
+            div.style.backgroundColor = "blue";
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40js执行机制</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+                同步任务：
+                    同步任务都在主线程上执行，形成一个执行栈
+                异步任务：
+                    js的异步是通过回调函数实现的
+                    一般来说，一步任务有以下三种：
+                        1、普通事件，如click、resize
+                        2、资源加载，如load、error
+                        3、定时器，包括setInterval、setTimeout等
+                与异步任务有关的回调函数添加到任务队列中
+        
+                执行机制：
+                    1、先执行执行栈中的同步任务
+                    2、一步任务（回调函数）放入任务队列中
+                    3、一旦执行栈的所有同步任务执行完毕，系统会次序读取任务队列中的一步任务，于是被读取到的异步任务
+                        结束等待状态，进入执行栈，开始执行
+        */
+
+        console.log(1);
+        setTimeout(function () {
+            console.log(2);
+        }, 0);
+        console.log(3);
+
+    </script>
+</body>
+
+</html>

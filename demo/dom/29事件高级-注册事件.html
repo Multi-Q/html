@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29事件高级-注册事件</title>
+</head>
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+
+
+
+    <script>
+        /* 
+            传统注册事件
+                同一个元素同一个事件只能设置一个处理函数，最后注册的处理函数会覆盖前面的注册的处理函数
+
+            方法监听注册事件
+                eventTarget.addEventListener(type, 监听器（一般用函数）);
+                            addEventListener(type, 监听器（一般用函数）, options);
+                            addEventListener(type, 监听器（一般用函数）, useCapture);
+                同一个元素可以添加多个监听器
+        */
+        var btns=document.querySelectorAll("button");
+        console.log(btns);
+        btns[0].onclick=function(){
+            alert("传统注册事件1");
+        }
+        btns[0].onclick=function(){
+            alert("传统注册事件2");
+        }
+
+        // 事件监听
+        btns[1].addEventListener("click",function(){
+            alert("22");
+        });
+        btns[1].addEventListener("click",function(){
+            alert("33");
+        })
+
+    </script>
+</body>
+</html>

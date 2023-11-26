@@ -176,8 +176,12 @@
         <h2 class="form-title">京东登录</h2>
         <input type="text" class="username" name="username" placeholder="账号/手机号/邮箱">
         <input type="password" class="password" name="password" placeholder="请输入登录密码">
-        <em class="eye-icon" onMouseEnter="showPassword(true)" onMouseLeave="showPassword(false)"><img
-                src="../demo/img/close.png" alt=""></em>
+        <em class="eye-icon" onclick="myPass()">
+            <img src="../demo/img/close.png" alt="">
+        </em>
+        <!-- <em class="eye-icon" onmouseenter="showPassword(true)" onmouseleave="showPassword(false)">
+            <img src="../demo/img/close.png" alt="">
+        </em> -->
         <span class="forget-password "><a href="#">忘记密码</a></span>
         <!-- <input class="submit" onclick="login()" type="submit" value="登录"> -->
         <input type="button" class="submit" onclick="login()" value="登录">
@@ -211,6 +215,7 @@
 
     <script>
 
+        // 使用这种方式，通过鼠标进入和鼠标离开控制显隐效果，这就需要给icon绑定鼠标进入和鼠标离开的事件就可以实现这个效果
         function showPassword(flag) {
             var eyeIcon = document.getElementsByClassName("eye-icon")[0];
             var eyeImg = eyeIcon.querySelector("img");
@@ -230,6 +235,31 @@
             var password = document.getElementsByClassName("password")[0].value;
             console.log("username=" + username + "\tpassword=" + password);
         }
+
+
+        // 使用这种方式需要定义一个全局的变量myFlag才能实现显隐
+        var myFlag = 0;
+        function myPass() {
+            var eyeIcon = document.getElementsByClassName("eye-icon")[0];
+            var eyeImg = eyeIcon.querySelector("img");
+            var showPass = document.getElementsByClassName("password")[0];
+            if (myFlag === 0) {
+                showPass.type = "text";
+                eyeImg.attributes.src.value = "../demo/img/open.png";
+                myFlag = 1;
+            } else {
+                showPass.type = "password";
+                eyeImg.attributes.src.value = "../demo/img/close.png";
+                myFlag = 0;
+            }
+        }
+
+
+
+
+
+
+
     </script>
 
 

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15显示文本框内容</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #7d7c7c;
+        }
+
+        a:hover {
+            color: rgb(77, 77, 241);
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .search {
+            width: 400px;
+            margin: 100px auto;
+            background-color: rgb(246, 238, 239);
+        }
+
+        .search-box {
+            width: 100%;
+            height: 32px;
+            line-height: 32px;
+
+        }
+
+        .word {
+            float: left;
+            width: 320px;
+            height: 100%;
+            border: 2px solid rgb(78, 78, 228);
+            padding-left: 14px;
+            box-sizing: border-box;
+            outline: none;
+            color: #7d7c7c;
+        }
+
+        .search-btn {
+            float: left;
+            width: 80px;
+            height: 100%;
+            background-color: rgb(78, 78, 228);
+            color: white;
+            font-size: 16px;
+            border: 0;
+            cursor: pointer;
+            letter-spacing: 5px;
+        }
+
+        .search-hot-word {
+            height: 24px;
+            line-height: 24px;
+            overflow: hidden;
+        }
+
+        .search-hot-word ul li {
+            float: left;
+            padding-right: 10px;
+        }
+
+        .search-hot-word ul li a {
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="search-box">
+            <input class="word" type="text" placeholder="手机" name="word" value="手机" onfocus="checkedFocus()"
+                onblur="checkedBlur()">
+            <button class="search-btn" onclick="search()">搜索</button>
+        </div>
+        <div class="search-hot-word">
+            <ul>
+                <li><a href="#">iPhone</a></li>
+                <li><a href="#">华为nova 11 SE</a></li>
+                <li><a href="#">荣耀100 PRO</a></li>
+                <li><a href="#">红米K70</a></li>
+                <li><a href="#">一加</a></li>
+                <li><a href="#">OPPO</a></li>
+                <li><a href="#">vivo</a></li>
+                <li><a href="#">锤子手机</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var input = document.querySelector(".word");
+        var tempPlaceholder = input.placeholder;
+        var tempDefaultValue = input.defaultValue;
+        var tempValue = input.value;
+        var tempColor = input.style.color;
+        console.dir(input);
+        function checkedFocus() {
+            input.placeholder = "";
+            input.value = "";
+            input.style.color = "black";
+            console.log("获得焦点" + input.value);
+
+        }
+        function checkedBlur() {
+            if (input.value !== "") {
+                input.placeholder = input.value;
+                input.value = input.value;
+                input.style.color = "black";
+            } else {
+                input.placeholder = tempPlaceholder;
+                input.value = tempValue;
+                input.style.color = tempColor;
+            }
+            console.log("失去焦点" + input.value);
+        }
+        function search() {
+            var word = document.querySelector(".word");
+            console.log(word.value);
+        }
+    </script>
+</body>
+
+</html>

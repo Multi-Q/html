@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27发送短信</title>
+    <style>
+        .msg-box {
+            width: 350px;
+            height: 30px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+
+        .msg-code {
+            float: left;
+            height: 30px;
+            border: 1px solid #999;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .send {
+            float: left;
+            height: 30px;
+            border: 1px solid #999;
+            margin-left: 10px;
+            color: black;
+            background-color: #f3e7e7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="msg-box">
+        <input type="text" class="msg-code">
+        <button class="send">发送</button>
+    </div>
+
+
+
+    <script>
+        var text = document.querySelector(".msg-code");
+        var send = document.querySelector(".send");
+        var tempValue = send.innerHTML;
+        // console.dir(send);
+        var time = 5;
+
+        send.addEventListener("click", function () {
+            if (text.value === "") {
+                return;
+            } else {
+                send.disabled = true;
+                var timer = setInterval(function () {
+                    if (time === 0) {
+                        clearInterval(timer);
+                        send.disabled = false;
+                        send.innerHTML = tempValue;
+                        time = 5; //重新恢复秒数
+                    } else {
+                        send.innerHTML = "还剩" + time-- + "秒再次发送";
+                    }
+                }, 1000);
+            }
+
+        });
+    </script>
+</body>
+
+</html>

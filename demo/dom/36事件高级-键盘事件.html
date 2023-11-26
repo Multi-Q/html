@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>36事件高级-键盘事件</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        /* 
+            onkeyup 某个按键弹起时触发
+            onkeydown 某个按键按下时触发
+            onkeypress 某个按键按下时触发 但是 shift和ctrl、左右箭头 不能识别
+
+            键盘对象
+                e.key 返回按键字符
+                  keyCode 返会该按键字符的ASCII值
+            keyup和keydown是不区分大小写的 A和a的ASCII值都是65
+            keypress区分大小写 a是97，A是65
+
+        */
+
+
+
+        // document.onkeyup = function () {
+        //     console.log("我弹起了");
+        // }
+
+        document.addEventListener("keyup",function(e){
+            console.log("我弹起了");
+        });
+        document.addEventListener("keydown",function(e){
+            console.log("我按下了: 按键字符: "+e.key+"按键ASCII："+e.keyCode);
+        });
+        // document.addEventListener("keypress",function(e){
+        //     console.log("我按住不松手");
+        // })
+
+
+    </script>
+</body>
+
+</html>

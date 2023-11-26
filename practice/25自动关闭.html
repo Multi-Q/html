@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25自动关闭</title>
+    <style>
+        @keyframes move{
+            0%{}
+            100%{
+                transform: translate(500px,500px);
+            }
+        }
+        img{
+            width: 100px;
+            height: 100px;
+           animation-name: move;
+           animation-duration: 5s;
+           animation-timing-function: linear;
+           animation-delay: 0s;
+           animation-iteration-count: infinite;
+           animation-direction: alternate;
+            /* animation: move 5s linear 0s infinite alternate; */
+        }
+    </style>
+</head>
+<body>
+    
+    <img src="../demo/img/tao.png" alt="">
+
+
+    <script>
+        var img=document.querySelector("img");
+
+        window.setTimeout(function(){
+            img.style.display="none";
+        },6000);
+    </script>
+</body>
+</html>

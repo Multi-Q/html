@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>31事件高级-事件对象</title>
+</head>
+<body>
+    <div>123</div>
+
+
+
+    <script>
+var div=document.querySelector("div");
+div.onclick=function(event){
+    // event就是一个事件对象 写到监听函数的小括号内 当行参看
+    // 事件对象只有了事件才会存在 这是系统给我们创建的，不需要我们传递 该对象内包含了很多方法，需要使用直接调用就行了
+    // 事件对象可以自己命名 event evt e
+    console.log(event);
+}
+
+    </script>
+</body>
+</html>

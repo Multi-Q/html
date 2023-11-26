@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45立即执行函数</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        /* 
+            立即执行函数不需要调用，自己就能执行的函数
+            立即执行函数有两种写法:
+                1、function fn(){}
+                    fn();
+                2、(function(){})();  
+                    或 (function(){}())
+                    第二个小括号可以看做是调用函数,也可以传递参数
+        
+        
+        */
+
+        (function (a, b) { console.log(a + b); })(1, 2);
+        (function (a, b) { console.log(a * b); }(1, 2));
+    </script>
+
+</body>
+
+</html>

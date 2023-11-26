@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>38定时器</title>
+</head>
+
+<body>
+
+
+<button>点击停止计时</button>
+<button>清除定时器</button>
+
+    <script>
+        /*
+        window.setTimeout(调用函数，延时时间); 定时器，延时时间到后调用回调函数
+            延时时间的单位是ms，省略默认值为 0ms
+        window.clearTimeout(定时器变量);  清除定时器
+        window.setInterval(回调函数,[间隔的毫秒数]); 重复调用一个函数，每个这个时间，就去调用一次回调函数
+            时间单位是毫秒，默认值0
+            可以给定时器定义一个标识符
+        window.clearInterval(intervalId) 清除定时器
+
+
+*/
+        window.setTimeout(function () {
+            console.log("时间到了");
+        }, 2000);
+
+        // 另一种写法
+        function callBack() {
+            console.log("时间到了");
+        }
+        // setTimeout(callBack, 5000);
+        // setTimeout("callBack()", 2000); //但不推荐这种写法
+
+
+        // 停止定时器 window.clearTimeout(timeId)
+        var btnTime = window.setTimeout(function () {
+            // alert("没有及时点击停止，炸弹爆炸了");
+            console.log("没有及时点击停止，炸弹爆炸了");
+        }, 3000);
+        document.querySelector("button").addEventListener("click",function(e){
+            window.clearTimeout(btnTime);
+            // alert("恭喜成功阻止炸弹爆炸");
+            console.log("恭喜成功阻止炸弹爆炸");
+            
+        });
+
+        // window.setInterval()
+        // window.setInterval(function(){
+        //     alert("hello world");
+        // },3000);
+
+
+        
+
+    </script>
+</body>
+
+</html>
