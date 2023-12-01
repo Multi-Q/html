@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8属性操作</title>
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <a href="https://www.baidu.com" title="都挺好" data-index="11">去百度</a>
+    <input type="checkbox" name="" checked>
+
+    <script>
+        /* 
+            elem.prop("标签的属性") 获取属性值
+            elem.attr("属性名") 获取程序员自定义的属性
+            elem.data() 数据缓存
+        */
+        $(function () {
+            console.log($("a").prop("title"));
+            console.log($("a").attr("data-index"));
+
+            $("a").attr("data-index",22);
+            console.log($("a").attr("data-index"));
+
+        
+        })
+    </script>
+</body>
+
+</html>

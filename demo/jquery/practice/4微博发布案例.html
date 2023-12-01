@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4微博发布案例</title>
+    <script src="../js/jquery.js">
+
+    </script>
+
+    <style>
+        .box {
+            width: 500px;
+            background-color: pink;
+            border: 1px solid black;
+            margin: 100px auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+        }
+        .del{
+            margin-left: 20px;
+        }
+        ul li{
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            border-bottom: 1px dotted black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span>微博发布</span>
+        <textarea name="content" id="" cols="30" rows="4"></textarea>
+        <button>发布</button>
+        <ul>
+
+        </ul>
+    </div>
+
+
+    <script>
+        $(function () {
+            $("button").click(function () {
+                var content = $("textarea").val();
+                var li = $("<li></li>");
+                li.html(content + "<a class='del' href='javascript:;'>删除</a>");
+                $("ul").append(li);
+               li.slideDown();
+                $("textarea").val("");
+            });
+            // on可以给动态创建的元素绑定事件
+            $("ul").on("click", "a", function () {
+                $(this).parent().stop().slideUp(function () {
+                    $(this).remove();
+                });
+            })
+        });
+    </script>
+</body>
+
+</html>

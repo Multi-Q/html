@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12对象拷贝</title>
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+            $.extend([deep],target,object1,[objectN])
+                deep 如果设置为true为深拷贝，默认false浅拷贝
+                target 要拷贝的对象
+                object1 待靠背到第一个对象的对象
+                objectN 待拷贝到第N个对象的对象
+
+                浅拷贝就是把拷贝的对象负载数据中的地址拷贝给目标对象，修改目标对象会影响被拷贝对象
+        */
+        $(function () {
+            var tarObj = {};
+            var obj = {
+                id: 1,
+                name: "zs",
+                msg:function(){
+                    console.log("hello world");
+                }
+            }
+            $.extend(tarObj,obj);
+            console.log(tarObj);
+
+
+            var tarObj2={
+                id:2
+            }
+            // 如果原对象有相同属性，在拷贝后属性的值会被后来的属性给覆盖掉
+            $.extend(tarObj2,obj); 
+            console.log(tarObj2);
+
+            var tarObj3={
+                id:3,
+                name:"李四",
+                age:18
+            }
+            $.extend(true,tarObj3,obj);
+            console.log(tarObj3);
+
+        })
+    </script>
+</body>
+
+</html>

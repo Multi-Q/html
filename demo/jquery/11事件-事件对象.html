@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11事件-事件对象</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+    </div>
+    <input type="text">
+
+
+
+    <script>
+        /* 
+            事件被触发就会有事件对象产生
+            elem.on(events,[selector],function(event){})
+
+            阻止默认行为 event.preventDefault() 或return false
+            阻止冒泡 event.stopPropagation()
+        */
+
+        $(function () {
+            $("div").on("click", function (e) {
+                console.log(e);
+                e.preventDefault();
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>

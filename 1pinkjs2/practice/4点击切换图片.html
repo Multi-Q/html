@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4点击切换图片</title>
+    <style>
+        .img-wrapper {
+            width: 500px;
+            height: 311px;
+            margin: 100px auto;
+        }
+
+        .img-wrapper img {
+            width: 500px;
+            height: 311px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img-wrapper">
+        <img src="../img/1.webp" alt="">
+
+    </div>
+
+    <script>
+        function random(N, M) {
+            return Math.floor(Math.random() * (M - N + 1)) + N;
+        };
+        const img = document.querySelector("img");
+        img.addEventListener("click", function (e) {
+            const index = random(1, 6);
+            this.src = `../img/${index}.webp`;
+        })
+
+
+    </script>
+
+</body>
+
+</html>

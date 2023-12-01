@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2遍历数组对象到表格中</title>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid black;
+            margin: 100px auto;
+            border-collapse: collapse;
+        }
+
+        tr {
+            height: 30px;
+        }
+
+        thead {
+            background-color: #ccc;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            width: 100px;
+            text-align: center;
+        }
+        caption{
+            caption-side: bottom;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <caption>学生列表</caption>
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>省份</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+        let students = [
+            { name: "小明", age: 18, gender: "男", hometown: "河北省" },
+            { name: "小李", age: 30, gender: "男", hometown: "浙江省" },
+            { name: "小刚", age: 19, gender: "男", hometown: "广西省" },
+            { name: "小红", age: 18, gender: "女", hometown: "河南省" },
+            { name: "小倩", age: 24, gender: "女", hometown: "山西省" }
+        ];
+
+        let tbody = document.querySelector("tbody");
+        for (let i = 0; i < students.length; i++) {
+            let tr = document.createElement("tr");
+            for (let k in students[i]) {
+                let td = document.createElement("td");
+                td.innerHTML = students[i][k];
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        }
+
+
+
+    </script>
+</body>
+
+</html>

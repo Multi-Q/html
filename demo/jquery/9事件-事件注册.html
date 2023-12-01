@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9事件-事件注册</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .current {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+    <p>我是p</p>
+    <script>
+        /* 
+            单个注册事件
+
+            on()匹配元素上绑定一个或多个事件的事件处理器
+            elem.on(events,[selector],fn)
+                events 一个或多个用空格分隔的事件类型，如click、keydown
+                selector 元素的子选择器
+
+            elem.off() 事件解绑(解绑该元素的所有事件)
+            elem.off("click") 解绑该元素的click事件
+            ul.off("click","li") 解绑事件委托
+
+            one() 事件只触发一次，用这个绑定事件
+        */
+        $(
+            function () {
+                //  单个注册事件
+                // $("div").click(function(){
+                //     $(this).css("backgroundColor","skyblue");
+                // });
+                // $("div").mouseleave(function(){
+                //     $(this).css("backgroundColor","lightpink");
+                // });
+
+                $("div").on({
+                    mouseenter: function () {
+                        $(this).css("background", "skyblue");
+                    },
+                    click: function () {
+                        $(this).css("background", "yellow");
+                    },
+                    mouseleave: function () {
+                        $(this).css("background", "lightgreen");
+                    }
+                });
+
+                // $("div").on("mouseenter mouseleave", function () {
+                //     $(this).toggleClass("current");
+                // });
+
+                $("ul").on("click", "li", function () {
+                    alert(111);
+                })
+
+
+                //   off() 事件解绑
+                // $("div").off(); //解除div身上的所有绑定的事件
+                $("div").off("click");  //解除div身上的click事件
+
+
+                // one()中的type如果由多个事件可以用空格隔开
+                $("p").one("mouseenter click", function(){
+                    alert("p");
+                })
+
+            }
+        );
+    </script>
+</body>
+
+</html>

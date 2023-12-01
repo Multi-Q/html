@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1变量与常量</title>
+</head>
+
+<body>
+
+    <script>
+
+        /* 
+            变量：用来存储数据的“容器”
+            声明：let 变量名;
+
+            let与var的区别
+                var:
+                    可以先使用，再声明
+                    var声明过的变量可以重复声明
+                    比如变量提升、全局变量、没有块级作用域
+                let:
+                    不能重复定义变量
+            
+            常量：当某个值永远不会改变的时候，使用const声明变量
+        */
+        let age = 18;
+        console.log(typeof age);
+
+        const na = "张三";
+        //    na="李四"; //报错
+        console.log(na);
+    </script>
+
+</body>
+
+</html>

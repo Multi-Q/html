@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9dom获取元素</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .box-border{
+            border: 5px solid black;
+        }
+        .box-radius{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>12345</div>
+    <a href="#" title="淘宝">淘宝</a>
+    <div class="box">123</div>
+    <script>
+        /* 
+                如果不改变变量的值，使用const优先
+        
+                获取元素
+                    document.querySelector("选择器") //匹配与"选择器名"相同的第一个元素
+                    document.querySelectorAll("选择器") //匹配与"选择器名"相同的所有元素
+        
+                操作元素内容
+                    对象.innerTexr 获取元素的文字内容 不能解析标签
+                    对象.innerHTML 获取元素的文字内容 能解析标签
+                操作元素属性
+                    常用属性：
+                        href 、title、 src
+                        语法： 对象.属性值
+                    样式属性：
+                        1、通过style属性操作css
+                            对象.style.css属性名
+                        2、通过className属性覆盖原元素的css类名
+                            对象.className="类名"
+                        3、通过classList属性控制css类名 与className属性不同该属性能追加和删除类名
+        
+        */
+        const div = document.querySelector("div");
+        console.log(div.innerText);
+        div.innerText = "<span>helo</span>";
+        console.log(div.innerText);
+        console.log("-------------");
+        console.log(div.innerHTML);
+        div.innerHTML = "<img src='#'></img>";
+        console.log(div.innerHTML);
+        console.log("1----------------------");
+
+        const a = document.querySelector("a");
+        console.log(a.href, a.title);
+
+        // 通过style属性操作css
+        const box=document.querySelector(".box");
+        box.style.color="red";
+        box.style.fontSize="36px";
+        box.style.backgroundColor="skyblue";
+
+
+        // 通过className属性覆盖原元素的类名 如果想保留原来的类名，使用字符串拼接
+        box.className =box.className+" box-border";
+        // box.className =box.className.concat(" box-border");
+
+
+        // 通过classList属性控制css类名 与className属性不同该属性能追加和删除类名
+        box.classList.add("box-radius");
+        
+        box.classList.toggle("box-radius"); //切换类名，如果该类名已经存在则删除该类名，如果该类名不存咋则追加该类名
+
+        console.log(box.classList.contains("box")); //返回一个boolean值，查找该对象是否包含这个css类名
+
+        /* 
+            className:box对象的某个类名
+            index:该className在box中的下标
+            parent：box的class属性值
+        */
+        box.classList.forEach((className,index,parent)=>{
+            console.log(className,className,parent);
+            console.log(box);
+        })
+
+    </script>
+</body>
+
+</html>

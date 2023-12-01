@@ -6,14 +6,31 @@
     <title>2js初体验</title>
     <!-- 2 内嵌式js -->
     <script>
-        alert("嗨嗨嗨~")
+        // alert("嗨嗨嗨~")
     </script>
     <!-- 3 外部引入式js -->
     <script src="./js/index.js"></script>
-
+<style>
+   html{
+    --size12:55px;
+   }
+    .box    {
+        width: 400px;
+        font-size: calc(var(--size12 ) - 50px);
+        height: 400px;
+        background-color: pink;
+        
+    }
+    
+</style>
 </head>
 <body>
     <!-- 1 行内式js，直接写到元素的内部 -->
-    <input type="button" value="唐伯虎" onclick="alert('点秋香')">
+    <!-- <input type="button" value="唐伯虎" onclick="alert('点秋香')"> -->
+
+
+    <div class="box">
+        123
+    </div>
 </body>
 </html>

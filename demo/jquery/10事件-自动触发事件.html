@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10事件-自动触发事件</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+</div>
+ <input type="text">
+ 
+ 
+ 
+ <script>
+        /* 
+            自动出发事件 
+            eleme.click() //第一种简写形式
+            elem.trigger("事件") //第二种自动触发模式 
+            elem.triggleHandler("事件") 区别就是不会触发元素的默认行为，二elem.triggle()会
+        */
+
+        $(function(){
+            $("div").on("click",function(){
+                alert(11);
+            });
+
+            //绑定click事件，调用了上面的$("div").on("click",function{})
+            $("div").trigger("click");
+
+
+            // 不会触发元素的默认行为
+            $("input").on("focus",function(){
+                $(this).val("input");
+            });
+            // $("input").triggerHandler("focus");
+            $("input").trigger("focus");
+
+        })
+        
+    </script>
+</body>
+
+</html>
