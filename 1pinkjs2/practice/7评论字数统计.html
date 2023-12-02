@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7评论字数统计</title>
+    <style>
+        .box {
+            position: relative;
+            width: 800px;
+            height: 80px;
+            margin-top: 100px;
+        }
+
+        textarea {
+            float: left;
+            width: 700px;
+            height: 100%;
+            resize: none;
+            box-sizing: border-box;
+            border-radius: 8px;
+            padding: 10px;
+            outline: none;
+        }
+
+        .text-count {
+            position: absolute;
+            display: none;
+            height: 18px;
+            font-size: 14px;
+            line-height: 18px;
+            bottom: -22px;
+            right: 100px;
+            color: #666;
+        }
+
+        button {
+            float: left;
+            width: 80px;
+            height: 100%;
+            margin-left: 20px;
+            border: 0;
+            background-color: rgb(4, 180, 250);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <textarea cols="" rows="3" placeholder="发一条友善的评论"></textarea>
+        <span class="text-count">0/200字</span>
+        <button>发布</button>
+    </div>
+
+    <script>
+        const textarea=document.querySelector("textarea");
+        const textCount=document.querySelector(".text-count");
+        const maxLength=200;
+        // 限制<textarea>的内容宽度
+        textarea.maxLength=maxLength;
+
+        textarea.addEventListener("input",function(e){
+            if(e.target.textLength<=maxLength){
+                textCount.innerHTML=`${e.target.textLength}/200字`;
+            }
+        });
+        textarea.addEventListener("focus",function(e){
+            textCount.style.display="block";
+        });
+        textarea.addEventListener("blur",function(e){
+            textCount.style.display="none";
+        });
+    </script>
+</body>
+
+</html>

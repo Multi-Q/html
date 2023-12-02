@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14事件对象</title>
+</head>
+
+<body>
+    <button>点我</button>
+    <script>
+        /* 
+            事件对象
+                事件对象在事件监听器的执行函数中，它是作为形式参数存在，是系统自动加上的
+                事件对象的名字可以自定义（就是形参名），通常名字有event,e,evt等
+
+            事件对象常用属性：
+                type：获取当前事件源的类型
+                target：保存当前事件源的所有属性
+                
+        */
+        const btn = document.querySelector("button");
+        btn.addEventListener("click", function (e) {
+            console.log(e.target.innerHTML);
+        })
+
+    </script>
+</body>
+
+</html>

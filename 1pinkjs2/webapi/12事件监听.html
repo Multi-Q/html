@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12事件监听</title>
+</head>
+<body>
+    
+<button>点击我</button>
+
+
+
+    <script>
+        /* 
+            旧版语法：
+                对象.on事件=function(){}
+
+            新版语法：
+                对象.addEventListener("事件类型",要执行的函数)
+            注：要执行函数有一个浏览器给的对象，该对象包含该dom元素的所有属性。
+                event，该名字可以改的：event、e、
+
+            新版和旧版的区别：
+                旧版会把原来的事件覆盖掉
+                    如：
+                        div.onclick=function(){console.log(1)}
+                        div.onclick=function(){console.log(2)}
+                        最终只有第二个监听函数生效，第一个被后来的给覆盖了
+                新版不会覆盖掉
+
+            事件监听三要素：
+                1、事件源：哪个dom元素被触发了
+                2、事件类型：用什么方法触发，click、mouseenter、mouseleave
+                3、时间调用的函数：要做什么事
+            
+            1
+        */
+
+        const btn=document.querySelector("button");
+        btn.addEventListener("click",function(e){
+            console.log("我被点击了");
+            console.log(e.target.innerHTML);
+        })
+    </script>
+</body>
+</html>

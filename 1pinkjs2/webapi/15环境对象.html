@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15环境对象</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        /* 
+            环境对象就是this
+
+            每个函数都有环境对象
+
+            普通函数里面的this指向的是window
+
+            监听函数中->谁调用this就指向谁
+
+        */
+        function fn() {
+            console.log(this);
+        }
+        window.fn();
+
+
+        const btn = document.querySelector("button");
+        btn.addEventListener("click", function (e) {
+            console.log(this);
+        })
+    </script>
+
+</body>
+
+</html>

@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>9dom获取元素</title>
     <style>
-        .box{
+        .box {
             width: 100px;
             height: 100px;
             background-color: pink;
         }
-        .box-border{
+
+        .box-border {
             border: 5px solid black;
         }
-        .box-radius{
+
+        .box-radius {
             border-radius: 50%;
         }
     </style>
@@ -24,7 +26,16 @@
 
     <div>12345</div>
     <a href="#" title="淘宝">淘宝</a>
+
+    <hr>
     <div class="box">123</div>
+
+    <hr>
+    <input type="text" name="" id="uname" value="电脑">
+    <input type="checkbox" name="" id="" value="电脑">
+
+
+
     <script>
         /* 
                 如果不改变变量的值，使用const优先
@@ -46,6 +57,9 @@
                         2、通过className属性覆盖原元素的css类名
                             对象.className="类名"
                         3、通过classList属性控制css类名 与className属性不同该属性能追加和删除类名
+                    表单属性：
+                        获取：对象.属性名
+                        设置：对象.属性名=新值
         
         */
         const div = document.querySelector("div");
@@ -61,21 +75,24 @@
         const a = document.querySelector("a");
         console.log(a.href, a.title);
 
+
+
+        /*  样式属性：Start--------------------------------- */
         // 通过style属性操作css
-        const box=document.querySelector(".box");
-        box.style.color="red";
-        box.style.fontSize="36px";
-        box.style.backgroundColor="skyblue";
+        const box = document.querySelector(".box");
+        box.style.color = "red";
+        box.style.fontSize = "36px";
+        box.style.backgroundColor = "skyblue";
 
 
         // 通过className属性覆盖原元素的类名 如果想保留原来的类名，使用字符串拼接
-        box.className =box.className+" box-border";
+        box.className = box.className + " box-border";
         // box.className =box.className.concat(" box-border");
 
 
         // 通过classList属性控制css类名 与className属性不同该属性能追加和删除类名
         box.classList.add("box-radius");
-        
+
         box.classList.toggle("box-radius"); //切换类名，如果该类名已经存在则删除该类名，如果该类名不存咋则追加该类名
 
         console.log(box.classList.contains("box")); //返回一个boolean值，查找该对象是否包含这个css类名
@@ -85,10 +102,24 @@
             index:该className在box中的下标
             parent：box的class属性值
         */
-        box.classList.forEach((className,index,parent)=>{
-            console.log(className,className,parent);
+        box.classList.forEach((className, index, parent) => {
+            console.log(className, className, parent);
             console.log(box);
         })
+        /*  样式属性：End--------------------------------- */
+
+
+
+        /*  表单属性：Start--------------------------------- */
+        const uname = document.querySelector("#uname");
+        // console.log(uname.innerHTML); //innerHTML得不到表单的内容
+        console.log("uname=" + uname.value);
+
+        const checkbox = document.querySelector("input[type='checkbox']");
+        checkbox.checked = true;
+
+
+        /*  表单属性：End--------------------------------- */
 
     </script>
 </body>

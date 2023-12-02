@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11间歇函数</title>
+</head>
+<body>
+    
+
+    <script>
+
+        /* 
+            间歇函数就是定时器函数
+
+            设置定时器：
+                window.setInterval(回调函数,间歇时间); //间歇函数单位为ms
+                    eg:
+                        setInterval(function(){},1000); //返回值为一个定时器id
+
+                setInterval()是window对象的函数，使用时可以省掉“window.”
+            
+            清楚定时器：
+                window.clearInterval(定时器id);  //括号内天定时器id
+        */
+
+
+        // window.setInterval(function(){
+        //     console.log("hi~");
+        // },1000);
+
+        let n=setInterval(fn,1000);
+
+        function fn(){
+            console.log(123);
+        }
+        console.log(n);
+
+
+        let i=0;
+        let timer=window.setInterval(()=>{
+            console.log(i++);
+        },10000);
+        
+        // 清除定时器
+        window.clearInterval(n);
+
+
+    </script>
+</body>
+</html>

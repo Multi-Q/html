@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9tab栏切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .tab-box {
+            width: 560px;
+            height: 307px;
+            margin: 100px auto;
+        }
+
+        .tab-list {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .tab-list h1 {
+            float: left;
+            font-weight: normal;
+            padding-left: 14px;
+        }
+
+        .tab-list ul {
+            float: right;
+            height: 100%;
+        }
+
+        .tab-list ul li {
+            float: left;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .tab-list ul li a {
+            display: block;
+            height: 100%;
+            padding: 0 10px;
+        }
+
+        .tab-list ul li:hover {
+            border-bottom: 2px solid orange;
+        }
+
+        .tab-list ul li a:hover {
+            color: white;
+        }
+
+        .item-list {
+            width: 100%;
+            height: 267px;
+            background-color: aqua;
+        }
+
+        .item {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .item a {
+            display: block;
+        }
+
+        .item a img {
+            width: 100%;
+        }
+
+        .active {
+            background-color: #c81623;
+            border-bottom: 2px solid white;
+        }
+
+        .active a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tab-box">
+        <div class="tab-list">
+            <h1>每日特价</h1>
+            <ul>
+                <li class="active"><a href="#">精选</a></li>
+                <li><a href="#">美食</a></li>
+                <li><a href="#">百货</a></li>
+                <li><a href="#">个护</a></li>
+                <li><a href="#">预告</a></li>
+            </ul>
+        </div>
+        <div class="item-list">
+            <div class="item" style="display: block;">
+                <a href="#"><img src="../img/tab00.png" alt=""></a>
+            </div>
+            <div class="item">
+                <a href="#"><img src="../img/tab01.png" alt=""></a>
+            </div>
+            <div class="item">
+                <a href="#"><img src="../img/tab02.png" alt=""></a>
+            </div>
+            <div class="item">
+                <a href="#"><img src="../img/tab03.png" alt=""></a>
+            </div>
+            <div class="item">
+                <a href="#"><img src="../img/tab04.png" alt=""></a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const tabLis = document.querySelectorAll(".tab-list > ul>li");
+        const items = document.querySelectorAll(".item");
+
+        tabLis.forEach(function (value, key, tabLis) {
+            // 给tabList和items添加自定义属性
+            tabLis[key].dataset.index = key;
+            items[key].dataset.index = key;
+
+            tabLis.forEach(function (v1, k1, tabLis) {
+                tabLis[k1].addEventListener("mouseover", function () {
+                    //干掉所有人
+                    tabLis.forEach(function (v2, k2, tabLis) {
+                        tabLis[k2].classList.remove("active");
+                        items[k2].style.display = "none";
+                    })
+                    // 留下我自己
+                    tabLis[k1].classList.add("active");
+                    items[k1].style.display = "block";
+                })
+            })
+        });
+
+        // for (let i = 0; i < tabLis.length; i++) {
+        //     tabLis[i].addEventListener("mouseover", function () {
+        //         //干掉所有人
+        //         for (let j = 0; j < tabLis.length; j++) {
+        //             tabLis[j].classList.remove("active");
+        //             items[j].style.display = "none";
+        //         }
+        //         //    留下我自己
+        //         tabLis[i].classList.add("active");
+        //         items[i].style.display = "block";
+        //     })
+        // }
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

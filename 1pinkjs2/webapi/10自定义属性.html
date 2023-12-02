@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10自定义属性</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div data-index="1">1</div>
+    <div data-index="2">2</div>
+    <div data-index="3">3</div>
+    <div data-index="4">4</div>
+    <div data-child-index="5">5</div>
+
+
+    <script>
+        /* 
+            自定义属性
+                旧版的：
+                    对象.setAttribute("属性名","属性值") //给该对象设置名为“属性名”的属性名
+                    对象.getAttribute("属性名") //获取该属性名对应的值
+                新版：
+                    新版对自定义属性名设置做了建议，建议自定义属性名都以“data-”开头
+
+                    获取-语法：
+                        对象.dataset.自定义属性名
+                        对象.dataset["去掉以data-开头的属性名"]  //这种方式与获取对象中某个属性的值一样
+                        
+                        注：如果自定义属性名有多个单词组成，那么获取时将“data-”省掉，剩余单词采用小驼峰命名格式
+                            如 data-child-index='5'
+                                获取时， console.log(div.dataset["childIndex"])
+                                    或  console.log(div.dataset.childIndex)
+                    设置-语法：
+                        对象.dataset.新的自定义属性名=新值
+                        对象.dataset["新的自定义属性名"]=新值
+                        如：div.dataset.spm="11"   --\> data-spm="11"
+                            div.dataset["spm"]="11"   --\> data-spm="11"
+
+                    如果自定义属性名以"data-"开头那么获取自定义属性时可以省略"data-"
+                    如：<div data-index='1'>123</div>
+                        获取时const div=document.querySelector("div");
+                              console.log(div.dataset.index);
+        */
+
+        // 获取
+        const div = document.querySelector("div");
+        console.log(div.dataset.index);
+        const div5 = document.querySelector("div:nth-child(5)");
+        console.log(div5.dataset.childIndex); //获取方式一
+        console.log(div5.dataset["childIndex"]); //获取方式二
+
+        // 设置
+        div.dataset.spm="11";
+        console.log(div.dataset.spm);
+        div.dataset["abc"]="abc";
+        console.log(div.dataset["abc"]);
+
+    </script>
+
+</body>
+
+</html>
