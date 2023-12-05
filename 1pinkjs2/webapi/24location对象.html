@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24location对象</title>
+</head>
+
+<body>
+    <a href="https://www.baidu.com"><span>5</span>秒后去百度</a>
+    <form action="#">
+        <input type="text" name="uname" id="">
+        <input type="text" name="password" id="">
+        <input type="submit"value="提交">
+    </form>
+
+    <script>
+
+        /* 
+            location.href:获取完整地址
+            location.search:返回？后面的参数 例：?uname=12&password=2222
+            location.reload(true|false) 是否刷新，true强制刷新，false默认
+            hash:获取#后面的内容
+
+        */
+        const a = document.querySelector("a");
+        let num = 5;
+
+        let timer=setInterval(function () {
+            a.innerHTML = `<span>${num > 0 ? num-- : num}</span>秒后去百度`;
+            if(num==0){
+                clearInterval(timer);
+                // location.href="https://www.baidu.com";
+            }
+        }, 1000);
+
+        console.log(location.search);
+        console.log(location.hash);
+
+    </script>
+</body>
+
+</html>

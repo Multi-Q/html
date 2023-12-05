@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27本地存储</title>
+</head>
+<body>
+    
+
+    <script>
+        /* 
+            本地存储：
+                localStorage
+                    localStorage.setItem(key,value) //设置
+                    localStorage.getItem(key,value) //获取
+                    localStorage.removeIntem(key) //删除
+                    localStorage.clear() //清空
+                sessionStorage
+                    sessionStorage.setItem(key,value) //设置
+                    sessionStorage.getItem(key,value) //获取
+                    sessionStorage.removeIntem(key) //删除
+                    sessionStorage.clear() //清空
+
+                localStorage和sessionStorage的区别：
+                    1、localStorage即使关闭浏览器数据还会存在
+                    2、sessionStorage关闭浏览器数据会被清空
+
+        */
+
+        localStorage.setItem("name","pink");
+        localStorage.setItem("age","18");
+        localStorage.setItem("sex","男");
+        console.log(localStorage.getItem("name"));
+        console.log(localStorage.removeItem("age"));
+        console.log(localStorage.clear());
+
+        const obj={
+            name:"pink",
+            age:18,
+            sex:1,
+            addr:"USA"
+        }
+        localStorage.setItem("obj",JSON.stringify(obj));
+        console.log(JSON.parse(localStorage.getItem("obj")));
+
+       
+    </script>
+</body>
+</html>

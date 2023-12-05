@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16事件流</title>
+    <style>
+        .father, .father1,.father2 {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+
+        .son,.son1,.son2 {
+            width: 300px;
+            height: 300px;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="father">
+        父亲
+        <div class="son">儿子</div>
+    </div>
+<br>
+    <div class="father1">
+        父亲1
+        <div class="son1">儿子1</div>
+    </div>
+
+    <br>
+    <div class="father2">
+        父亲2 阻止冒泡
+        <div class="son2">儿子2</div>
+    </div>
+
+    <script>
+
+        /* 
+            捕获：从大的往小的走
+            冒泡：从小的往大的走
+
+            Dom.addEventListener(事件类型，事件处理函数，是否使用捕获机制(true捕获|false冒泡-默认) );
+
+            阻止事件冒泡
+            DOM.stopPropagation() //既可以阻止冒泡，也可以阻止捕获
+
+        */
+        const father = document.querySelector(".father");
+        const son = document.querySelector(".son")
+
+        father.addEventListener("click", function (e) {
+        //    只会弹出自己的弹窗
+            alert("父亲");
+        }, true);
+
+        son.addEventListener("click",function(e){
+             //点.son也会触发弹窗 但弹窗的顺序为 父亲->儿子
+            alert("儿子")
+        },true);
+
+
+
+
+        const father1 = document.querySelector(".father1");
+        const son1 = document.querySelector(".son1")
+
+        father1.addEventListener("click", function (e) {
+        //    只会弹出自己的弹窗
+            alert("父亲");
+        }, false);
+
+        son1.addEventListener("click",function(e){
+             //点.son1也会触发弹窗 但弹窗的顺序为 儿子->父亲
+            alert("儿子")
+        },false);
+
+
+        // 阻止事件冒泡
+        const father2 = document.querySelector(".father2");
+        const son2 = document.querySelector(".son2")
+
+        father2.addEventListener("click", function (e) {
+        //    只会弹出自己的弹窗
+            alert("父亲");
+        }, false);
+
+        son2.addEventListener("click",function(e){
+             //点.son1也会触发弹窗 但弹窗的顺序为 儿子->父亲
+            alert("儿子");
+            // 阻止事件冒泡 给小的加
+            e.stopPropagation();
+        },false);
+
+
+    </script>
+
+</body>
+
+</html>

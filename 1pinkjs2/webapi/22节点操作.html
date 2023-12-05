@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22节点操作</title>
+    <style>
+        .dad {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+
+        .son {
+            width: 300px;
+            height: 300px;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dad">
+        <div class="son"></div>
+    </div>
+    <ul>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+    </ul>
+
+    <script>
+        /* 
+            节点操作
+                1、查找节点
+                    parentNode 查找父节点，查找亲爹
+                    children 仅获得所有元素结点，但返回的是一个伪数组
+                2、增加节点
+                    document.createElement("html标签名") 例：const li=document.createElement("li")
+                    父元素.appendChild("子元素对象") 例：ul.appendChild(li);
+                    父元素.insertBefore(要插入的元素，在哪个元素的前面) 例：ul.insertBefore(li,ul.children[0]) //在ul的第一个孩子前插入li
+                    
+                3、删除结点
+                    父元素.removeChild(亲儿子)
+
+        */
+        const son = document.querySelector(".son");
+        console.log(son);
+        console.log(son.parentNode);
+
+        const ul = document.querySelector("ul");
+        console.log(ul.children);
+
+        const li=document.createElement("li");
+        li.innerHTML="创建";
+        ul.appendChild(li);
+        ul.insertBefore(li,ul.children[0]);
+
+
+
+    </script>
+
+
+</body>
+
+</html>

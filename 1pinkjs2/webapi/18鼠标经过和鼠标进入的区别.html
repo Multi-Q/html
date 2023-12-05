@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18鼠标经过和鼠标进入的区别</title>
+    <style>
+        .dad,.dad1{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .baby,.baby1{
+            width: 50px;
+            height: 50px;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div class="dad">dad1
+        <div class="baby">baby</div>
+    </div>
+    <br>
+    <div class="dad1">dad1
+        <div class="baby1">baby1</div>
+    </div>
+    <script>
+
+        /* 
+            mouseover 会有事件冒泡
+            mouseenter 不会有时间冒泡
+        */
+        const dad=document.querySelector(".dad");
+        const baby=document.querySelector(".baby");
+
+        dad.addEventListener("mouseover",function(){
+            console.log("dad");
+        });
+        baby.addEventListener("mouseover",function(){
+            console.log("baby");
+        });
+
+
+
+        const dad1=document.querySelector(".dad1");
+        const baby1=document.querySelector(".baby1");
+
+        dad1.addEventListener("mouseenter",function(){
+            console.log("dad1");
+        });
+        baby1.addEventListener("mouseenter",function(){
+            console.log("baby1");
+        });
+    </script>
+    
+</body>
+</html>

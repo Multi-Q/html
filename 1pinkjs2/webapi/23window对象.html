@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23window对象</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            window对象包含：
+                定时器函数
+                延时函数 setTimeout(回调函数,延迟多少毫秒)
+                window.navigator对象
+                window.document对象
+                window.location对象
+                window.history对象
+                window.screen对象
+
+            所有通过var关键字声明的变量都会挂载在window对象下
+
+        */
+       setTimeout(function(e){
+        console.log(e); //函数没有自带参数
+       },3000);
+
+       let timer=setTimeout(function(e){
+        console.log("时间到了");
+       },3000);
+       clearTimeout(timer);
+
+    </script>
+</body>
+</html>

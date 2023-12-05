@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10全选框按钮实现</title>
+    <style>
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            height: 30px;
+            min-width: 100px;
+            border: 1px solid #ccc;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        /* tbody>tr>td>input[type='checkbox']:checked {} */
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="checkAll">
+                    <label for="checkAll">全选</label>
+                </th>
+                <th>商品</th>
+                <th>商家</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+        const goods = [
+            {
+                goodsName: "小米13 Pro",
+                store: "小米天猫旗舰店",
+                price: 4599.99
+            },
+            {
+                goodsName: "小米14 Pro",
+                store: "小米天猫旗舰店",
+                price: 5999.99
+            },
+            {
+                goodsName: " HUAWEI nova 11 se",
+                store: "华为旗舰店",
+                price: 2100.99
+            },
+            {
+                goodsName: "华为Mate 60 Pro",
+                store: "华为旗舰店",
+                price: 8999.99
+            },
+            {
+                goodsName: "荣耀X100",
+                store: "荣耀天猫旗舰店",
+                price: 4699.99
+            },
+            {
+                goodsName: "小米Pad 6 Pro",
+                store: "小米天猫旗舰店",
+                price: 3299.99
+            },
+            {
+                goodsName: "黄连上清片",
+                store: "天猫超市",
+                price: 4.50
+            },
+            {
+                goodsName: "格力变频冰箱",
+                store: "格力天猫旗舰店",
+                price: 4000.00
+            },
+            {
+                goodsName: "天选4 plus 锐龙版 16G+1T",
+                store: "惠普电脑城",
+                price: 9999.99
+            },
+            {
+                goodsName: "小米电视",
+                store: "小米天猫旗舰店",
+                price: 2300.00
+            }
+        ]
+
+        let tbody = document.querySelector("tbody");
+
+        // 将数据渲染到页面
+        for (let i = 0; i < goods.length; i++) {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td><input type="checkbox"></td>
+                <td>${goods[i].goodsName}</td>
+                <td>${goods[i].store}</td>
+                <td><em>￥</em>${goods[i].price}</td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        const tdCheckboxs = document.querySelectorAll("td>input[type='checkbox']");
+        for (let i = 0; i < tdCheckboxs.length; i++) {
+            tdCheckboxs[i].addEventListener("click", function (e) {
+                // 这里可以不用定义input的伪类就能拿到length
+                selectAll.checked=(document.querySelectorAll("tbody> tr> td >input[type='checkbox']:checked").length === tdCheckboxs.length);
+            });
+
+        }
+
+        // 全选 取消全选
+        const selectAll = document.querySelector("#checkAll");
+        selectAll.addEventListener("click", function (e) {
+            for (let i = 0; i < tdCheckboxs.length; i++) {
+                tdCheckboxs[i].checked = selectAll.checked;
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

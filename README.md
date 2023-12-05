@@ -4,9 +4,14 @@
 
 一、初识JavaScript
 
+```txt
             | ECMAScript
 JavaScript <  DOM
             | BOM
+
+```
+
+
 
 
 

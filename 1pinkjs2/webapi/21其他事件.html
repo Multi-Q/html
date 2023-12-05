@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21其他事件</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            overflow: scroll;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            padding-top: 50px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<button>点击</button>
+<div class="box1">
+    dhgahgdagshdgasgds
+    gadgksahdkjhas
+    jkdhjhaskjdhjaskhd
+    khasjhdkjhbchjbhjbbb
+    cjhshjasdasd
+</div>
+
+<div class="box2"></div>
+    <script>
+        /* 
+            页面加载事件(等待页面加载完成在执行js）：
+                window.inload=function(){....}
+                或 window.addEventListener("load",function(e){
+                    .....
+                })
+                
+                当初始的html文档加载和解析完成之后，DOMContentLoaded事件被触发，无需等待图片、样式表等资源完全加载
+                注：该对象只能给document对象加
+                例：document.addEventListener("DOMContentLoaded",function(){...})
+        
+            
+            页面滚动事件：
+                事件名：scroll
+                监听整个页面
+                可以给window加，也可以给document加
+                document.documentElement.scrollTop/scrollLeft是可读写的
+            
+            页面尺寸事件
+                获取元素宽高(不包含padding和border）：
+                    document.documentElement.clientHeight
+                    document.documentElement.clientWidth
+                
+                获取元素的自身宽高（包含自身设置的宽高+padding+border）
+                    对象.offsetWidth
+                    对象.offsetHeight
+
+                    offsetWidth和offsetHeight是只读的
+                */
+
+
+
+                // window.addEventListener("scroll",function(e){
+                //   console.log(document.documentElement.scrollTop);
+                // });
+
+                // const box1=document.querySelector(".box1");
+                // box1.addEventListener("scroll",function(e){
+                    
+                // })
+
+                // window.addEventListener("resize",function(e){
+                //     console.log("浏览器窗口发生变化了");
+                // });
+
+               
+    </script>
+</body>
+</html>

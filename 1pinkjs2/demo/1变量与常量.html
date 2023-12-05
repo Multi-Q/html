@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1变量与常量</title>
+    <style>
+        .input-with-after::after {
+            content: " (read-only)";
+            color: gray;
+        }
+    </style>
 </head>
 
 <body>
-
+    <input type="text" class="input-with-after">
     <script>
 
         /* 
@@ -31,6 +37,10 @@
         const na = "张三";
         //    na="李四"; //报错
         console.log(na);
+
+
+
+
     </script>
 
 </body>

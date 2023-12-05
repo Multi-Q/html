@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17事件解绑</title>
+</head>
+
+<body>
+    <button> 点击</button>
+    <script>
+        /* 
+
+         dom.removeEventListener(事件类型,要解绑的函数，[可选选项]) 
+         注：
+            如果要解绑的函数式一个匿名函数，那么是无法解绑的
+
+        */
+        const btn = document.querySelector("button");
+        // btn.onclick = function () {
+        //     alert("点击了");
+
+        //     // L0事件解绑 //再次点击btn不会再弹出弹窗了
+        //     btn.onclick=null;
+        // }
+        function fn() {
+            alert("要解绑的函数");
+        }
+        btn.addEventListener("click", fn);
+        // L2事件解绑
+        btn.removeEventListener("click",fn);
+
+    </script>
+
+</body>
+
+</html>
