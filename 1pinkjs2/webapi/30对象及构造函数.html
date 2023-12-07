@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30对象及构造函数</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+            对象
+            创建对象的三种方式：
+                1、利用字面量创建对象
+                    const obj={}
+                2、使用new Object();
+                    const obj=new Object();
+                3、使用构造函数创建对象
+                    function Pig(name,age,gender){
+                        this.name=name;
+                        this.age=age;
+                        this.gender;
+                    }
+                    const piqi=new Pig("piqi",7,"women");
+                    约定：
+                        使用构造函数创建对象，函数名采用大驼峰命名法
+                    实例对象中的方法称为实例成员
+                    构造函数创建的实例对象彼此独立互不影响
+                    
+        */
+        console.log("-----------------------------------------------");
+        const o = new Object();
+        o.uname = "pink";
+        console.log("new Object()创建函数", o);
+
+        console.log("-----------------------------------------------");
+        const obj = new Object({ uname: "pink" });
+        console.log("new Object()创建函数", obj);
+
+
+        console.log("-----------------------------------------------");
+        // 构造函数创造对象
+        function Pig(name, age, gender) {
+            // 构造函数中的this指向的是Pig ，谁创建就指的是谁
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        const piqi = new Pig("piqi", 8, "women");
+        console.log("构造函数创建对象", piqi);
+
+        console.log("-----------------------------------------------");
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.eye = 2; //静态属性
+        Person.sayHi = function () { //静态方法
+            console.log("hi~");
+        }
+        Person.sayHi();
+
+        /*
+             内置构造函数
+                Object
+                Array
+                String
+                Number
+
+               Array中的 arr.reduce(function(上一次值，当前值){}，初始值)
+               如果没有起始值，则 上一次值 以 数组的第一个数组元素的值
+               每一次循环，把 返回值 给作为下一次循环的 上一次值
+               如果有 起始值，则 起始值 作为 上一次值
+
+        */
+        const arr = [1, 5, 8];
+        // 无初始值
+        const total1 = arr.reduce(function (prev, current) {
+            return prev + current;
+        });
+        console.log(total1);
+        // 有初始值
+        const total2 = arr.reduce(function (prev, current) {
+            return prev + current;
+        }, 10); //有初始值还要把初始值加进去
+        console.log(total2);
+
+        
+
+    </script>
+</body>
+
+</html>

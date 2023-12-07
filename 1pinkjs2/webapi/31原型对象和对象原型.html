@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>31原型对象和对象原型</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+            原型：
+                js规定，每一个构造函数都有一个prototype属性，该属性指向另一个对象，所以我们称之为原型对象
+                这个对象可以挂载函数，对象实例化不会多次创建原型上函数，节省内存
+                可以把那些不变的方法，直接定义在prototype对象上，这样所有对象的实例就可以共享这些方法
+                构造函数和原型对象中的this都会指向 实例化对象
+        */
+
+        // 公共的属性写在构造函数内
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            // this.sing=function(){
+            //     console.log("唱歌");
+            // }
+        }
+        // 公共方法放在原型上
+        //    将sing()放在原型上
+        Person.prototype.sing = function () {
+            // 原型函数中的this指向调用者，谁调用就指向谁，利用this这样就不用给sing()传参了
+            console.log(this.name + "唱歌");
+        }
+
+        const ldh = new Person("刘德华", 18);
+        console.log(ldh);
+        ldh.sing();
+
+        console.log("--------------------------------------------");
+
+
+
+        /* 
+                constructor属性
+                    每个原型对象中都有这个属性
+                原型中的constructor指向构造函数，简单理解，就是指向我的爸爸，我是有爸爸的孩子
+
+        */
+        Person.prototype = {
+            // 从新只会创造这个原型对象的构造函数
+            constructor:Person,
+            dance: function () {
+                console.log("跳舞");
+            },
+            action: function () {
+                console.log("表演");
+            }
+        };
+        console.log(Person.prototype);
+
+
+
+        console.log("--------------------------------------------");
+        
+        
+        /* 
+            原型对象 __proto__
+            __proto__是js非标准属性
+            [[prototype]]和__proto__意义相同,且都是只读的
+            __proto__对象原型里面也有一个contructor属性，指向创建该实例对象的构造函数
+
+        */
+       console.log(ldh.__proto__);
+        console.log("--------------------------------------------");
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

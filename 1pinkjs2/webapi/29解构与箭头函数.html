@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29解构与箭头函数</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+            作用域
+                局部作用域
+                    函数内部声明的变量只能在函数内部使用，外部无法访问
+                    函数执行完后，函数内部的变量会被清空
+                全局作用域
+                    在<script>和.js文件的最外层写的就是全局作用域，全局作用域声明的变量，在函数内部可以访问
+                块级作用域
+                    用{}包住的区域就叫块级作用域
+                    块级作用域内的变量有可能会被访问，使用var声明的变量，在{}外可以被访问，因为var不会产生块级作用域
+                    for(;;){} if(){}
+                    不同代码块之间的变量不能相互访问
+                作用域链
+                    函数执行前，会优先查找当前函数作用域中查找变量
+                    如果当晚作用域查找不到则会一次逐级查找父级作用域知道全局作用域
+                    子作用域能访问父作用域，父作用域无法访问子作用域
+                js垃圾回收机制
+                    内存分配：当我们声明变量、函数、对象的时候，系统会自动为他们分配内存
+                    内存使用：读写内存、也就是使用变量、函数
+                    内存回收：使用完毕、有垃圾回收器自动回收不再使用的内存
+                    注：全局变量一般不会回收（关闭页面回收）
+                闭包
+                    使用闭包函数创建隔离作用域避免全局变量的污染
+                    简单理解：闭包=内层函数+外层函数的变量
+                    闭包应用：实现函数内变量的私有化
+                变量提升
+                    是js中的缺陷，仅存在于var中
+
+        */
+
+        // 闭包
+        // function outer(){
+        //     let a=1;
+        //     function fn(){
+        //         console.log(a);
+        //     }
+        //  fn();
+        // }
+        // outer();
+
+        function outer() {
+            let a = 10;
+            function fn() {
+                console.log(a);
+            }
+            return fn;
+        }
+        // outer();  //等价于fn 等价于 function fn()
+        // const fun=function fn(){}
+        const fun1 = outer();
+        fun1();
+
+        // 闭包应用 统计函数调用次数
+        // let i=0;
+        // function fn(){
+        //     i++;
+        //     console.log(`函数被调用了${i}`);
+        // }
+        // fn(); //i是全局变量，很容易被外部修改
+
+        function outer1() {
+            let i = 0;
+            function fn() {
+                i++;
+                console.log(`函数被调用${i}次`);
+            }
+            return fn;
+        }
+        const fni = outer1();
+        fni();
+
+        // 变量提升
+        var num;  //只提升声明，不提升赋值
+        console.log(num + "件");
+        // var num=10;  //->
+        num = 10;
+
+
+
+
+
+        /* 
+            函数
+                函数提升
+                函数参数
+                    动态参数
+                    剩余参数
+                
+        */
+
+        console.log("-----------------------------------");
+        fn(); //会把函数声明提升到当前作用的最前面 。只提升函数声明，不提升函数调用
+        function fn() {
+            console.log("函数声明");
+        }
+        // 函数表达式必须先声明，再调用
+        var fun2 = function () {
+            console.log("函数表达式必须先声明，再调用");
+        }
+
+
+        console.log("-----------------------------------");
+        // 动态参数
+        function getSum() {
+            // arguments动态参数，只存在于函数里面 ，arguments是一个伪数组
+            console.log("arguments=" + arguments);
+        }
+        getSum(1, 2, 2);
+
+        console.log("-----------------------------------");
+        // 剩余参数
+        function getCount(a, ...arr) {  //...js中称剩余参数，但java中称可变参数，本质上是一个数组
+            // 剩余参数后面不能再有变量，否则报错 
+            console.log(a);
+            console.log("剩余参数=" + arr.length);
+        }
+        getCount(1, 2, 3, 4, 5, 6, 7);
+
+        console.log("-----------------------------------");
+        // 展开运算符 不会修改原数组 应用场景：求数组的最大最小值
+        const arrs = [1, 2, 3, 4, 5];
+        console.log(...arrs);
+        console.log("max=" + Math.max(...arrs));
+        console.log("min=" + Math.min(...arrs));
+
+
+        console.log("-----------------------------------");
+        // 函数默认参数
+        function fun3(x = 0, y = 0) { //如果调用fun3()时没有传参，形参的默认值才会生效，如果有传参则默认参数不会生效
+            console.log(x + y);
+        }
+        fun3();
+
+
+        /* 
+            箭头函数
+                使用场景：适合本来需要匿名函数的地方
+                语法：()=>{........}
+                1
+
+
+        */
+        console.log("-----------------------------------");
+        // 以前写法
+        // const f=function(){
+        //     // ....
+        // }
+
+        // 箭头函数
+        const f = () => {
+            console.log("箭头函数");
+        }
+        f();
+
+
+        console.log("-----------------------------------");
+        // 箭头函数返回对象，但必须要用括号包住
+        const fun4 = () => ({ name: "李华" });
+        console.log(fun4());
+
+
+        console.log("-----------------------------------");
+        // 箭头函数内没有arguments参数，但是可以使用剩余参数...args
+        const getSums = (...args) => {
+            let sum = 0;
+            for (let i = 0; i < args.length; i++) {
+                sum += args[i];
+            }
+            return sum;
+        }
+        console.log(getSums(1, 2, 3, 4));
+
+
+        console.log("-----------------------------------");
+        // 箭头函数的this指向
+        // 以前的this，谁调用this就指向谁
+        const obj = {
+            name: "andy",
+            sayHi: function () {
+                console.log(this); //this指向的是obj
+            }
+        }
+        obj.sayHi();
+
+        // 箭头函数 指向的是上一层作用域的this
+        const fun5 = () => {
+            console.log(this); //指向window
+        }
+        fun5();
+
+        // 对象中的this
+        const obj1 = {
+            name: "pink",
+            sayHi: () => {
+                console.log(this); //指向的是window
+            }
+        }
+        obj1.sayHi();
+
+        const obj3 = {
+            name: "pink",
+            satHi: function () {
+                console.log(this); //指向obj3
+                let i = 10;
+                count = () => {
+                    console.log(this); //指向obj3
+                }
+                count();
+            }
+        }
+        obj3.satHi();
+
+
+        /* 
+            解构
+                数组解构
+                    将数组单元快速批量赋值给一系列变量的简洁语法
+                    变量的顺序对应数组单元值的位置
+                对象解构
+                    要求属性名和变量名保持一致才行
+
+        */
+        console.log("-----------------------------------");
+        // 数组结构 
+        const [max, min, a] = [100, 1, 90];
+        console.log("最大、最小、a=", max, min, a);
+
+
+        console.log("-----------------------------------");
+        // 对象结构
+        const { uname, password } = { uname: "张三", password: "123456" };
+        console.log(`uname=${uname},password=${password}`);
+
+        const { name, world } = { world: "helloworld", name: "lisi" };
+        console.log(`name=${name},world=${world}`);
+
+        const pink = "pink老师";
+        // 给变量起别名 避免变量名冲突
+        const { pink: pinkname, age } = { pink: "老师", age: 1 };
+        console.log(pinkname, age);
+
+        // 对象多级解构
+        const pig = {
+            name: "佩奇",
+            family: {
+                mother: "猪妈妈",
+                father: "猪爸爸",
+                sister: "猪姐妹"
+            }
+        }
+        const { name:piqi, family: { mother, father, sister } } = pig;
+        console.log(piqi, mother, father, sister);
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
