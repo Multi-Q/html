@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1用户登录</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(236, 232, 232);
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+        }
+
+        .login {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: white;
+            box-sizing: border-box;
+        }
+
+        .login-wrapper {
+            width: 420px;
+            height: 420px;
+            margin: 40px;
+        }
+
+        header>h2 {
+            height: 32px;
+            margin-bottom: 10px;
+        }
+
+        .msg {
+            width: 100%;
+            height: 50px;
+            line-height: 48px;
+            border-radius: 6px;
+            padding-left: 10px;
+        }
+
+        .right {
+            background-color: rgb(186, 248, 186);
+            border: 1px solid rgb(0, 253, 0);
+            color: rgb(3, 185, 3);
+        }
+
+        .error {
+            background-color: rgb(245, 210, 216);
+            border: 1px solid rgb(251, 195, 204);
+            color: rgb(255, 0, 0);
+        }
+
+        .login-form {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .login-form label {
+            display: block;
+            height: 32px;
+            line-height: 32px;
+            margin-top: 14px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .login-form input:not([type='submit']) {
+            width: 100%;
+            height: 34px;
+            padding-left: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .login-form input[type='submit'] {
+            height: 34px;
+            padding: 0 10px;
+            letter-spacing: 5px;
+            border: 1px solid blue;
+            border-radius: 6px;
+            margin-top: 14px;
+            background-color: rgb(0, 110, 255);
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login clearfix">
+        <div class="login-wrapper">
+            <header>
+                <h2>欢迎-登录</h2>
+            </header>
+            <div class="msg "></div>
+            <form action="javascript:;" class="login-form" method="psot">
+                <label for="username">账号名</label>
+                <input type="text" class="username" id="username" name="username">
+                <label for="password">密码</label>
+                <input type="password" class="password" id="password" name="password">
+                <input type="submit" value="登录">
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        const msg = document.querySelector(".msg");
+        const form = document.querySelector(".login-form");
+        const loginBtn=document.querySelector("input[type='submit']");
+
+        function alertMsg(message, isSuccess) {
+            msg.classList.remove("error");
+            msg.classList.remove("right");
+
+            msg.classList.add(isSuccess ? "right" : "error");
+            msg.innerHTML = message;
+
+            setTimeout(function () {
+                msg.classList.remove("error");
+                msg.classList.remove("right");
+                msg.innerHTML = "";
+            }, 2000);
+
+        }
+        loginBtn.addEventListener("click", function (e) {
+            const username = document.querySelector("#username").value.trim();
+            const password = document.querySelector("#password").value.trim();
+            msg.classList.remove("right");
+            msg.classList.remove("error");
+           
+            if (username.length < 8) {
+                e.preventDefault();
+                alertMsg("用户名必须大于等于8位", false);
+                return;
+            }
+            if (password.length < 6) {
+                e.preventDefault();
+                alertMsg("密码必须大于等于6位", false);
+                return;
+            }
+            axios({
+                url: "http://hmajax.itheima.net/api/login",
+                method: "post",
+                data: {
+                    username: username,
+                    password: password
+                }
+            }).then(function(res){
+                console.log(res);
+                alertMsg(res.data.message, true);
+                form.reset();
+            }).catch(function(err){
+                console.log(err);
+                alertMsg(err.response.data.message, false);
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>

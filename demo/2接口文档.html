@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2接口文档</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <button>点击登录</button>
+
+    <script>
+        // axios初体验
+        document.querySelector("button").addEventListener("click", function () {
+                axios({
+                    url:"http://hmajax.itheima.net/api/login",
+                    method:"post",
+                    data:{
+                        username:"itheima007",
+                        password:"7654321"
+                    }
+                }).then(function(res){
+                    console.log(res);
+                }).catch(function(err){
+                    console.log(err);
+                })
+        });
+    </script>
+</body>
+
+</html>
