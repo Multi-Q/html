@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>36高级技巧-节流</title>
+    <script src="../js/lodash.min.js"></script>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: #ccc;
+            color: #fff;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        /*
+            节流：单位时间内，频繁触发事件，只执行一次
+            使用场景：
+                鼠标移动、页面尺寸缩放、滚动条滚动
+            处理方法：
+                lodash库实现
+                手写一个节流函数
+        */
+        const box = document.querySelector(".box");
+        let i = 1;
+        function mouseMove() {
+            box.innerHTML = i++;
+
+        }
+        // lodash库实现节流
+        // box.addEventListener("mousemove",_.throttle(mouseMove,1000));
+
+        function throttle(fn, t) {
+            let timer = null;
+            return function () {
+                if (!timer) {
+                    timer = setTimeout(function () {
+                        fn();
+                        // 清空定时器 
+                        // clearTimeout()中有个坑：setTimeout()中无法清除定时器，因为定时器还在运作，所以使用timer=null方式清空定时器
+                        timer = null;
+                    }, t);
+                }
+            }
+        }
+        box.addEventListener("mousemove", throttle(mouseMove, 1000));
+
+    </script>
+</body>
+
+</html>

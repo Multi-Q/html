@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>32高级技巧-深拷贝与浅拷贝</title>
+    <script src="../js/lodash.min.js"></script>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+            浅拷贝和深拷贝只针对引用类型
+
+            浅拷贝：拷贝的事地址
+                常用方法：
+                    Object.assign() 或展开运算符{...obj}拷贝对象
+                    Array.prototype.concat() 或 [...arr] 拷贝数组
+       
+            直接赋值和浅拷贝的区别：
+                直接赋值的方法，只要是对象，都会相互影响，因为是直接拷贝对象栈里面的地址
+                浅拷贝如果是一层对象，不相互影响，如果出现多层对象拷贝还会相互影响
+
+            深拷贝：拷贝的是对象，不是地址
+                常用方法：
+                    1、通过递归实现深拷贝
+                    2、lodash.js内的cloneDeep() 使用：_.cloneDeep(对象名)
+                    3、通过JSON.stringfy()实现
+       
+                    */
+        const obj = {
+            uname: "pink",
+            age: 18,
+            family: {
+                baby: "小pink"
+            },
+            hobby: ["乒乓球", "足球"]
+        }
+
+        // 直接复制对象
+        // const o = obj;
+        // o.age = 20;
+        // console.log(o);
+        // //    o修改导致obj的属性值也跟着被修改了
+        // console.log(obj);
+
+        // 浅拷贝
+        const o = { ...obj };
+        o.age = 20;
+        o.family.baby = "老pink"; //复杂的类型拷贝直接给地址
+        console.log(o);
+        console.log(obj);
+        console.log("-------------------------------");
+        
+        
+        // 深拷贝
+        const o1 = {};
+        function deepCopy(newObj, oldObj) {
+            for (let k in oldObj) {
+                //k属性名 oldObj[k]属性值
+                //newIbj[k]===o.uname
+                // 先写数组，因为数组也是对象，如果把Object放前面则数组数据会变成对象
+                if (oldObj[k] instanceof Array) {
+                    newObj[k] = [];
+                    // oldObj[k] ->["乒乓球", "足球"]
+                    deepCopy(newObj[k], oldObj[k]);
+                } else if(oldObj[k] instanceof Object){
+                    newObj[k]={};
+                    deepCopy(newObj[k],oldObj[k]);
+                } else{
+                    newObj[k] = oldObj[k];
+                }
+            }
+        }
+        deepCopy(o1, obj);
+        o1.age = 222;
+        o1.hobby[0] = "篮球";
+        o1.family.baby = "piqi";
+        console.log("o1", o1);
+        console.log("obj", obj);
+
+
+        console.log("-------------------------------");
+        // lodash实现深拷贝
+        const o2=_.cloneDeep(obj);
+        o2.hobby[0]="跳";
+        o2.family.baby="熊大";
+        console.log("lodash实现深拷贝 o2",o2);
+        console.log("obj",obj);
+
+
+        // 利用JSON.stringify()
+        console.log("-------------------------------");
+        const o3=JSON.parse(JSON.stringify(obj));
+        o3.uname="张三";
+        o3.family.baby="老大";
+        o3.hobby[1]="羽毛球";
+        console.log("利用JSON.stringify() o3",o3);
+        console.log("obj",obj);
+
+    </script>
+</body>
+
+</html>

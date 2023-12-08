@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>33高级技巧-异常处理</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            throw抛异常
+            try{}catch(){} 捕获异常
+        */
+
+        function fn(x, y) {
+            if (!x || !y) {
+                throw new Error("错误：参数为空");
+            }
+            return x + y;
+        }
+        console.log(fn());;
+
+        function fn1() {
+            try {
+                const p = document.querySelector("p");
+                p.style.color = "red";
+            } catch (err) {
+                console.log(err.message);
+                // return;
+            }finally{
+                alert(1)
+            }
+        }
+
+        // debugger
+    </script>
+</body>
+
+</html>

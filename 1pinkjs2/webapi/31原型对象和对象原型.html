@@ -49,7 +49,7 @@
         */
         Person.prototype = {
             // 从新只会创造这个原型对象的构造函数
-            constructor:Person,
+            constructor: Person,
             dance: function () {
                 console.log("跳舞");
             },
@@ -62,8 +62,8 @@
 
 
         console.log("--------------------------------------------");
-        
-        
+
+
         /* 
             原型对象 __proto__
             __proto__是js非标准属性
@@ -71,13 +71,43 @@
             __proto__对象原型里面也有一个contructor属性，指向创建该实例对象的构造函数
 
         */
-       console.log(ldh.__proto__);
+        console.log(ldh.__proto__);
         console.log("--------------------------------------------");
 
 
+        /* 
+                原型继承
+
+        */
+        //    公共的部分放到原型上
+        // const Human = {
+        //     eyes: 2,
+        //     head: 1
+        // }
+        function Human(){
+            this.eyes=2;
+            this.head=1;
+        }
+        function Woman() {
+
+        }
+        Woman.prototype = new Human();
+        Woman.prototype.constructor = Woman;
+        Woman.prototype.baby=function(){ //给女人添加baby()，Man中也有，这样不行
+            const owner="woman";
+            console.log("baby");
+        }
+        function Man() {
+
+        }
+        Man.prototype = new Human();
+        Man.prototype.constructor=Man;
 
 
-
+        const pink = new Man();
+        console.log(pink);
+        const woman=new Woman();
+        console.log(woman);
 
 
 

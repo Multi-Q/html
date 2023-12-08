@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>35高级技巧-防抖</title>
+    <script src="../js/lodash.min.js"></script>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: #ccc;
+            color: #fff;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        /*
+            防抖：单位时间内，频繁触发事件，只执行最后一次
+            处理方法：
+                lodash.js处理防抖
+                自己手写一个防抖函数
+        */
+        const box = document.querySelector(".box");
+        let i = 1;
+        function mouseMove() {
+            box.innerHTML = i++;
+
+        }
+        function debounce(fn, t) {
+            let timer = null;
+            // 返回一个匿名函数
+            return function () {
+                // 2、如果有没有定时器，有则清除
+                if (timer) {
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(function () {
+                    fn();
+                }, t);
+            }
+        }
+        //    手写防抖函数 核心是利用定时器来实现的
+        box.addEventListener("mousemove", debounce(mouseMove, 500));
+
+        // 利用lodash库实现防抖，500ms后再加1
+        // box.addEventListener("mousemove",_.debounce(mouseMove,500));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>34高级技巧-this深入理解</title>
+</head>
+
+<body>
+    <button>点我</button>
+
+    <script>
+        /* 
+            改变this的指向
+                fun.call(thisArg,arg1,arg2,...)
+                    thisArg:在fun函数运行时指定的this值
+                    arg1,arg2传递的其它参数
+                fun.apply(thisArg,[argsArray])
+                    thisArg:在fun函数运行时指定的this值
+                    argsArray：传递的值，必须包含在数组里面
+                    apply()和数组有关系，如使用Math.max()求数组的最大值
+               （重要） fun.bind(thisArg,arg1,arg2,...) 该方法不会调用函数，但是能改变函数内部this指向
+                    thisArg:在fun函数运行时指定this值
+                    arg1，arg2：传递的其它参数
+                    返回由指定的this值和初始化参数改造的原函数拷贝（新函数）
+                    当我们只是想改变this指向，并且不想调用这个函数的时候，可以使用bind，比如改变定时器内部的this指向
+        */
+
+        const obj = {
+            usname: "pink"
+        }
+
+
+        // call()
+        function fn(x = 0, y = 0) {
+            console.log(this, x, y);
+        }
+        // 改变this指向
+        fn.call(obj, 1, 2);
+        console.log("--------------------------------------");
+
+        // apply()
+        function fn1(...arr) {
+            console.log(this);
+            console.log("数组", arr);
+        }
+        fn1.apply(obj, [1, 2, 3, 4, 5]);
+
+        // 应用场景
+        const max = Math.max.apply(Math, [1, 2, 2, 3, 4]);
+        console.log("max=", max);
+        console.log("--------------------------------------");
+
+        // bind()
+        function fn3() {
+            console.log(this);
+        }
+        const newFun = fn.bind(obj); //返回值是一个函数，且this是被改过的
+        newFun();
+        console.log("--------------------------------------");
+        
+        // bind()的使用
+        document.querySelector("button").addEventListener("click", function () {
+            this.disabled = true;
+            window.setTimeout(function () {
+                this.disabled = false;
+            }.bind(this), 2000);
+        })
+
+
+    </script>
+</body>
+
+</html>
