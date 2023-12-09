@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7简易封装axios实现注册用户案例</title>
+</head>
+
+<body>
+    <button class="reg-btn">注册用户</button>
+
+    <script>
+        function myAxios(config) {
+            return new Promise((resolve, reject) => {
+
+                if (config.params) {
+                    const params = new URLSearchParams(config.params);
+                    config.url += `?${params.toString()}`;
+                }
+                const xhr = new XMLHttpRequest();
+                xhr.open(config.method || "get", config.url);
+                xhr.addEventListener("loadend", () => {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(JSON.parse(xhr.response));
+                    } else {
+                        reject(new Error(xhr.response));
+                    }
+                });
+                // 原生中，在send()传递请求体数据
+                if (config.data) {
+                    const jsonStr = JSON.stringify(config.data);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.send(jsonStr);
+                } else {
+                    xhr.send();
+                }
+            });
+        }
+        document.querySelector(".reg-btn").addEventListener("click", () => {
+            myAxios({
+                url: "http://hmajax.itheima.net/api/register",
+                method: "post",
+                data: {
+                    username: "itheima9999",
+                    password: "123456"
+                }
+            }).then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err.message);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

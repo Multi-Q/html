@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5使用Promise+XHR_获取省份列表</title>
+</head>
+<body>
+    <p class="my-p"></p>
+    <script>
+        const p=new Promise((resolve,reject)=>{
+            const xhr=new XMLHttpRequest();
+            xhr.open("get","http://hmajax.itheima.net/api/provinces");
+            xhr.addEventListener("loadend",()=>{
+                if(xhr.status>=200&&xhr.status<300){
+                    resolve(JSON.parse(xhr.response));
+                }else{
+                reject(new Error(xhr.response));
+            }});
+            xhr.send();
+        });
+        p.then(res=>{
+            console.log(res);
+        }).catch(err=>{
+            document.querySelector(".my-p").innerHTML=err.message;
+            console.dir(err);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8简易封装axios</title>
+</head>
+
+<body>
+    <p class="my-p"></p>
+    <script>
+        function myAxios(config) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open(config.method || "get", config.url);
+                xhr.addEventListener("loadend", () => {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(JSON.parse(xhr.response));
+                    } else {
+                        reject(new Error(xhr.response));
+                    }
+                });
+                xhr.send();
+            });
+        }
+        myAxios({
+            url: "http://hmajax.itheima.net/api/province",
+            method: "get"
+        }).then(res => {
+            console.log(res);
+            document.querySelector(".my-p").innerHTML = res.list.join("<br>");
+        }).catch(err => {
+            document.querySelector(".my-p").innerHTML = err.message;
+        });
+    </script>
+</body>
+
+</html>

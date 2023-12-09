@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5图片上传</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <input type="file" class="upload">
+<img src="" alt="" class="my-img">
+    <script>
+        /* 
+            图片上传步骤：
+                1、获取图片文件
+                2、使用浏览器内置对象FormData携带图片文件
+                3、提交到服务器，获取图片url网址使用
+        */
+       document.querySelector(".upload").addEventListener("change",e=>{
+            const file=e.target.files[0];
+            const fd=new FormData();
+            fd.append("img",file);
+            axios({
+                url:"http://hmajax.itheima.net/api/uploadimg",
+                method:"post",
+                data:fd
+            }).them(res=>{
+                document.querySelector(".my-img").src=res.data.data.url;
+            });
+
+       });
+    </script>
+
+</body>
+</html>
