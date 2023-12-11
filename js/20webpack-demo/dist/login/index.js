@@ -1,0 +1,1 @@
+(()=>{"use strict";document.querySelector(".btn").addEventListener("click",(()=>{const e=document.querySelector(".login-form [name=mobile").value,o=document.querySelector(".login-form [name=code").value;(e=>11===e.length)(e)?(e=>6===e.length)(o)?console.log("提交到服务器登录..."):console.log("验证码长度必须是6位"):console.log("手机号长度必须是11位")}))})();
