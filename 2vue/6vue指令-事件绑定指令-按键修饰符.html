@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6按键修饰符</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" @keyup.enter="submit" >
+        <input type="text" @keyup.esc="clear()" >
+        <!-- 监听键盘的L键，按键不区分大小写 -->
+        <input type="text" @keyup.L="keyboard" >
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        const vm=new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+                submit(e){
+                    console.log(e);
+                    alert("提交");
+                },
+                clear(){
+                    console.log("清空内容");
+                    alert("清空内容");
+                },
+                keyboard(e){
+                    console.log(e.key);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

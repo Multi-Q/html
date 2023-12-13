@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9vue指令-条件渲染指令</title>
+</head>
+<body>
+
+<div id="app">
+    <!-- v-if每次都会动态的创建元素好删除元素 -->
+    <p v-if="flag">这是被v-if控制的元素</p>
+    <!-- v-show只会显示和隐藏元素，不会将其删除 -->
+    <p v-show="flag">这是被v-show控制的元素</p>
+
+<!-- 
+    v-if=""  v-else-if="" v-eles
+    
+    等价于
+    if(){
+
+    }else if(){
+
+    }else{
+
+    }
+-->
+
+</div>
+
+<script src="./lib/vue.js"></script>
+<script>
+
+    const vm=new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        }
+    })
+</script>
+    
+</body>
+</html>

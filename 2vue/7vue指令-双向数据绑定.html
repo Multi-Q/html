@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7vue指令-双向数据绑定</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" value="hello">
+        <!-- 替换了表单标签的value属性 -->
+        <input type="text" v-model="msg">
+
+        <textarea v-model="textareamsg" cols="30" rows="10"></textarea>
+       
+        <select name="city" v-model="city">
+            <option value="shanghai">上海</option>
+            <option value="beijing">北京</option>
+            <option value="guangxi">广西</option>
+        </select>
+
+
+         <!-- <button> 不能使用-model -->
+        <!-- <button v-model="buttonmsg"></button> -->
+
+        <!-- <label> 不能使用v-model -->
+        <!--  <label for="" v-model="labelmsg"></label> -->
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"请填写内容",
+                textareamsg:"textareamsg请填写内容",
+                // labelmsg:"labelmsg"
+                // buttonmsg:"button点我"
+                city:"shanghai"
+            }
+        });
+    </script>
+</body>
+
+</html>

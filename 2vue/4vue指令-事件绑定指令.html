@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4vue指令-事件绑定指令</title>
+    <style>
+        .div1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{num}}</h1>
+        <!-- 
+            如果绑定的事件函数没有括号，那么vue会自动给函数添加js原生的事件对象event
+            如果绑定的事件函数加了括号，但是没有参数，那么vue不再会给这个函数添加js原生的事件对象event
+                如果硬是要js原生的事件对象，那么必须显式的添加$event，这是vue封装这个事件对象
+        -->
+        <button v-on:click="addOne(1,$event)">点我加1</button>
+        <button @:click="miniOne">点我减1</button>
+        <div @mouseenter="enter()" class="div1">鼠标进入事件onmouseenter</div>
+    </div>
+    <script src=" ./lib/vue.js">
+            </script>
+            <script>
+                const vm = new Vue({
+                    el: "#app",
+                    data: {
+                        num: 0
+                    },
+                    methods: {
+                        addOne: function () {
+                            this.num += 1;
+                        },
+                        /* 
+                            //  或者使用这个写法
+                            addOne(){
+            
+                            }
+                        */
+                        miniOne() {
+                            this.num -= 1;
+                        },
+                        enter(){
+                            alert('鼠标进入')
+                        }
+                    }
+                });
+            </script>
+</body>
+
+</html>

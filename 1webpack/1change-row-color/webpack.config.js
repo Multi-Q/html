@@ -14,11 +14,28 @@ module.exports = {
                 test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
+            {
+                test:/\.js$/i,
+                use:"babel-loader",
+                 // 使用babel-loader时，程序员只需将自己的代码进行转换即可，一定要排除node_modules目录中的js，因为第三方中的js不需要程序员担心
+                exclude:"/node_modules/"
+            },
+            {
+                test:/\.(jpg|jpeg|png|gif)$/i,
+                use:{
+                    loader:"url-loader",
+                    options:{
+                        limit:22228,
+                        // 明确制定打包生成的图片文件，存储到dist目录下的imgage文件夹中
+                        outputPath:"image"
+                    }
+                }
+            }
         ]
     },
     output: {
         path: path.resolve(__dirname, "./dist"), //输出文件的存放路径
-        filename: "bundles.js", //输出文件的名称
+        filename: "js/bundles.js", //输出文件的名称
         clean: true, //每次打包都会先清除内容再写入
     },
     plugins: [

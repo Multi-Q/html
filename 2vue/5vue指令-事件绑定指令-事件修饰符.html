@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5事件修饰符</title>
+    <style>
+        .father{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1><a href="http://www.baidu.com" v-on:click.prevent="go($event)">去百度</a></h1>
+        <div class="father" @click="bubble($event)">
+            模拟冒泡 父亲
+            <div class="son"  @click="bubble($event)" >儿子</div>
+        </div>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        const vm=new Vue({
+            el:"#app",
+            data:{ },
+            methods:{
+                go(e){
+                //     // 原生js中阻止事件默认行为函数
+                //    e.preventDefault();
+                //     console.log("原生js中的事件对象",e);
+                console.log("事件修饰符");
+                },
+                bubble(e){
+                    alert(e.target.innerHTML);
+                }
+            }
+        })
+       
+    </script>
+</body>
+</html>

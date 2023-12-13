@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1品牌列表案例</title>
+
+    <style>
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix::after,
+        .clearfix::before {
+            clear: both;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .brand-head-box {
+            border: 1px solid #ccc;
+        }
+
+        .brand-head-hd {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 14px;
+            background-color: rgb(242, 240, 240);
+        }
+
+        .brand-head-bd {
+            height: 40px;
+            background-color: pink;
+        }
+
+        .brand-head-bd-wrapper {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            margin: 5px 0 5px 14px;
+            box-sizing: border-box;
+        }
+
+        .brand-head-bd-input-box {
+            float: left;
+            height: 100%;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .brand-head-bd-input-box>span {
+            display: block;
+            float: left;
+            height: 100%;
+            padding: 0 8px;
+            background-color: #f4f2f2;
+        }
+
+        .brand-head-bd-input-box>input[type="text"] {
+            float: left;
+            width: 200px;
+            height: 100%;
+            border: 0px;
+            outline: none;
+            padding-left: 6px;
+        }
+
+        .brand-head-bd-btn {
+            float: left;
+            height: 100%;
+            margin-left: 14px;
+        }
+
+        .brand-head-bd-btn>button {
+            height: 30px;
+            line-height: 28px;
+            padding: 0 8px;
+            border: 1px solid rgb(0, 102, 255);
+            background-color: rgb(0, 102, 255);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .brand-con-box {
+            margin-top: 25px;
+        }
+
+        .brand-con-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .brand-con-box thead th,
+        .brand-con-box tbody td {
+            height: 28px;
+            border: 1px solid #ccc;
+        }
+
+        .brand-con-box tbody td {
+            padding: 0 20px;
+        }
+
+        .brand-con-box tbody tr:nth-child(even) {
+            background-color: #f1f1f1;
+        }
+
+        .brand-con-box tbody td>input[type="checkbox"] {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 10px;
+        }
+
+        .del {
+            font-size: 12px;
+            color: rgb(0, 98, 255);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="w">
+            <div class="brand-head-box">
+                <div class="brand-head-hd">
+                    添加品牌
+                </div>
+                <div class="brand-head-bd">
+                    <div class="brand-head-bd-wrapper">
+                        <div class="brand-head-bd-input-box">
+                            <span>品牌名称</span>
+                            <input type="text" placeholder="请输入品牌名称" v-model.trim="brandName">
+                        </div>
+                        <div class="brand-head-bd-btn">
+                            <button v-on:click="addBrand">添加品牌</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand-con-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>品牌名称</th>
+                            <th>状态</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in brandList" :key="item.id">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td><input type="checkbox"
+                                    :checked="item.status===1?true:false"><span>{{item.status===1?"已启用":"已禁用"}}</span>
+                            </td>
+                            <td>{{item.createTime}}</td>
+                            <td><span class="del" @click="del(item.id)">删除</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                brandName: "",
+                brandList: [
+                    {
+                        id: 1,
+                        name: "宝马",
+                        status: 1,
+                        createTime: "2023-12-13 18:41:36"
+                    },
+                    {
+                        id: 2,
+                        name: "劳斯莱斯",
+                        status: 0,
+                        createTime: "2023-3-13 18:41:36"
+                    },
+                    {
+                        id: 3,
+                        name: "大众",
+                        status: 0,
+                        createTime: "2023-11-13 18:41:36"
+                    },
+                    {
+                        id: 4,
+                        name: "奥迪",
+                        status: 1,
+                        createTime: "2023-12-13 13:41:36"
+                    },
+                    {
+                        id: 5,
+                        name: "奔驰",
+                        status: 0,
+                        createTime: "2023-12-13 12:41:36"
+                    },
+                ]
+            },
+            methods: {
+                addBrand() {
+                    if (this.brandName !== "") {
+                        this.brandList.push({
+                            id: this.brandList.length + 1,
+                            name: this.brandName,
+                            status: 1,
+                            createTime: this.getDate()
+                        });
+                    }
+                },
+                del(itemId) {
+                    this.brandList=this.brandList.filter(item=>item.id!==itemId);
+                },
+                getDate() {
+                    const date = new Date();
+                   return  date.toLocaleString("zh-CN",{hour12:false}).replace(/\//g,"-");
+                    // return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " "
+                    //     + (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ":"
+                    //     + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ":"
+                    //     + (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

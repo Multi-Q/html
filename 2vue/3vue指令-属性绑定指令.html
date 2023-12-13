@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3vue指令-属性绑定指令</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{}}插值表达式只能用在内容节点，不能用在属性节点 -->
+       <input type="text" v-bind:placeholder="place">
+
+       <p><a :href="togo">去百度</a></p>
+    </div>
+<script src="./lib/vue.js"></script>
+<script>
+    const vm=new Vue({
+        el:"#app",
+        data:{
+            place:"请输入姓名~",
+            togo:"http://www.baidu.com"
+        }
+    });
+</script>
+</body>
+</html>

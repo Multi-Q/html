@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10vue指令-列表渲染指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="i in arr">我是{{i}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(item,index) in objList" :key="index">
+                <span>{{index}}</span>
+                <span>姓名：{{item.name}} </span>
+                <span>年龄：{{item.age}}</span>
+                <span>性别：{{item.gender}}</span>
+            </li>
+        </ul>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                arr: ["张三", "李四", "王五", "赵六", "马七"],
+                objList: [
+                    {
+                        name: "张三",
+                        age: 18,
+                        gender: "男"
+                    },
+                    {
+                        name: "张三",
+                        age: 18,
+                        gender: "男"
+                    },
+                    {
+                        name: "张三",
+                        age: 18,
+                        gender: "男"
+                    },
+                    {
+                        name: "张三",
+                        age: 18,
+                        gender: "男"
+                    },
+                    {
+                        name: "张三",
+                        age: 18,
+                        gender: "男"
+                    }
+                ]
+
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>

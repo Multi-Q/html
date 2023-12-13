@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2vue指令-内容渲染指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-text="username"></p>
+        <!-- v-text会把标签内的内容覆盖掉，并且v-text不能解析html标签 -->
+        <p class="gender" v-text="gender">性别</p>
+
+        <!-- {{}}内可以写三元表达式、其他表达式 -->
+        <p class="gender">性别：{{gender}}</p>
+
+        <!-- v-html也会覆盖掉标签内原来的内容，但是v-html可以解析html标签 -->
+        <p class="go" v-html="baidu">去百度</p>
+
+
+
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                username: "张三",
+                gender: "男",
+                baidu: "<h1>http://www.baidu.com</h1>"
+            }
+        });
+    </script>
+</body>
+
+</html>
