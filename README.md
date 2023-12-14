@@ -30,7 +30,7 @@ export default{
     "test": "echo \"Error: no test specified\" && exit 1",
   "dev":"webpack"
   }
-  ```
+```
 <span style="color:red;">注：</span><br>
 > webpack中的默认约定:<br>
 >在webpack4.x和5.x的版本中有如下默认规定：<br>
@@ -255,7 +255,7 @@ module.exports={
             }
         });
     </script>
-  ```
+```
 
 #### 2、属性绑定指令
 `v-bind`<br>
@@ -444,7 +444,7 @@ vue给`v-bind`提供了监听键盘的`按键修饰符`
 </body>
 ```
 
-### 4、双向绑定指令
+#### 4、双向绑定指令
 `v-model`<br>
 用来给`表单标签`进行数据的双向绑定，它其实是`替换了`表单标签中的`values属性`，也就是说，v-model等价于表单标签中的value属性
 
@@ -491,7 +491,7 @@ vue给`v-bind`提供了监听键盘的`按键修饰符`
 </body>
 ```
 
-#### 4.1、v-model的3个修饰符
+##### 4.1、v-model的3个修饰符
 `.number`将用户输入的值转换成数值类型<br>
 `.trim`过滤掉用户输入的值的守卫空白字符<br>
 `lazy`在change时更新数据
@@ -521,7 +521,7 @@ vue给`v-bind`提供了监听键盘的`按键修饰符`
 
 ```
 
-### 5、条件渲染指令
+#### 5、条件渲染指令
 `v-if`<br>
 `v-show`<br>
 
@@ -575,7 +575,7 @@ v-if和v-show的使用建议：
 </body>
 ```
 
-### 6、列表渲染指令
+#### 6、列表渲染指令
 `v-for`<br>
 格式：`v-for="i in items"`或`v-for="(item,index) in items" :key="index"`
 
@@ -637,4 +637,500 @@ v-if和v-show的使用建议：
 </body>
 ```
 
-### 7、 
+#### 7、过滤器(<span style="color:red;">vue3已弃用</span>) 
+
+
+#### 8、侦听器
+
+`watch`<br>
+用来监听数据变化<br>
+`监听谁函数名就是谁`<br>
+有点像原生js的“change”或“input”监听事件
+
+侦听器有两种写法：<br>
+<ul>
+<li>1、方法格式侦听器<br>
+        缺点：无法在刚进入页面的时候触发监听函数
+</li>
+<li>2、对象格式侦听器<br>
+        优点：1、通过<span style="font-weight:bolder;">immediate属性</span>可以让侦听器自动触发<br>
+        <span style="margin-left:42px;">2、如果要侦听对象中的某个属性的变化，一定要使用对象格式的侦听器</span>
+
+</li>
+</ul>
+
+```html
+<body>
+    <div id="app">
+        <input type="text" v-model="username">
+        <input type="text" v-model="user.name">
+        <input type="text" v-model="user.addr.city">
+
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                username: "",
+                user: {
+                    name: "zhangsan",
+                    addr: {
+                        city: ""
+                    }
+                }
+            },
+            watch: {
+                /* 
+                    方法格式的监听器：
+                        缺点：无法在刚进入页面的时候触发监听函数
+                    对象格式监听器：
+                        优点：
+                */
+
+                // 方法格式的监听器
+                // 侦听器本质上就是一个函数，要监视哪个数据变化，就把数据名作为方法名就可
+                // 新值在前，旧值在后
+                // username(newValue,oldValue){
+                //     console.log(newValue,oldValue);
+                // },
+                // 如果参数只有一个，那这个参数是newValue
+                // username(newValue){
+                //     console.log(newValue);
+                // }
+
+
+                // 对象格式的监听器
+                // username: {
+                //     // 侦听器处理函数
+                //     handler(newVal, oldVal) {
+                //         console.log(newVal, oldVal);
+                //     },
+                //     // 控制监听器是否立即触发，默认为false
+                //     immediate: true
+                // },
+
+                // 如果侦听对象变化，必须使用对象格式的侦听器
+                // user: {
+                //     handler(newVal, oldVal) {
+                //         console.log(newVal, oldVal);
+                //     },
+                //     immediate: true,
+                //     // 开启深度监听，只要对象中的任意属性变化了，都会触发对象的侦听器
+                //     deep: true
+                // }
+
+
+                // 如果要直接侦听对象中的子属性的变化，则必须包裹一层单引号
+                "user.addr.city"(newVal, oldVal) {
+                    console.log(newVal, oldVal);
+                },
+
+                "user.name":{
+                    immediate:true,
+                    handler(newVal, oldVal) {
+                        console.log(newVal, oldVal);
+                    },
+                },
+            }
+        });
+
+    </script>
+
+
+</body>
+```
+
+#### 9、计算属性
+`computed`<br>
+计算属性指的是通过一系列运算之后，最终得到一个`属性值`<br>
+这个动态计算出来的属性值可以被`模板结构`或`methods方法`使用
+
+```html
+<body>
+
+    <div id="app">
+        <div :style=" `backgroundColor: ${rgb};width:200px;height:200px;`  ">
+            {{rgb}}
+        </div>
+        <button @click="change">切换颜色</button>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        /* 
+            计算属性指的是通过一系列运算之后，最终得到一个`属性值` 
+            这个动态计算出来的属性值可以被模板结构或methods方法使用
+        */
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                r:10, g:0, b:0
+            },
+            methods: {
+                change(){
+                     console.log(this.rgb);
+                }
+            },
+            computed: {
+                rgb(){
+                    return `rgb(${this.r},${this.g},${this.b})`;
+                }
+            }
+        })
+    </script>
+
+</body>
+```
+
+## 二、vue组件使用
+<ul>
+    <li>1、定义组件</li>
+    <li>2、谁用这个组件就import这个组件,然后再<span style="font-weight:bolder;">components对象</span>中注册这个组件(components注册的是私有组件，谁导入就只有谁能用)</li>
+</ul>
+
+假设`APP.vue`要引用`Left.vue`,`Right.vue`,那么App.vue就需要导入Left.vue和Right.vue
+
+**App.vue**
+```html
+<template>
+  <div >
+      <Left></Left>
+      <Right></Right>
+  </div>
+</template>
+
+<script>
+
+import Left from "@/components/Left.vue"
+import Right from "./components/Right.vue";
+
+export default {
+  name: 'App',
+  components: {
+    Left,Right
+  }
+}
+</script>
+
+<style lang="less">
+</style>
+```
+
+**Left.vue**
+```html
+<template>
+  <div id="left"> </div>
+</template>
+
+<script>
+export default {
+    name:"Left",
+    data(){
+        return { }
+    },
+    methods:{ }
+}
+</script>
+
+<style scoped lang="less">
+    #left{
+        float: left;
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+    }
+</style>
+
+</style>
+```
+
+**Right.vue**
+```html
+<template>
+  <div id="right">  </div>
+</template>
+
+<script>
+export default {
+    name:"Right"
+    ,
+    data(){
+        return { }
+    },
+    methods:{ }
+}
+</script>
+
+<style scoped lang="less">
+#right{
+    float: left;
+    width: 500px;
+    height: 500px;
+    background-color: rebeccapurple;
+}
+</style>
+```
+
+### 一、组件全局注册
+步骤：<br>
+1、在`入口函数main.js`中导入要注册成全局组件的组件<br>
+2、用`Vue.component("全局组件名",要注册的组件名)`进行全局注册 <br>
+
+**main.js**
+```js
+import Count from "@/components/Count.vue";
+Vue.component("MyCount",Count);
+```
+
+### 二、props属性的使用(父向子传数据，子中props定义的属性来接收)
+`props`是组件的自定义属性，在封装通用组件时<br>
+**props中自定义的属性是只读的，程序员不能直接修改props值，要想修改可以把props的值转存到data中，因为data中的数据是可读可写的**
+
+```js
+pros:["init"],
+data(){
+    return {
+        count:this.init
+    }
+}
+```
+
+步骤<br>
+1、首先在`子组件`中使用`props`自定义一个属性<br>
+2、父组件中用到该组件就可以在该组件的标签内传入值，`属性名:"要传的值"`。属性名就是子组件props中自定义的属性名，值就是父组件要给子组件中的这个属性名传的值<br>
+
+**父组件Left.vue**
+```html
+<template>
+  <div id="left">
+    左边
+    <hr>
+    <MyCount :init="9"></MyCount>
+  </div>
+</template>
+```
+
+**子组件Count.vue**
+```html
+<template>
+  <div id="my-count">
+    我是my-count
+    <p>count的值是:{{ count }}</p>
+    <button @click="add">+1</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Count",
+//   props: ["init"],
+   props:{
+    init:{
+      // 默认值
+      default:0,
+      // 值的类型
+      type:Number,
+      // 值是否必填，默认false
+      // require:true,
+
+    },
+  data() {
+    return {
+      count: this.init ? this.init : 0
+    }
+  },
+  methods: {
+    add() {
+      this.count += 1;
+    }
+  },
+}
+</script>
+```
+
+#### 1、props的default默认值
+数组写法的props无法修改自定义属性的默认值，那就将props转为对象形式<br>
+对象形式可以解决`父组件`不传递值时出现报错问题
+
+```js
+props:{
+    init:{
+        // default官方规定的属性
+        default:0,
+    }
+}
+```
+
+#### 2、props的type
+
+```js
+props:{
+    init:{
+        // default官方规定的属性
+        default:0,
+        // type是官方规定的属性，用来指定该init接收一个数值类型
+        type:Number
+    }
+}
+```
+
+#### 3、props的require
+
+```js
+props:{
+    init:{
+        // default官方规定的属性
+        default:0,
+        // type是官方规定的属性，用来指定该init接收一个数值类型
+        type:Number,
+        // 必填，如果父父组件不传值就报错，就算有default属性都不行，因为require关注的是你传不传值，而不是你有没有默认值
+        require:true
+    }
+}
+```
+### 三、\<style\>标签内添加scoped
+因为vue内定义的css样式是全局生效的，所以为了防止影响到其他vue文件的页面显示，在\<scoped\>内添加`scoped`属性可以防止该vue文件内定义的css样式会影响到其他vue文件
+```html
+<style scoped>
+</style>
+```
+
+### 四、使用deep修改子属性样式
+`/deep/ 选择器名`
+
+```html
+<style scoped>
+    /* 
+        不加/deep/ 生成样式类名为 h5[data-v-XXXX]{}
+        加了/deep/ 生成的类名为 [data-v-XXXX] h5{}
+
+        什么时候用到这个/deep/？
+            如果想在父组件中修改掉子组件中的某个样式就可以这样
+            当使用第三方时候，如果又要修改第三方组件中的样式，这就可以这样用/deep/
+    */
+    /deep/ h5{
+        color:red;
+    }
+</style>
+```
+
+### 五、组件的生命周期
+生命周期：创建->运行->销毁，强调一个时间段
+
+
+### 六、组件间的数据共享
+#### 6.1、父向子共享数据用<i style="color:red;">自定义属性props</i>
+
+#### 6.2、子向父传递数据使用<i style="color:red;">自定义事件</i>
+步骤：<br>
+1、`父组件`内给`子组件标签内`添加`自定义事件`。<br>
+2、`父组件`内定义这个自定义事件函数<br>
+3、`子组件`通过`this.$emit("父组件中在子组件标签中定义自定义事件名",要发送给父组件的数据)`
+
+**子组件Son.vue**
+```html
+<template>
+  <div id="my-count">
+    我是Son
+    <p>count的值是:{{ count }}</p>
+    <button @click="add">+1</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Son",
+  data() {
+    return {  count: 0  }
+  },
+  methods: {
+    add() {
+      this.count += 1;
+      this.$emit("numchange",this.count);
+    }
+  },
+}
+</script>
+```
+
+**父组件App.vue**
+```html
+<template>
+  <div id="my-app">
+    <p>来自子组件的值：{{ countFromSon }}</p>
+    <Son @numchange="getNewCount"></Son>
+  </div>
+</template>
+
+<script>
+
+import Son from "@/components/Son.vue";
+export default {
+  name: 'App',
+  components: { Son },
+  data() {
+    return {
+      countFromSon: 0
+    }
+  },
+  methods: {
+    getNewCount(val) {
+      this.countFromSon = val;
+    }
+  }
+}
+</script>
+```
+
+#### 6.3、兄弟组件中数据共享
+vue2.x中使用EventBus实现数据共享<br>
+步骤:<br>
+1、创建一个js，向外共享一个Vue实例对象，命名为`bus.js`<br>
+**bus.js**
+```js
+import Vue from "vue";
+export default new Vue();
+```
+2、`兄弟组件A（数据发送方）`和`兄弟组件B（数据接收方）`都要导入`bus.js`，才能使用事件总线<br>
+3、`兄弟组件A（数据发送方）`在`methods`定义一个方法来发送数据<br>
+**兄弟组件A（数据发送方）App.vue**
+```js
+methods:{
+    sendDataToBro(){
+      // 向兄弟组件发信息
+    //   bus.$emit("事件名称",要发送的数据)触发自定义事件
+      bus.$emit("share",this.str);
+    }
+}
+```
+4、`兄弟组件B（数据接收方）`在`created函数`中接收`兄弟组件A（数据发送方）`发来的数据<br>
+**兄弟组件B（数据接收方）AppBrother.vue**
+```js
+created() {
+    // bus.$on("事件名称", 时间处理函数)注册一个自定义事件
+    bus.$on("share", function (val) {
+        this.myBrosMsg = val;
+    });
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11侦听器</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="username">
+        <input type="text" v-model="user.name">
+        <input type="text" v-model="user.addr.city">
+
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                username: "",
+                user: {
+                    name: "zhangsan",
+                    addr: {
+                        city: ""
+                    }
+                }
+            },
+            watch: {
+                /* 
+                    方法格式的监听器：
+                        缺点：无法在刚进入页面的时候触发监听函数
+                    对象格式监听器：
+                        优点：
+                */
+
+                // 方法格式的监听器
+                // 侦听器本质上就是一个函数，要监视哪个数据变化，就把数据名作为方法名就可
+                // 新值在前，旧值在后
+                // username(newValue,oldValue){
+                //     console.log(newValue,oldValue);
+                // },
+                // 如果参数只有一个，那这个参数是newValue
+                // username(newValue){
+                //     console.log(newValue);
+                // }
+
+
+                // 对象格式的监听器
+                // username: {
+                //     // 侦听器处理函数
+                //     handler(newVal, oldVal) {
+                //         console.log(newVal, oldVal);
+                //     },
+                //     // 控制监听器是否立即触发，默认为false
+                //     immediate: true
+                // },
+
+                // 如果侦听对象变化，必须使用对象格式的侦听器
+                // user: {
+                //     handler(newVal, oldVal) {
+                //         console.log(newVal, oldVal);
+                //     },
+                //     immediate: true,
+                //     // 开启深度监听，只要对象中的任意属性变化了，都会触发对象的侦听器
+                //     deep: true
+                // }
+
+
+                // 如果要直接侦听对象中的子属性的变化，则必须包裹一层单引号
+                "user.addr.city"(newVal, oldVal) {
+                    console.log(newVal, oldVal);
+                },
+
+                "user.name":{
+                    immediate:true,
+                    handler(newVal, oldVal) {
+                        console.log(newVal, oldVal);
+                    },
+                },
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>

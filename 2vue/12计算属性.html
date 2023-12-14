@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12计算属性</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <div :style=" `backgroundColor: ${rgb};width:200px;height:200px;`  ">
+            {{rgb}}
+        </div>
+        <button @click="change">切换颜色</button>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        /* 
+            计算属性指的是通过一系列运算之后，最终得到一个`属性值` 
+            这个动态计算出来的属性值可以被模板结构或methods方法使用
+        */
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                r:10,
+                g:0,
+                b:0
+            },
+            methods: {
+                change(){
+                     console.log(this.rgb);
+                }
+            },
+            computed: {
+                rgb(){
+                    return `rgb(${this.r},${this.g},${this.b})`;
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
