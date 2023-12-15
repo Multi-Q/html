@@ -493,7 +493,7 @@ vue给`v-bind`提供了监听键盘的`按键修饰符`
 
 ##### 4.1、v-model的3个修饰符
 `.number`将用户输入的值转换成数值类型<br>
-`.trim`过滤掉用户输入的值的守卫空白字符<br>
+`.trim`过滤掉用户输入的值的首尾空白字符<br>
 `lazy`在change时更新数据
 
 ```html
@@ -1114,15 +1114,220 @@ created() {
 }
 ```
 
+### 七、ref引用
+ref用来获取dom元素或组件的引用<br>
+在每个组件中都包含有一个`$refs`对象，这个对象默认指向一个`空对象`<br>
+
+在原生的js中，如果我们想要获取一个元素的dom，那么需要通过`const 变量名=documen.querySelector("选择器")`的方式获取，而vue简化了我们获取元素dom的方式，那就是通过给`标签内添加ref="dom变量名"`就可以获取得到这个标签的dom对象，最后调用时调用这个$refs对象中的dom对象即可。<br>
+调用格式：`this.$refs.你设置这个dom的变量名.dom中拥有的所有属性`<br>
+组件也可以使用ref，使用方法相同
+**App.vue**
+```html
+<template>
+  <div id="app">
+    <h1 ref="myh1">App根组件</h1>
+    <button @click="show">打印this</button>
+  <hr>
+  </div>
+</template>
+<script>
+export default {
+  name: "App",
+  components: {},
+  data() {
+    return {};
+  },
+  methods: {
+    show(){
+      console.log(this);
+      this.$refs.myh1.style.color="red";
+    }
+  },
+};
+</script>
+```
+
+#### this.$nextTick(回调函数)方法
+等组件dom更新完成之后，再调用回调函数，保证回调函数可以操作最新的dom元素
+
+```js
+  this.$nextTick(function(){
+    //当某些需要dom更新完才执行的代码，可以放到这里
+  });
+```
+### 八、动态组件
+动态切换组件的显示和隐藏<br>
+
+#### 8.1、如何实现动态组件渲染
+vue提供了一个内置的`<component>`组件，专门用来实现动态组件的渲染。<br>
+步骤：<br>
+1、定义一个要渲染的组件名称<br>
+2、通过\<component\>内的`is`属性，动态指定要渲染的组件<br>
+3、实现切换效果
+
+```html
+data(){
+  return {
+    comName:"Left"
+  }
+}
+<component :is="comName"></component>
+
+<button @click="comName='Left'">展示Left组件</button>
+<button @click="comName='Right'">展示Right组件</button>
+```
+
+#### 8.2、\<keep-alive\>标签使用
+当使用`<component>`来实现切换效果时，组件会创建，当切走时，组件也就被销毁。如果组件内有操作数据，当切走再切回时，当时的数据没有了。<br>
+所以为了解决这个问题可以使用`<keep-alive>标签`来保持组件的状态，谁想要保持状态，就把谁放到\<keep-alive\>中
+```html
+<template>
+  <div id="app">
+    <button @click="comName = 'Left'">切换Left组件</button>
+    <button @click="comName = 'Right'">切换Right组件</button>
+    <!-- 渲染Left组件 或 Right组件 -->
+    <keep-alive>
+      <component :is="comName"></component>
+    </keep-alive>
+  </div>
+</template>
+```
+##### 8.2.1、keep-alive对应的生命周期函数
+当组件`被缓存`时，会自动触发组件的`deactivated`生命周期函数<br>
+当组件`被激活`时，会自动触发组件的`activated`生命周期函数<br>
+
+##### 8.2.1、keep-alive提供的include属性用来指定哪个组件可以被缓存
+格式：`<keep-alive include="组件注册的名字，组件注册的名字，...."`<br>
+注：当值有很多个的时候，使用`,`分割<br>
+```html
+<!-- 指定Left组件可以被缓存 -->
+<keep-alive include="Left">
+  <component :is="comName"></component>
+</keep-alive>
+```
+
+##### 8.2.1、keep-alive提供的exclude属性用来排除哪个组件不被缓存
+格式：`<keep-alive exnclude="组件注册的名字，组件注册的名字，...."`<br>
+注：<strong>include和exclude不能同时使用</strong><br>
+当值有很多个的时候，使用`,`分割<br>
+```html
+<!-- 指定Left组件可以被缓存 -->
+<keep-alive exnclude="Right">
+  <component :is="comName"></component>
+</keep-alive>
+```
+
+### 九、插槽
+`<slot>`<br>
+
+**注：`v-slot:插槽名称`只能使用在\<template\>标签内，其插槽名称是由\<slot\>中的`name`指定的<br>
+`v-slot`也可简写为`#`<br>
+插槽是vue为组件的封装者提供的能力，允许开发人员在封装组件时，把不确定、希望由用户指定的部分定义为插槽<br>
+
+**App.vue**
+```html
+<template>
+  <div id="app">
+
+    <!-- 默认情况下，在使用组件的时候，提供的内容都会被填充到名字为default的插槽中，
+      如果给插槽命名了，就插到指定名称下的插槽中 -->
+      <Left>
+        <h1 style="font-size: 14px;">这是来自App组件的内容，在App内的Left组件中使用插槽</h1>
+        <div class="left-slot">  </div>
+      </Left>
+  </div>
+</template>
+```
+
+**Left.vue**
+```html
+<template>
+  <div id="left">
+    我是Left组件
+    <hr>
+    <!-- 申明一个插槽区域  -->
+    <!-- vue规定，每个slot都要有一个name名称，如果不写name值，那么name=”default“ -->
+    <!-- <slot name="default"></slot> 与下面的<slot></slot>等价-->
+    <slot ></slot>
+  </div>
+</template>
+```
+
+插槽的另一种写法：<br>
+**App.vue**
+```html
+<template>
+  <div id="app">
+    <Left>
+      <!-- 默认情况下，在使用组件的时候，提供的内容都会被填充到名字为default的插槽中，
+          如果给插槽命名了，就插到指定名称下的插槽中 -->
+      <!-- <h1 style="font-size: 14px;">这是来自App组件的内容，在App内的Left组件中使用插槽</h1>
+        <div class="left-slot">  </div> -->
+
+      <!-- 插槽另一种写法 标签内v-slot:插槽名称-->
+      <!-- <template v-slot:default>
+        <h1 style="font-size: 14px">
+          这是来自App组件的内容，在App内的Left组件中使用插槽
+        </h1>
+        <div class="left-slot"></div>
+      </template> -->
+
+      <!-- <template v-slot:left-slot>
+        <h1 style="font-size: 14px">
+          这是来自App组件的内容，在App内的Left组件中使用插槽
+        </h1>
+        <div class="left-slot"></div>
+      </template> -->
 
 
+      <!-- v-slot简写 -->
+      <template #left-slot>
+        <h1 style="font-size: 14px">
+          这是来自App组件的内容，在App内的Left组件中使用插槽
+        </h1>
+        <div class="left-slot"></div>
+      </template>
+    </Left>
+  </div>
+</template>
+```
 
+**Left.vue**
+```html
+<template>
+  <div id="left">
+    我是Left组件
+    <hr>
+    <!-- 申明一个插槽区域  -->
+    <!-- vue规定，每个slot都要有一个name名称，如果不写name值，那么name=”default“ -->
+    <!-- <slot name="default"></slot> 与下面的<slot></slot>等价-->
+    <!-- <slot ></slot> -->
 
+    <!-- 自定义插槽名称 -->
+    <slot name="left-slot"></slot>
+  </div>
+</template>
+```
 
+**插槽起名是还可以接收值**
+例：
+```html
+<!-- App.vue中 -->
+<Article #content="obj">
+  <p>我是Article</p>
+  <p>{{obj}}</p>   
+  <!-- obj={"msg":"hello vue"} -->
+</Article>
 
+<!-- 插槽中的定义的属性可以被使用者，也就是App.vue拿到并且把属性封装到名为obj的对象中
+    name属性是必有属性，vue不会把它封装到obj中去,这种方法也叫做“作用域插槽”
+    作用域插槽这种传值方式有点像子传父
+-->
 
+<!-- Article.vue中 -->
+<slot name="content" msg="hello vue" sex="男" id="1" ></slot>
 
-
+```
 
 
 
