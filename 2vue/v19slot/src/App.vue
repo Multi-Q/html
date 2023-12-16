@@ -43,6 +43,9 @@ export default {
     Left,
     Right,
   },
+  created(){
+    console.log(this);
+  }
 };
 </script>
 

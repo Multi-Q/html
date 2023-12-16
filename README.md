@@ -1329,6 +1329,246 @@ data(){
 
 ```
 
+### 九、路由
+`vue-router`<br>
+安装和配置vue-router步骤：<br>
+
+1、安装vue-router
+```cmd
+npm i vue-router -D
+```
+
+2、项目中创建`src/router/index.js`路由模块。
+
+**index.js**
+```js
+// 1、导入Vue和VueRouter包
+import  Vue from "vue";
+import VueRouter from "vue-router";
+
+import Home from "@/src/component/Home.vue";
+
+// 2、使用Vue.use()函数，把VueRouter安装为vue的插件
+Vue.use(VueRouter);
+
+// 3、创建路由实例对象
+// const router =new VueRouter({
+//   routes:[
+//     {path:"hash地址",component:要展示的组件}
+//   ],
+// });
+const router=new VueRouter({
+  // 如果要哪个组件实现路由跳转，就在routers内定义
+  routes:[
+    {path:"/home",component:Home}
+  ],
+})
+
+// 4、向外暴露路由的实例对象
+export default router;
+```
+
+3、在`入口文件main.js`挂载路由。
+**main.js**
+```js
+import Vue from 'vue'
+import App from './App.vue'
+
+import router from '@/router/index.js'
+
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app')
+```
+
+#### 9.1、\<router-view\>的使用
+经过上面的vue-router的配置，在使用路由的组件中（这里使用App.vue）导入相关的组件，然后在App.vue中添加`<router-view></router-view>`，这个标签就相当于`占位符`，由`vue-router`提供的。
+
+**App.vue**
+```html
+<template>
+  <div id="app">
+    <h1>这是App组件</h1>
+    <hr>
+    <a href="#/home">home</a>
+    <a href="#/movie">movie</a>
+    <a href="#/about">about</a>
+    <router-view></router-view>
+  </div>
+</template>
+```
+
+#### 9.2、\<router-link\>的使用
+当时安装和配置了vue-router后，就可以使用router-link来代替普通的a连接<br>
+
+**App.vue**
+```html
+<template>
+  <div id="app">
+    <h1>这是App组件</h1>
+    <hr />
+    <!-- <a href="#/home">home</a>&nbsp;&nbsp;&nbsp;
+      <a href="#/movie">movie</a>&nbsp;&nbsp;&nbsp;
+      <a href="#/about">about</a> -->
+
+    <!-- 当时安装和配置了vue-router后，就可以使用router-link来代替普通的a连接 -->
+    <router-link to="/home">首页</router-link>
+    <router-link to="/movie">电影</router-link>
+    <router-link to="/about">关于</router-link>
+
+    <!-- 实现路由跳转，相当于一个占位符 -->
+    <router-view></router-view>
+  </div>
+</template>
+```
+
+#### 9.3、路由重定向
+路由重定向指的是在用户访问地址A的时候，强制用户跳转到地址C，从而展示特定的组件页面。<br>
+通过`路由规则`的`redirect属性`，指定一个新的路由地址，可以很方便的设置路由的重定向
+**router/index.js**
+```js
+import Home from "@/components/Home.vue";
+import Movie from "@/components/Movie.vue";
+import About from "@/components/About.vue";
+const router=new VueRouter({
+  routes:[
+    // 当用户访问/时，通过redirect属性跳转到/home对应的路由规则
+    {path:"/",redirect:"/home"},
+    // 底下的每一项都称之为 路由规则
+    {path:"/home",component:Home},
+    {path:"/movie",component:Movie},
+    {path:"/about",component:About}
+  ],
+});
+
+```
+
+#### 9.4、嵌套路由
+使用嵌套路由，需要使用到`children属性`来声明`子路由关系`<br>
+
+**router/index.js**
+```js
+// .....省略其他配置
+import Tab1 from "@/components/tab/Tab1.vue";
+import Tab2 from "@/components/tab/Tab2.vue";
+const router=new VueRouter({
+  routes:[
+    {path:"/",redirect:"/home"},
+    {path:"/home",component:Home},
+    {path:"/movie",component:Movie},
+    // 添加子路由关系
+    {
+      path:"/about",
+      component:About,
+      // 重定向，当点击/about时显示tab1
+      redirect:"/about/tab1",
+      // 注意：子路由中的path不能使用/，
+      children:[
+          {path:"tab1",component:Tab1},
+          {path:"tab2",component:Tab2}
+      ]
+      
+      },
+  ],
+});
+```
+
+#### 9.5、动态路由匹配
+**router/index.js将hash地址的可变参数定义为参数项**
+```js
+// 路由中的动态参数以:进行声明，当然，这个id值必填的，冒号后面的是动态参数的名称
+{path:"/movie/:mid",component:Movie},
+// 在动态参数后面加？表示指这个参数是可选的
+{path:"/movie/:mid?",component,Movie},
+```
+#### 9.6、给当前路由开启props传参
+开启props参数可以简写{{this.$route.params.id}}写法<br>
+
+步骤：<br>
+1、router/index.js内给对应的路由规则追加一个`props属性`，该属性值为true或false<br>
+
+**router/index.js**
+```js
+{path:"/movie/:mid",component:Movie,props:true}
+```
+
+2、在对应的组件中添加`props属性`来接收路由内设置的`动态参数名`<br>
+
+**Movie.vue**
+```js
+export default{
+  props:["mid"],
+  data(){
+    return {};
+  }
+}
+```
+
+#### 9.7、声明式导航和编程式导航
+声明式导航：<br>
+  普通网页中点击`<a>链接`、vue项目中点击`<router-link>`都哦属于声明式导航<br>
+编程式导航：<br>
+在浏览器中调用api方法实现导航的方法叫做编程式导航，如:<br>
+普通网页中调用`location.href`跳转新页面的方式，就属于编程式导航<br>
+
+>vue-router提供了许多编程式导航的api，其中最常用的导航api为：<br>
+>①this.$router.push("hash地址") 跳转到指定的hash地址并增加一条路由规则
+>
+>②this.$router.replace("hash地址") 跳转到指定的hash地址并替换掉当前的历史记录
+>
+>③this.$router.go(数值n)
+>
+>④this.$router.forward() 在历史记录中，前进一层
+>
+>⑤this.$router.back() 在历史记录中，后退一层
+
+#### 9.8、导航守卫 控制路由的访问权限
+全局前置守卫<br>
+每次发生路由跳转时，都会触发前置守卫。一次在全局配置守卫中，可以对每个路由进行`访问权限`的控制。
+
+**router/index.js**
+```js
+const router=new VueRouter({....});
+
+// 调用路由实例对象的beforeEach方法，即可声明全局前置守卫
+// 每次发声路由跳转的时候都会触发回调函数
+router.beforeEach((to,from,next)=>{
+  // to:表示将要访问的路由的信息对象
+  // from:表示将要离开的路由的信息对象
+  // next:是一个函数，调用next（）表示放行，允许这次路由导航
+
+
+  /*   
+      next()的三种调用方式：
+        1、当用户拥有后台主页的访问权限，直接放行：next()
+        2、当用户没有后台主页的访问权限，强制其跳转到登录页面:next("/login")
+        3、当前用户没有后台主页访问权限，不允许跳转到后台主页:next(false)
+  */
+
+//  例子
+ if(to.path==="/login"){
+    if(localStorage.getItem("token")){
+        // 有token放行
+        next();
+    }else{
+        // 没有token跳转到home页面
+        alert("你没有全限访问login页面");
+        next("/home");
+    }
+  }else{
+    next(); //访问的不是/login，都放行
+  }
+});
+```
+
+
+
+
+
+
 
 
 
