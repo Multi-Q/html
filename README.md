@@ -1564,7 +1564,354 @@ router.beforeEach((to,from,next)=>{
 });
 ```
 
+## vue3
+创建vue项目可以使用vite构建工具构建<br>
+语法格式为：
+```cmd
+npm init vue@latest
+```
+相比于`vue create 项目名`,`npm init vue@latest`构建速度更快。<br>
 
+**其中最重要的一点就是：vue3中`<template>`不再要求只拥有一个`根元素`了**<br>
+另外项目解构也发生了很大的变化，由`vue-cli`构建的项目包含有`vue.config.js`，而`vite`构建的项目包含的是`vite.config.js`。
+
+**如果是从vue2过来的，在学习过程中你可能安装`vetur`这个插件，这时你需要把它卸载掉，否则你的vue文件会报`拥有多个更元素`的问题**
+
+一、setup()中获取不到this，setup()执行的时机比beforeCreate还要早
+```js
+export default {
+  setup(){
+    console.log("setup函数",this); //this是undefined
+  },
+  beforeCreate(){
+    console.log("beforeCreate函数")
+  }
+}
+```
+
+**注：在setup函数中定义的变量和函数都要放到return中，不然模板拿不到数据**
+
+1、setup的两种写法
+
+vue3中提供了两种书写setup的写法用于对外暴露数据<br>
+1）在\<script\>中写setup()
+```js
+<script>
+  export default{
+    setup(){
+      const message="hello";
+      const logMess=function(){
+        console.log("logmess");
+      }
+      return {
+        message,
+        message
+      };
+    }
+  }
+```
+
+这种传统的写法，每次定义函数和变量都要放到return去，很麻烦，那么第二种方法会更加简便的将函数和变量暴露出去<br>
+
+2)在\<script\>内写上`setup`
+
+```js
+<script setup>
+  /* 使用后连export default{}都不用了 */
+  
+</script>
+```
+### 一、reactive()
+reactive()接收`对象类型的参数`传入，并返回一个`响应式对象`。
+```html
+<script setup>
+import {ref,reactive} from "vue";
+  const person=reactive({
+    name:"张三",
+    age:18
+  });
+
+<script>
+
+<template>
+  {{person.age}}
+  <button @click="person.age++">+1</button>
+</template>
+```
+
+### 二、ref()
+接受`简单类型`或者`对象类的数据类型`传入并返回一个`响应式对象`。<br>
+ref()的本质就是，在原有传入数据的基础上，外层包了一层对象，包成了复杂数据类型，然后借助reactive()实现的响应式<br>
+<ul>
+  <li>脚本中范文数据，需要通过.value</li>
+  <li>template中，.value不需要加</li>
+  <li>以后写代码中，推荐是ref()</li>
+</ul>
+
+```html
+<script setup>
+  import {ref} from "vue";
+
+  const count=ref(2);
+console.log(count.value);
+</script>
+
+<template>
+  {{count}}
+  <button @click="count++">点我加1</button>
+</template>
+```
+
+### 三、computed()计算属性函数
+语法：const 计算属性名=computed( ()=>{return 计算返回的结果 } )
+
+```html
+<script setup>
+import { ref,computed } from "vue";
+/* 
+  计算属性语法格式：
+    const 计算属性名=computed( ()=>{return 返回计算结果} )
+*/
+const list = ref([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+// 注意：list是对象
+// ()内没有参数，不要给它加参数
+const computedList = computed(() => { 
+  // console.log(e);
+  return list.value.filter(item => item > 2) });
+// console.log(computedList.value);
+
+function addFn(){
+  list.value.push(666);
+}
+
+</script>
+
+<template>
+  计算前list的值：{{ list }}<br>
+  计算后的数据：{{ computedList }}<br>
+  <button @click="addFn">点我修改list数组</button><br>
+  点我之后list数组:{{ list }}
+
+</template>
+```
+
+### 四、watch()监听函数
+
+```html
+<script setup>
+import {ref,watch} from "vue";
+
+// 执行watch函数需要传入要侦听的响应式数据和回调函数
+const count =ref(0);
+const name=ref("张三");
+const age=ref(19);
+// 调用watch侦听数据
+// 1、监听单个值
+watch(count,function(newValue,oldValue){
+  console.log("count的值发生变化了：",oldValue,newValue);
+});
+
+// 2、监听多个值
+watch([name,age],function([newName,newAge],[oldName,oldAge]){
+  console.log("name和age的值发生变化了：",newName,oldName," | ",newAge,oldAge);
+});
+
+// 3、监听对象中的属性，需要用函数返回要监视的属性
+const obj=ref({name:"张三",count:0});
+// 错误，无法直接拿到obj.value.count
+// watch(obj.value.count,function(newValue){console.log("新值为：",newValue);});
+watch(function(){return obj.value.count},function(newValue){concole.log("新值为：",newValue);});
+
+
+</script>
+
+<template>
+ value的值为：{{ count }}<br>
+ <button @click="count++">点我让count++</button><br><br>
+ <hr>
+ <input type="text" v-model="name"><br>
+ <button @click="age++">点我让age++</button>
+</template>
+```
+
+#### 4.1、watch()立即监听immediate
+在回调函数后面还有一个option对象，在该对象的将immediate改为true即可
+```html
+<script setup>
+// 4、监听函数的immediate属性
+const immediateCount=ref(0);
+watch(immediateCount,(newValue,oldValue)=>{
+  console.log("开启监听函数的immediate属性：",newValue,oldValue);
+},{immediate:true});
+</script>
+
+<template>
+ <button @click="deepCount++">开启监听函数的immediate属性</button>
+
+ </template>
+```
+
+#### 4.2、watch()立即监听deep
+```html
+<script setup>
+// 5、监听函数的深度监听deep
+const deepPerson=ref({name:"李四",age:19,addr:{city:"北京",cityCode:8080}});
+watch(deepPerson,(newValue,oldValue)=>{
+  // 开启深度监听newValue和oldValue值是一样的，除非deepPerson倍整个替换掉
+  console.log("监听函数deep，citycode变化了：",newValue.addr.cityCode,oldValue.addr.cityCode);
+},{deep:true});
+</script>
+
+<template>
+ <button @click="deepPerson.addr.cityCode++">开启监听函数的deep属性,让其加加</button>
+ </template>
+ ```
+
+ ### 五、组件间通信-数据共享
+
+#### 5.1、父子间通信
+父子间通信方法上还是一样的，只不过`子组件`中接受的方法不一样了<br>
+步骤：<br>
+1、父组件导入并使用子组件，在子组件标签中`绑定自定义属性`<br>
+2、子组件中使用`defineProps({属性名:该自定义属性的数据类型})`<br>
+
+**父组件App.vue**
+```html
+<script setup>
+import Son from "./components/Son.vue";
+</script>
+
+<template>
+  <Son message="我是子组件Son"></Son>
+</template>
+```
+
+**父组件Son.vue**
+```html
+<script setup>
+import {defineProps } from "vue";
+    // 由于使用编程式导航的方式，无法直接使用props属性，所以通过defineProps()变编译宏接收子组件传递的数据
+    const props=defineProps({
+        message:String,
+        car:String,
+        age:Number
+    })
+</script>
+<template>
+  <!-- 对于props中的属性，可以直接使用,不用. -->
+    接收来自父组件的数据messsage：{{ message }}
+</template>
+```
+
+#### 5.2、子向父传数据
+传递方式还是和vue2一样<br>
+步骤：<br>
+1、父组件中导入并使用子组件，然后给子组件绑定`自定义事件`<br>
+2、通过`defineEmits()`编译宏生成`emit`方法<br>
+3、触发自定义事件，并传递参数<br>
+4、父组件调用回调函数拿到子组件的数据
+
+**父组件App.vue**
+```html
+<script setup>
+import {ref} from "vue";
+import Son from "./components/Son.vue";
+
+function getMessage(value){
+ console.log(value);
+ return value;
+}
+
+</script>
+
+<template>
+  <!-- 1、生命自定义事件 -->
+  <Son  @get-message="getMessage"></Son>
+  <hr>
+  <!-- 4、调用自定义事件的回调函数拿到数据 -->
+  查看来自子组件的数据:{{ getMessage() }}
+</template>
+```
+
+**子组件Son.vue**
+```html
+<script setup>
+
+// 2、用编译宏生成emit党发，这个方法给以自定义
+  const emit=defineEmits(["get-message"]);
+// 3、向父组件发送数据
+  function sendMsg(){
+      emit("get-message","我是来自子组件的数据");
+  }
+</script>
+<template>
+    <button @click="sendMsg">我要向父组件发送数据了</button>
+</template>
+```
+
+#### 5.3、跨组件间通信provide和inject
+顶层组件向任意的底层组件传递数据和方法，实现跨组件通信<br>
+格式：
+1、顶层组件通过`provide函数提供数据`<br>
+2、底层组件通过`inject函数获取数据`<br>
+
+
+### 六、模板引用ref
+ref是用来获取当前元素的dom对象，这与vue2中的ref功能上是相同的，但是使用方法不同了<br>
+使用ref步骤：<br>
+1、调用ref函数得到ref对象<br>
+2、通关`ref标识`绑定到这个ref对象中<br>
+```html
+<script setup>
+import Son from "./components/Son.vue";
+
+import { ref ,onMounted} from "vue";
+
+// 1、用ref声明一个ref对象
+const myh1 = ref(null);
+console.log(myh1);
+
+// 必须渲染完才能拿到myh1的dom
+// 所以需要用到生命周期钩子
+onMounted(function () {
+  myh1.value.style.color = "green";
+});
+// myh1.value.style.color="skyblue"; //获取不到dom，因为刚获取完dom就没了
+
+
+
+// 获取组件的dom
+const mySon=ref(null);
+onMounted(()=>{
+  // 子组件中定义的变量和方法默认是不公开的，
+  // 如果想要拿到子组件的变量和方法，在子组件中使用defineExpose({})将要暴露的变量和方法名放进来
+ console.log( mySon.value.count);
+ mySon.value.sayHi();
+});
+
+</script>
+
+<template>
+  <!-- 2、使用ref表示绑定myh1，在myh1这个变量中就可以操作这个<h1>的dom了 -->
+  <h1 ref="myh1">我是h1</h1>
+  <Son ref="mySon" ></Son>
+
+</template>
+```
+**Son.vue**
+```js
+<script setup>
+import { ref, defineExpose } from "vue";
+const count = ref(999);
+function sayHi(){
+    console.log("hi~,我是子组件Son.vue");
+}
+defineExpose({
+    count,
+    sayHi
+});
+</script>
+```
 
 
 

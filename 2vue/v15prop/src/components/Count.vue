@@ -1,7 +1,7 @@
 <template>
   <div id="my-count">
-    我是my-count <br>名字叫：{{ init.name }}
-    <p>count的值是:{{ init.count }}</p>
+    我是my-count <br>名字叫：{{ name }}
+    <p>count的值是:{{ count }}</p>
     <button @click="add">+1</button>
   </div>
 </template>
@@ -31,12 +31,13 @@ export default {
   data() {
     return {
       count: this.init.count,
-      
+      name:this.init.name
     };
   },
   methods: {
     add() {
       this.count += 1;
+      console.log(this.count);
     },
   },
 };

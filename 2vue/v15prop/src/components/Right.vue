@@ -2,7 +2,7 @@
   <div id="right">
     right
     <hr>
-    <MyCount></MyCount>
+    <MyCount :init="obj"></MyCount>
   </div>
 </template>
 
@@ -11,7 +11,9 @@ export default {
     name:"Right" ,
     data(){
         return {
-
+          obj:{
+              
+            }
         }
     },
     methods:{
