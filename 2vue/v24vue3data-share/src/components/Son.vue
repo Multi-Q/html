@@ -1,5 +1,7 @@
 <script setup>
 import {defineProps } from "vue";
+defineOptions({name:"Son"});
+
     // 通过defineProps()变编译宏接收子组件传递的数据
     const props=defineProps({
         message:String,

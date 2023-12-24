@@ -1772,8 +1772,8 @@ watch(deepPerson,(newValue,oldValue)=>{
 #### 5.1、父子间通信
 父子间通信方法上还是一样的，只不过`子组件`中接受的方法不一样了<br>
 步骤：<br>
-1、父组件导入并使用子组件，在子组件标签中`绑定自定义属性`<br>
-2、子组件中使用`defineProps({属性名:该自定义属性的数据类型})`<br>
+1)、父组件导入并使用子组件，在子组件标签中`绑定自定义属性`<br>
+2)、子组件中使用`defineProps({属性名:该自定义属性的数据类型})`<br>
 
 **父组件App.vue**
 ```html
@@ -1806,10 +1806,10 @@ import {defineProps } from "vue";
 #### 5.2、子向父传数据
 传递方式还是和vue2一样<br>
 步骤：<br>
-1、父组件中导入并使用子组件，然后给子组件绑定`自定义事件`<br>
-2、通过`defineEmits()`编译宏生成`emit`方法<br>
-3、触发自定义事件，并传递参数<br>
-4、父组件调用回调函数拿到子组件的数据
+1)、父组件中导入并使用子组件，然后给子组件绑定`自定义事件`<br>
+2)、通过`defineEmits()`编译宏生成`emit`方法<br>
+3)、触发自定义事件，并传递参数<br>
+4)、父组件调用回调函数拿到子组件的数据
 
 **父组件App.vue**
 ```html
@@ -1851,10 +1851,121 @@ function getMessage(value){
 
 #### 5.3、跨组件间通信provide和inject
 顶层组件向任意的底层组件传递数据和方法，实现跨组件通信<br>
-格式：
-1、顶层组件通过`provide函数提供数据`<br>
-2、底层组件通过`inject函数获取数据`<br>
+格式：<br>
+1)、顶层组件通过`provide函数提供数据`<br>
+2)、底层组件通过`inject函数获取数据`<br>
 
+#### 5.4、mitt插件实现任意组件通信
+使用`mitt`需要安装mitt<br>
+步骤：<br>
+1)、安装mitt
+```cmd
+npm i mitt -D
+```
+2)、mitt是一个工具类，创建一个文件将它暴露出去<br>
+
+**utils/emitter.ts**
+```ts
+import mitt from "mitt";
+
+const emitter=mitt();
+
+// 提前绑定自定义事件
+// emitter.on("事件名",回调函数);
+// emitter.on("test1",()=>{
+//   console.log("test1自定义事件被调用了");
+// });
+
+// emitter.on("test2",function(){
+//   console.log("test2自定义事件被调用了");
+// });
+
+// 触发事件
+// emitter.emit("事件名")
+
+// 清空所有触发器
+// emitter.all.clear()
+
+
+export default emitter;
+```
+3)、通信<br>
+**发送方Bro1.vue**
+```html
+<script setup lang="ts">
+  import emitter from "@/utils/emiter.ts";
+  const toy=ref<string>("奥特曼");
+
+function sendToy(){
+  emitter.emit("send-toy",toy);
+}
+
+</script>
+<template>
+  <button @click="sendToy">发送数据给Bro2.vue<button>
+</template>
+```
+**接收方Bro2.vue**
+```html
+<script setup lang="ts">
+  import emitter from "@/utils/emitter.ts";
+
+ let broToy=ref<string>("");
+  emitter.on("send-toy",(value)=>{
+    broToy.value=value
+    console.log(value);  //value是来自Bro1.vue传过来的数据
+  });
+</script>
+<template>
+  接收来自兄弟组件的传过来的数据:{{broToy}}
+</template>
+```
+
+#### 5.5、v-model实现数据通信
+`v-model`的本质就是`单项绑定+input事件`
+```html
+  <input type="text" v-model="username">
+  <!-- 等价下面写法 ts写法 -->
+  <input type="text" :value="username" @input="(<HTMLInputElement>$event.target).value"/>
+```
+**vue3已经改写法**
+操作步骤：<br>
+1)、
+**ModelFather.vue**
+```html
+<template>
+  <!-- :modelValue和update:modelValue是固定写法 -->
+    <!-- <ModelSon :modelValue="username" @update:modelValue="username=$event"></ModelSon> -->
+    <ModelSon v-model="username"></ModelSon>
+</template>
+
+<script setup lang="ts">
+import ModelSon from './ModelSon.vue';
+import {ref} from "vue";
+defineOptions({name:"ModelFather"});
+let username=ref<string>("");
+
+</script>
+```
+
+2)、
+**ModelSon.vue**
+```html
+<template>
+  <div style="border: 1px solid red;">
+    <p>这是ModelSon.vue</p>
+    <input type="text" :value="modelValue" @input="emit('update:modelValue',(<HTMLInputElement>$event.target).value)">
+  </div>
+</template>
+
+<script setup lang="ts">
+defineOptions({name:"ModelSon"});
+// 底下这两行是重点
+const props=defineProps(["modelValue"]);
+const emit=defineEmits(["update:modelValue"]);
+
+</script>
+```
 
 ### 六、模板引用ref
 ref是用来获取当前元素的dom对象，这与vue2中的ref功能上是相同的，但是使用方法不同了<br>
